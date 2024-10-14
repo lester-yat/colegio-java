@@ -90,6 +90,7 @@ public boolean editarInscripcion(Inscripcion inscripcion) {
             Inscripcion inscripcion = new Inscripcion();
             inscripcion.setId(rs.getInt("id"));
             inscripcion.setAlumnoId(rs.getInt("alumno_id"));
+            inscripcion.setNombreAlumno(rs.getString("nombre"));
             inscripcion.setGradoId(rs.getInt("grado_id"));
             inscripcion.setFechaInscripcion(rs.getDate("fecha_inscripcion"));
             lista.add(inscripcion);
