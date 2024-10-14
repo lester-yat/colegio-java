@@ -1,0 +1,124 @@
+USE dbcolegio;
+
+CREATE TABLE Profesor (
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    apellido NVARCHAR(50),
+    edad INT,
+    identificacion NVARCHAR(50),
+    tipo_identificacion NVARCHAR(50),
+    telefono NVARCHAR(50),
+    email NVARCHAR(50),
+    genero NVARCHAR(50),
+    direccion NVARCHAR(50),
+    fecha_nacimiento DATE,
+    estado_civil NVARCHAR(50),
+    especialidad NVARCHAR(50),
+    salario INT,
+    fecha_contratacion DATE,
+    fecha_terminacion_contrato DATE,
+    
+    estado_contrato NVARCHAR(50),
+    tipo_contrato NVARCHAR(50),
+);
+
+CREATE TABLE Grado (
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    salon NVARCHAR(50),
+    nivel NVARCHAR(50),
+    anio DATE,
+    jornada NVARCHAR(50),
+    cantidad_max_estudiantes INT,
+);
+
+CREATE TABLE Seccion (
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    horario_inicio TIME,
+    horario_final TIME,
+    GradoID INT NOT NULL,
+    FOREIGN KEY (GradoID) REFERENCES Grado(ID)
+);
+
+CREATE TABLE Profesor_grado (
+    ProfesorID INT NOT NULL,
+    GradoID INT NOT NULL,
+    SeccionID INT NOT NULL,
+    PRIMARY KEY (ProfesorID, GradoID, SeccionID),
+    FOREIGN KEY (ProfesorID) REFERENCES Profesor(ID) ON DELETE CASCADE,
+    FOREIGN KEY (GradoID) REFERENCES Grado(ID),
+    FOREIGN KEY (SeccionID) REFERENCES Seccion(ID)
+);
+
+ALTER TABLE Seccion 
+DROP CONSTRAINT IF EXISTS FK_Grado_Seccion;
+
+ALTER TABLE Seccion 
+ADD CONSTRAINT FK_Grado_Seccion 
+FOREIGN KEY (GradoID) REFERENCES Grado(ID) 
+ON DELETE CASCADE;
+
+CREATE TABLE Alumno (
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    apellido NVARCHAR(50),
+    edad INT,
+    InscripcionID INT,
+    PadreID INT,
+    GradoID INT NOT NULL,
+    fecha_registro DATE,
+    FOREIGN KEY (GradoID) REFERENCES Grado(ID)
+);
+
+CREATE TABLE Alumno_seccion (
+    AlumnoID INT NOT NULL,
+    SeccionID INT NOT NULL,
+    PRIMARY KEY (AlumnoID, SeccionID),
+    FOREIGN KEY (AlumnoID) REFERENCES Alumno(ID) ON DELETE CASCADE,
+    FOREIGN KEY (SeccionID) REFERENCES Seccion(ID)
+);
+
+-- Tabla padre
+CREATE TABLE Padre (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    nombre NVARCHAR(100),
+    apellido NVARCHAR(100),
+    edad INT,
+    identificacion NVARCHAR(50),
+    telefono NVARCHAR(20),
+    parentesco NVARCHAR(50)
+);
+
+-- Tabla alumno_padre (relación entre alumno y padre)
+CREATE TABLE Alumno_padre (
+    AlumnoID INT NOT NULL,
+    PadreID INT NOT NULL,
+    PRIMARY KEY (AlumnoID, PadreID),
+    FOREIGN KEY (alumnoid) REFERENCES Alumno(ID) ON DELETE CASCADE,
+    FOREIGN KEY (PadreID) REFERENCES Padre(ID) ON DELETE CASCADE
+);
+
+-- Tabla inscripcion
+CREATE TABLE Inscripcion (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    AlumnoID INT NOT NULL,
+    GradoID INT NOT NULL,
+    fecha_inscripcion DATE,
+    FOREIGN KEY (AlumnoID) REFERENCES Alumno(ID) ON DELETE CASCADE,
+    FOREIGN KEY (GradoID) REFERENCES Grado(ID)
+);
+
+-- EJECUTAR CUANDO YA ESTEN LAS TABLAS DE INSCRIPCION Y PADRES
+CREATE TABLE Alumno (
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    apellido NVARCHAR(50),
+    edad INT,
+    InscripcionID INT, -- Referencia a la tabla Inscripcion
+    PadreID INT,       -- Referencia a la tabla Padre
+    GradoID INT NOT NULL,
+    FOREIGN KEY (GradoID) REFERENCES Grado(ID) ON DELETE CASCADE, -- Eliminación en cascada al eliminar un Grado
+    FOREIGN KEY (PadreID) REFERENCES Padre(ID) ON DELETE CASCADE, -- Eliminación en cascada al eliminar un Padre
+    FOREIGN KEY (InscripcionID) REFERENCES Inscripcion(ID) ON DELETE CASCADE -- Eliminación en cascada al eliminar una Inscripción
+);

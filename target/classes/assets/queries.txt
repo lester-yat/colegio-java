@@ -1,0 +1,143 @@
+-- Crear la base de datos
+CREATE DATABASE dbcolegio;
+
+USE dbcolegio;
+
+-- Crear las tablas profesor, grado, seccion y padre
+CREATE TABLE profesor (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    apellido NVARCHAR(50),
+    edad INT,
+    identificacion NVARCHAR(50),
+    tipo_identificacion NVARCHAR(50),
+    telefono NVARCHAR(50),
+    email NVARCHAR(50),
+    genero NVARCHAR(50),
+    direccion NVARCHAR(50),
+    fecha_nacimiento DATE,
+    estado_civil NVARCHAR(50),
+    especialidad NVARCHAR(50),
+    salario INT,
+    fecha_contratacion DATE,
+    fecha_terminacion_contrato DATE,
+    estado_contrato NVARCHAR(50),
+    tipo_contrato NVARCHAR(50)
+);
+
+CREATE TABLE grado (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    salon NVARCHAR(50),
+    nivel NVARCHAR(50),
+    anio DATE,
+    jornada NVARCHAR(50),
+    cantidad_max_estudiantes INT
+);
+
+CREATE TABLE padre (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    nombre NVARCHAR(100),
+    apellido NVARCHAR(100),
+    edad INT,
+    identificacion NVARCHAR(50),
+    telefono NVARCHAR(20),
+    parentesco NVARCHAR(50)
+);
+
+CREATE TABLE seccion (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    horario_inicio TIME,
+    horario_final TIME,
+    gradoid INT,
+    FOREIGN KEY (gradoid) REFERENCES grado(id) ON DELETE SET NULL
+);
+
+-- Crear la tabla alumno
+CREATE TABLE alumno (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    apellido NVARCHAR(50),
+    edad INT,
+    padreid INT,
+    gradoid INT,
+    fecha_registro DATE,
+    FOREIGN KEY (gradoid) REFERENCES grado(id) ON DELETE SET NULL,
+    FOREIGN KEY (padreid) REFERENCES padre(id) ON DELETE SET NULL
+);
+
+-- Crear la tabla inscripcion
+CREATE TABLE inscripcion (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    alumnoid INT NOT NULL,
+    gradoid INT NOT NULL,
+    fecha_inscripcion DATE,
+    FOREIGN KEY (alumnoid) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (gradoid) REFERENCES grado(id)
+);
+
+-- Crear la tabla curso
+CREATE TABLE curso (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(100) NOT NULL,
+    descripcion NVARCHAR(255),
+    nivel NVARCHAR(50),
+    profesorid INT,
+    gradoid INT,
+    seccionid INT,
+    FOREIGN KEY (profesorid) REFERENCES profesor(id) ON DELETE SET NULL,
+    FOREIGN KEY (gradoid) REFERENCES grado(id) ON DELETE SET NULL,
+    FOREIGN KEY (seccionid) REFERENCES seccion(id) ON DELETE SET NULL
+);
+
+-- Crear la tabla nota
+CREATE TABLE nota (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre NVARCHAR(50),
+    calificacion FLOAT,
+    fecha_registro DATE,
+    alumnoid INT,
+    cursoid INT,
+    FOREIGN KEY (alumnoid) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (cursoid) REFERENCES curso(id) ON DELETE SET NULL
+);
+
+-- Crear la tabla profesor_grado
+CREATE TABLE profesor_grado (
+    profesorid INT NULL,
+    gradoid INT NULL,
+    seccionid INT NULL,
+    FOREIGN KEY (profesorid) REFERENCES profesor(id) ON DELETE SET NULL,
+    FOREIGN KEY (gradoid) REFERENCES grado(id) ON DELETE SET NULL,
+    FOREIGN KEY (seccionid) REFERENCES seccion(id) ON DELETE SET NULL
+);
+
+-- Crear la tabla alumno_seccion
+CREATE TABLE alumno_seccion (
+    alumnoid INT NOT NULL,
+    seccionid INT NULL,
+    PRIMARY KEY (alumnoid),
+    FOREIGN KEY (alumnoid) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (seccionid) REFERENCES seccion(id) ON DELETE SET NULL
+);
+
+-- Crear la tabla alumno_padre
+CREATE TABLE alumno_padre (
+    alumnoid INT NOT NULL,
+    padreid INT NOT NULL,
+    PRIMARY KEY (alumnoid, padreid),
+    FOREIGN KEY (alumnoid) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (padreid) REFERENCES padre(id) ON DELETE CASCADE
+);
+
+-- Crear la tabla de inicio de sesión
+CREATE TABLE inicio (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre_usuario NVARCHAR(50) NOT NULL UNIQUE,
+    contraseña NVARCHAR(256) NOT NULL
+);
+
+-- Insertar un usuario admin con contraseña encriptada
+INSERT INTO inicio (nombre_usuario, contraseña)
+VALUES ('admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'); -- Hash SHA-256 de 'admin123'
