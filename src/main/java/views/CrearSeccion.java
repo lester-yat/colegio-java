@@ -11,7 +11,7 @@ import models.Seccion;
 import models.SeccionDAO;
 
 public class CrearSeccion extends javax.swing.JFrame {
-    
+
     Seccion seccion = new Seccion();
     SeccionDAO seccionDAO = new SeccionDAO();
 
@@ -20,8 +20,8 @@ public class CrearSeccion extends javax.swing.JFrame {
         initComponents();
         cargarGrados();
     }
-    
-    public void cargarGrados(){
+
+    public void cargarGrados() {
         List<Grado> grados = seccionDAO.listarGrados();
         for (int i = 0; i < grados.size(); i++) {
             String nombre = grados.get(i).getNombre();
@@ -138,31 +138,54 @@ public class CrearSeccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (!"".equals(txtNombre.getText()) && !"".equals(txtHoraInicio.getText()) &&
-            !"".equals(txtHoraFinal.getText()) && !"".equals(selectGrado.getSelectedItem())) {
+
+        if (!"".equals(txtNombre.getText()) && !"".equals(txtHoraInicio.getText())
+                && !"".equals(txtHoraFinal.getText()) && !"".equals(selectGrado.getSelectedItem())) {
+
+            // Validación para que el nombre tenga al menos 3 caracteres
+            if (txtNombre.getText().length() < 3) {
+                JOptionPane.showMessageDialog(null, "El nombre debe tener al menos 3 caracteres.");
+                return;
+            }
 
             try {
                 SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
                 formatoHora.setLenient(false);
 
+                // Validación para verificar el formato de las horas
                 Date horaInicio = formatoHora.parse(txtHoraInicio.getText());
                 Date horaFinal = formatoHora.parse(txtHoraFinal.getText());
 
+                // Validación para que la hora de inicio no sea igual a la hora final
+                if (horaInicio.equals(horaFinal)) {
+                    JOptionPane.showMessageDialog(null, "La hora de inicio y la hora final no pueden ser iguales.");
+                    return;
+                }
+
+                // Validación para que la hora de inicio sea menor que la hora final
                 if (horaInicio.after(horaFinal)) {
                     JOptionPane.showMessageDialog(null, "La hora de inicio debe ser menor que la hora final.");
                     return;
                 }
-                
+
                 seccion.setHorarioInicio(new Time(horaInicio.getTime()));
                 seccion.setHorarioFinal(new Time(horaFinal.getTime()));
                 seccion.setNombre(txtNombre.getText());
 
                 List<Grado> grados = seccionDAO.listarGrados();
+                boolean gradoEncontrado = false;
                 for (Grado grado : grados) {
                     if (grado.getNombre().equals(selectGrado.getSelectedItem())) {
                         seccion.setGrado(grado.getId());
+                        gradoEncontrado = true;
                         break;
                     }
+                }
+
+                // Validación para asegurar que el grado existe
+                if (!gradoEncontrado) {
+                    JOptionPane.showMessageDialog(null, "Grado no válido.");
+                    return;
                 }
 
                 seccionDAO.guardarSeccion(seccion);
@@ -170,6 +193,7 @@ public class CrearSeccion extends javax.swing.JFrame {
                 ListaSecciones vistaLista = new ListaSecciones();
                 vistaLista.setVisible(true);
                 dispose();
+
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null, "Error en el formato de la hora: " + e.getMessage());
             } catch (Exception e) {
@@ -178,6 +202,7 @@ public class CrearSeccion extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Los campos están vacíos.");
         }
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

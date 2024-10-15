@@ -42,6 +42,7 @@ public class EditarGrado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         txtNombre3 = new javax.swing.JTextField();
@@ -57,110 +58,139 @@ public class EditarGrado extends javax.swing.JFrame {
         btnActualizar1 = new javax.swing.JButton();
         btnCancelar1 = new javax.swing.JButton();
         txtAnio = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Edicion Grado");
-        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 310, 33));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 310, 33));
 
         jLabel23.setBackground(new java.awt.Color(0, 0, 0));
         jLabel23.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Nombre");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
 
-        txtNombre3.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombre3.setBackground(new java.awt.Color(0, 0, 0));
         txtNombre3.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        txtNombre3.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 330, -1));
+        txtNombre3.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombre3.setBorder(null);
+        jPanel1.add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 330, -1));
 
         jLabel24.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Salon");
-        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
 
-        txtSalon3.setBackground(new java.awt.Color(255, 255, 255));
+        txtSalon3.setBackground(new java.awt.Color(0, 0, 0));
         txtSalon3.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        txtSalon3.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(txtSalon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 330, -1));
+        txtSalon3.setForeground(new java.awt.Color(255, 255, 255));
+        txtSalon3.setBorder(null);
+        jPanel1.add(txtSalon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 330, -1));
 
         jLabel25.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Nivel");
-        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
 
-        txtNivel3.setBackground(new java.awt.Color(255, 255, 255));
+        txtNivel3.setBackground(new java.awt.Color(0, 0, 0));
         txtNivel3.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        txtNivel3.setForeground(new java.awt.Color(0, 0, 0));
+        txtNivel3.setForeground(new java.awt.Color(255, 255, 255));
+        txtNivel3.setBorder(null);
         txtNivel3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNivel3ActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNivel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 330, -1));
+        jPanel1.add(txtNivel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 330, -1));
 
         jLabel26.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Año");
-        getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, -1, -1));
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Jornada");
-        getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
 
-        txtJornada3.setBackground(new java.awt.Color(255, 255, 255));
+        txtJornada3.setBackground(new java.awt.Color(0, 0, 0));
         txtJornada3.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        txtJornada3.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(txtJornada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 330, -1));
+        txtJornada3.setForeground(new java.awt.Color(255, 255, 255));
+        txtJornada3.setBorder(null);
+        jPanel1.add(txtJornada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 330, -1));
 
         jLabel28.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Cantidad Max Estudiantes");
-        getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
+        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
 
-        txtCantMaxEstu3.setBackground(new java.awt.Color(255, 255, 255));
+        txtCantMaxEstu3.setBackground(new java.awt.Color(0, 0, 0));
         txtCantMaxEstu3.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        txtCantMaxEstu3.setForeground(new java.awt.Color(0, 0, 0));
+        txtCantMaxEstu3.setForeground(new java.awt.Color(255, 255, 255));
+        txtCantMaxEstu3.setBorder(null);
         txtCantMaxEstu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantMaxEstu3ActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCantMaxEstu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 330, -1));
+        jPanel1.add(txtCantMaxEstu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 330, -1));
 
-        btnActualizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnActualizar1.setBackground(new java.awt.Color(0, 0, 0));
         btnActualizar1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        btnActualizar1.setForeground(new java.awt.Color(0, 0, 0));
-        btnActualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/actualizar.png"))); // NOI18N
+        btnActualizar1.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar1.setText("Actualizar");
         btnActualizar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnActualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
+        jPanel1.add(btnActualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, -1, -1));
 
-        btnCancelar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar1.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelar1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/calcelar.png"))); // NOI18N
+        btnCancelar1.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar1.setText("Cancelar");
         btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
-        getContentPane().add(txtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 330, -1));
+        jPanel1.add(btnCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, -1));
+        jPanel1.add(txtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 330, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/69.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 550));
+        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 320, 10));
+
+        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 320, 10));
+
+        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 320, 20));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 320, 10));
+
+        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 320, 10));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,7 +264,6 @@ public class EditarGrado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar1;
     private javax.swing.JButton btnCancelar1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -242,6 +271,12 @@ public class EditarGrado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private com.toedter.calendar.JDateChooser txtAnio;
     private javax.swing.JTextField txtCantMaxEstu3;
     private javax.swing.JTextField txtJornada3;

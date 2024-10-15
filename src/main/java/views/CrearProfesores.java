@@ -12,7 +12,7 @@ import models.ProfesoresDAO;
 import models.Seccion;
 
 public class CrearProfesores extends javax.swing.JFrame {
-    
+
     Profesor profesor = new Profesor();
     ProfesoresDAO profesorDAO = new ProfesoresDAO();
     DefaultTableModel modelo = new DefaultTableModel();
@@ -21,7 +21,7 @@ public class CrearProfesores extends javax.swing.JFrame {
     DefaultTableModel modeloGradoSeccion = new DefaultTableModel();
     int idGrado = 0;
     String nombreGrado = "";
-    
+
     public CrearProfesores() {
         this.setUndecorated(true);
         initComponents();
@@ -29,12 +29,12 @@ public class CrearProfesores extends javax.swing.JFrame {
         ListaGrados();
         initTablaGradoSeccion();
     }
-    
+
     public void initTablaGradoSeccion() {
         modeloGradoSeccion = (DefaultTableModel) tablaGradoSeccion.getModel();
         modeloGradoSeccion.setColumnIdentifiers(new String[]{"ID Grado", "Nombre Grado", "ID Seccion", "Nombre Seccion"});
     }
-    
+
     public void LimpiarTabla(DefaultTableModel modelo) {
         modelo.setRowCount(0);
 //        for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -42,8 +42,8 @@ public class CrearProfesores extends javax.swing.JFrame {
 //            i = i-1;
 //        }
     }
-    
-    public void ListaGrados(){
+
+    public void ListaGrados() {
         List<Grado> ListarGrad = profesorDAO.listarGrados();
         modelo = (DefaultTableModel) tablaGrados.getModel();
         Object[] ob = new Object[4];
@@ -56,7 +56,7 @@ public class CrearProfesores extends javax.swing.JFrame {
         }
         tablaGrados.setModel(modelo);
     }
-    
+
     public void ListaSecciones(int id) {
         modeloSecciones = (DefaultTableModel) tablaSecciones.getModel();
         LimpiarTabla(modeloSecciones);
@@ -77,7 +77,7 @@ public class CrearProfesores extends javax.swing.JFrame {
         }
         tablaSecciones.setModel(modeloSecciones);
     }
-    
+
     public Integer obtenerIdsSeleccionadoGrado() {
         int filaSeleccionada = tablaGrados.getSelectedRow();
         if (filaSeleccionada == -1) {
@@ -100,7 +100,7 @@ public class CrearProfesores extends javax.swing.JFrame {
         System.out.println("IDs seleccionados en Secciones: " + idsSeleccionados);
         return idsSeleccionados;
     }
-    
+
     public List<String> obtenerNombresSeleccionadosSecciones() {
         int[] filasSeleccionadas = tablaSecciones.getSelectedRows();
         List<String> nombresSeleccionados = new ArrayList<>();
@@ -111,7 +111,7 @@ public class CrearProfesores extends javax.swing.JFrame {
         System.out.println("Nombres seleccionados en Secciones: " + nombresSeleccionados);
         return nombresSeleccionados;
     }
-    
+
     public List<int[]> obtenerRelacionesGradoSeccion() {
         List<int[]> listaRelaciones = new ArrayList<>();
         for (int i = 0; i < modeloGradoSeccion.getRowCount(); i++) {
@@ -127,7 +127,7 @@ public class CrearProfesores extends javax.swing.JFrame {
         }
         return listaRelaciones;
     }
-    
+
     public boolean esNumeroValido(String texto) {
         try {
             Integer.parseInt(texto);
@@ -136,11 +136,11 @@ public class CrearProfesores extends javax.swing.JFrame {
             return false;
         }
     }
-    
+
     public boolean esTelefonoValido(String telefono) {
         return telefono.matches("\\d{8}");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -528,18 +528,19 @@ public class CrearProfesores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (!"".equals(txtNombre.getText()) && !"".equals(txtApeliido.getText()) && !"".equals(txtEdad.getText()) &&
-            !"".equals(txtEmail.getText()) && !"".equals(txtEspecialidad.getText()) && !"".equals(txtEstadoCivil.getSelectedItem()) &&
-            !"".equals(txtEstadoContrato.getSelectedItem()) && !"".equals(txtFechaContratacion.getDate()) &&
-            !"".equals(txtFechaNacimiento.getDate()) && !"".equals(txtFechaTerminacion.getDate()) &&
-            !"".equals(txtGenero.getSelectedItem()) && !"".equals(txtIdentificacion.getText()) &&
-            !"".equals(txtSalario.getText()) && !"".equals(txtTelefono.getText()) &&
-            !"".equals(txtTipoContrato.getText()) && !"".equals(txtTipoIdentificacion.getSelectedItem()) &&
-            !"".equals(txtoDireccion.getText())) {
+
+        if (!"".equals(txtNombre.getText()) && !"".equals(txtApeliido.getText()) && !"".equals(txtEdad.getText())
+                && !"".equals(txtEmail.getText()) && !"".equals(txtEspecialidad.getText()) && !"".equals(txtEstadoCivil.getSelectedItem())
+                && !"".equals(txtEstadoContrato.getSelectedItem()) && !"".equals(txtFechaContratacion.getDate())
+                && !"".equals(txtFechaNacimiento.getDate()) && !"".equals(txtFechaTerminacion.getDate())
+                && !"".equals(txtGenero.getSelectedItem()) && !"".equals(txtIdentificacion.getText())
+                && !"".equals(txtSalario.getText()) && !"".equals(txtTelefono.getText())
+                && !"".equals(txtTipoContrato.getText()) && !"".equals(txtTipoIdentificacion.getSelectedItem())
+                && !"".equals(txtoDireccion.getText())) {
             try {
-                profesor.setFecha_nacimiento( (Date) txtFechaNacimiento.getDate());
-                profesor.setFecha_contratacion( (Date) txtFechaContratacion.getDate());
-                profesor.setFecha_terminacion_contrato( (Date) txtFechaTerminacion.getDate());
+                profesor.setFecha_nacimiento((Date) txtFechaNacimiento.getDate());
+                profesor.setFecha_contratacion((Date) txtFechaContratacion.getDate());
+                profesor.setFecha_terminacion_contrato((Date) txtFechaTerminacion.getDate());
 
                 profesor.setNombre(txtNombre.getText());
                 profesor.setApellido(txtApeliido.getText());
@@ -581,7 +582,7 @@ public class CrearProfesores extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Los campos están vacíos");
         }
-        
+
         if (!esTelefonoValido(txtTelefono.getText())) {
             JOptionPane.showMessageDialog(null, "El teléfono debe ser un número de 8 dígitos.");
         } else if (!esNumeroValido(txtEdad.getText())) {
@@ -646,7 +647,7 @@ public class CrearProfesores extends javax.swing.JFrame {
             modeloGradoSeccion.removeRow(filasSeleccionadas[i]);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
-    
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -14,25 +14,21 @@ import models.Padre;
 import models.PadreDAO;
 
 public class CrearPadre extends javax.swing.JFrame {
-    
-    
+
     private List<Alumno> listaAlumnosSeleccionados = new ArrayList<>();
     private List<Alumno> listaAlumnosRelacionados = new ArrayList<>();
 
- // Modelo para la tabla de alumnos
+    // Modelo para la tabla de alumnos
     private DefaultTableModel modeloTablaAlumnos;
 
     public CrearPadre() {
         initComponents();
         cbParentesco.addItem("Padre");
         cbParentesco.addItem("Madre");
-        cbParentesco.addItem("Encargado"); 
-        
+        cbParentesco.addItem("Encargado");
+
     }
 
-
-   
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -206,32 +202,78 @@ public class CrearPadre extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       // guardarPadre(); // Llamar al método para guardar el padre
-      // Crear un nuevo objeto Padre con los datos del formulario
-    Padre nuevoPadre = new Padre();
-    nuevoPadre.setNombre(txtNombre.getText());
-    nuevoPadre.setApellido(txtApellido.getText());
-    nuevoPadre.setEdad(Integer.parseInt(txtEdad.getText()));
-    nuevoPadre.setIdentificacion(txtIdentificacion.getText());
-    nuevoPadre.setTelefono(txtTelefono.getText());
-    nuevoPadre.setParentesco(cbParentesco.getSelectedItem().toString());
-    
-    PadreDAO padreDAO = new PadreDAO();
-    boolean guardado = padreDAO.guardarPadre(nuevoPadre);
-    
-    if (guardado) {
-        JOptionPane.showMessageDialog(this, "Padre guardado correctamente.");
-        
-        this.dispose(); // Cerrar el formulario de creación
-        ListadoPadre vistaLista = new ListadoPadre();
-        vistaLista.setVisible(true);
-    } else {
-        JOptionPane.showMessageDialog(this, "Error al guardar el padre.");
-    }
+        // guardarPadre(); // Llamar al método para guardar el padre
+        // Crear un nuevo objeto Padre con los datos del formulario
+
+        Padre nuevoPadre = new Padre();
+
+// Validación de nombre y apellido
+        if (txtNombre.getText().length() < 2) {
+            JOptionPane.showMessageDialog(this, "El nombre debe tener al menos 2 caracteres.");
+            return;
+        }
+        if (txtApellido.getText().length() < 2) {
+            JOptionPane.showMessageDialog(this, "El apellido debe tener al menos 2 caracteres.");
+            return;
+        }
+
+// Validación de edad
+        try {
+            int edad = Integer.parseInt(txtEdad.getText());
+            if (edad <= 0 || edad > 100) {
+                JOptionPane.showMessageDialog(this, "La edad debe ser un número entre 1 y 100.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser un número entero válido.");
+            return;
+        }
+
+// Validación de teléfono (8 dígitos)
+        if (!txtTelefono.getText().matches("\\d{8}")) {
+            JOptionPane.showMessageDialog(this, "El teléfono debe ser un número de 8 dígitos.");
+            return;
+        }
+
+// Validación de identificación (número entero)
+        try {
+            Integer.parseInt(txtIdentificacion.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La identificación debe ser un número entero.");
+            return;
+        }
+
+// Validación de parentesco
+        if (cbParentesco.getSelectedItem() == null || "".equals(cbParentesco.getSelectedItem().toString())) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un parentesco.");
+            return;
+        }
+
+// Si todas las validaciones pasan, procedemos a guardar los datos
+        nuevoPadre.setNombre(txtNombre.getText());
+        nuevoPadre.setApellido(txtApellido.getText());
+        nuevoPadre.setEdad(Integer.parseInt(txtEdad.getText()));
+        nuevoPadre.setIdentificacion(txtIdentificacion.getText());
+        nuevoPadre.setTelefono(txtTelefono.getText());
+        nuevoPadre.setParentesco(cbParentesco.getSelectedItem().toString());
+
+        PadreDAO padreDAO = new PadreDAO();
+        boolean guardado = padreDAO.guardarPadre(nuevoPadre);
+
+        if (guardado) {
+            JOptionPane.showMessageDialog(this, "Padre guardado correctamente.");
+            this.dispose(); // Cerrar el formulario de creación
+            ListadoPadre vistaLista = new ListadoPadre();
+            vistaLista.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al guardar el padre.");
+        }
+
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void cbParentescoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbParentescoActionPerformed
-       
+
     }//GEN-LAST:event_cbParentescoActionPerformed
 
     /**

@@ -19,6 +19,7 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         salir = new javax.swing.JButton();
         btnGrados = new javax.swing.JButton();
         btnAlumnos = new javax.swing.JButton();
@@ -30,116 +31,152 @@ public class Inicio extends javax.swing.JFrame {
         btnInscripcion = new javax.swing.JButton();
         btnNotas = new javax.swing.JButton();
         btnCursos = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        salir.setBackground(new java.awt.Color(255, 255, 255));
-        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/x.png"))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        salir.setBackground(new java.awt.Color(0, 0, 0));
+        salir.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setText("X");
+        salir.setBorder(null);
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 0, 70, 40));
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 70, 40));
 
-        btnGrados.setBackground(new java.awt.Color(255, 255, 255));
-        btnGrados.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        btnGrados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/grados.png"))); // NOI18N
+        btnGrados.setBackground(new java.awt.Color(0, 0, 0));
+        btnGrados.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnGrados.setForeground(new java.awt.Color(255, 255, 255));
         btnGrados.setText("Grados");
         btnGrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGradosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 210, 60));
+        jPanel1.add(btnGrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 200, 50));
 
-        btnAlumnos.setBackground(java.awt.Color.white);
-        btnAlumnos.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        btnAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clss.png"))); // NOI18N
+        btnAlumnos.setBackground(new java.awt.Color(0, 0, 0));
+        btnAlumnos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAlumnos.setForeground(new java.awt.Color(255, 255, 255));
         btnAlumnos.setText("Alumnos");
         btnAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlumnosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 210, 60));
+        jPanel1.add(btnAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 200, 50));
 
-        btnProfesores.setBackground(new java.awt.Color(255, 255, 255));
-        btnProfesores.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        btnProfesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/teachers.png"))); // NOI18N
+        btnProfesores.setBackground(new java.awt.Color(0, 0, 0));
+        btnProfesores.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnProfesores.setForeground(new java.awt.Color(255, 255, 255));
         btnProfesores.setText("Profesores");
         btnProfesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfesoresActionPerformed(evt);
             }
         });
-        getContentPane().add(btnProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 240, 60));
+        jPanel1.add(btnProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 120, 200, 50));
 
-        btnSecciones.setBackground(new java.awt.Color(255, 255, 255));
-        btnSecciones.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        btnSecciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/secc.png"))); // NOI18N
+        btnSecciones.setBackground(new java.awt.Color(0, 0, 0));
+        btnSecciones.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnSecciones.setForeground(new java.awt.Color(255, 255, 255));
         btnSecciones.setText("Secciones");
         btnSecciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeccionesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 230, 60));
+        jPanel1.add(btnSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 200, 50));
 
         jLabel3.setBackground(new java.awt.Color(153, 0, 153));
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("INICIO");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 140, 60));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 140, 60));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/removeuser.png"))); // NOI18N
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cerrar Sesion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 210, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 200, 50));
 
+        btnPadres.setBackground(new java.awt.Color(0, 0, 0));
+        btnPadres.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnPadres.setForeground(new java.awt.Color(255, 255, 255));
         btnPadres.setText("Padres");
         btnPadres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPadresActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPadres, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, -1, -1));
+        jPanel1.add(btnPadres, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 200, 50));
 
+        btnInscripcion.setBackground(new java.awt.Color(0, 0, 0));
+        btnInscripcion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnInscripcion.setForeground(new java.awt.Color(255, 255, 255));
         btnInscripcion.setText("Inscripciones");
         btnInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInscripcionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+        jPanel1.add(btnInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 200, 50));
 
+        btnNotas.setBackground(new java.awt.Color(0, 0, 0));
+        btnNotas.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnNotas.setForeground(new java.awt.Color(255, 255, 255));
         btnNotas.setText("Notas");
         btnNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNotasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, -1, -1));
+        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 200, 50));
 
+        btnCursos.setBackground(new java.awt.Color(0, 0, 0));
+        btnCursos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCursos.setForeground(new java.awt.Color(255, 255, 255));
         btnCursos.setText("Cursos");
         btnCursos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCursosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
+        jPanel1.add(btnCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, 200, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/69.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 640));
-        jLabel2.getAccessibleContext().setAccessibleName("");
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 420, 20));
+
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 420, 20));
+
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 173, 420, 20));
+
+        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 420, 40));
+
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 420, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -261,8 +298,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnProfesores;
     private javax.swing.JButton btnSecciones;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
