@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -147,33 +148,23 @@ public class CrearProfesores extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         txtApeliido = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         txtIdentificacion = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         txtEspecialidad = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         txtoDireccion = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         txtSalario = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtTipoContrato = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -194,60 +185,243 @@ public class CrearProfesores extends javax.swing.JFrame {
         txtEstadoContrato = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Creacion de Profesor");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 28, 363, 60));
 
-        jLabel2.setText("Nombre");
+        txtNombre.setBackground(new java.awt.Color(0, 0, 0));
+        txtNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombre.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
+        txtNombre.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                txtNombreHierarchyChanged(evt);
+            }
+        });
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 137, 290, 35));
 
-        jLabel3.setText("Apellido");
+        txtApeliido.setBackground(new java.awt.Color(0, 0, 0));
+        txtApeliido.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtApeliido.setForeground(new java.awt.Color(255, 255, 255));
+        txtApeliido.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
+        txtApeliido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtApeliidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApeliidoFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtApeliido, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 184, 290, 35));
 
-        jLabel4.setText("Edad");
+        txtEdad.setBackground(new java.awt.Color(0, 0, 0));
+        txtEdad.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(255, 255, 255));
+        txtEdad.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
+        );
+        txtEdad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEdadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEdadFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 237, 290, 35));
 
-        jLabel5.setText("No. Identificacion");
+        txtIdentificacion.setBackground(new java.awt.Color(0, 0, 0));
+        txtIdentificacion.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdentificacion.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
+        );
+        txtIdentificacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtIdentificacionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIdentificacionFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 295, 290, 35));
 
+        btnGuardar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 255, 204));
         btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 204)));
+        btnGuardar.setContentAreaFilled(false);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 730, 100, 40));
 
+        btnCancelar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 255, 204));
         btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 204)));
+        btnCancelar.setContentAreaFilled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 730, 100, 40));
 
-        jLabel8.setText("Especialidad");
+        txtEspecialidad.setBackground(new java.awt.Color(0, 0, 0));
+        txtEspecialidad.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtEspecialidad.setForeground(new java.awt.Color(255, 255, 255));
+        txtEspecialidad.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
+        );
+        txtEspecialidad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEspecialidadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEspecialidadFocusLost(evt);
+            }
+        });
+        txtEspecialidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEspecialidadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 411, 290, 35));
 
-        jLabel9.setText("Telefono");
+        txtTelefono.setBackground(new java.awt.Color(0, 0, 0));
+        txtTelefono.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
+        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTelefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTelefonoFocusLost(evt);
+            }
+        });
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 290, 35));
 
-        jLabel10.setText("E-mail");
+        txtEmail.setBackground(new java.awt.Color(0, 0, 0));
+        txtEmail.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmail.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
+        );
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 290, 35));
 
-        jLabel11.setText("Direccion");
+        txtoDireccion.setBackground(new java.awt.Color(0, 0, 0));
+        txtoDireccion.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtoDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        txtoDireccion.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
+        txtoDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtoDireccionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtoDireccionFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 290, 35));
 
+        jLabel12.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Fecha de Nacimiento");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, -1, -1));
 
-        jLabel13.setText("Tipo Identificacion");
+        jLabel13.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Tipo de Identificacion");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
 
-        jLabel14.setText("Salario");
+        txtSalario.setBackground(new java.awt.Color(0, 0, 0));
+        txtSalario.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtSalario.setForeground(new java.awt.Color(255, 255, 255));
+        txtSalario.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
+        txtSalario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtSalarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSalarioFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1061, 136, 290, 35));
 
+        jLabel15.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Fecha Contratacion");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 190, -1, -1));
 
+        jLabel16.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Fecha Terminacion Contrato");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1061, 264, -1, -1));
 
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Estado Contrato");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1061, 333, -1, -1));
 
-        jLabel18.setText("No. Contrato");
+        txtTipoContrato.setBackground(new java.awt.Color(0, 0, 0));
+        txtTipoContrato.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtTipoContrato.setForeground(new java.awt.Color(255, 255, 255));
+        txtTipoContrato.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
+        txtTipoContrato.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTipoContratoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTipoContratoFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtTipoContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(1061, 408, 290, 35));
 
-        jLabel19.setText("Genero");
+        jLabel19.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Género");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, -1, 21));
 
+        jLabel20.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Estado Civil");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, -1, 21));
 
+        tablaGrados.setBackground(new java.awt.Color(153, 255, 255));
+        tablaGrados.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        tablaGrados.setForeground(new java.awt.Color(0, 0, 0));
         tablaGrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -262,6 +436,11 @@ public class CrearProfesores extends javax.swing.JFrame {
             tablaGrados.getColumnModel().getColumn(0).setPreferredWidth(10);
         }
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 500, 120));
+
+        tablaSecciones.setBackground(new java.awt.Color(0, 0, 0));
+        tablaSecciones.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        tablaSecciones.setForeground(new java.awt.Color(255, 255, 255));
         tablaSecciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -276,6 +455,8 @@ public class CrearProfesores extends javax.swing.JFrame {
             tablaSecciones.getColumnModel().getColumn(0).setPreferredWidth(10);
         }
 
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 500, 120));
+
         tablaGradoSeccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -287,256 +468,258 @@ public class CrearProfesores extends javax.swing.JFrame {
         tablaGradoSeccion.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         jScrollPane3.setViewportView(tablaGradoSeccion);
 
-        btnConsultarGrado.setText("Conultar");
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 670, 500, 110));
+
+        btnConsultarGrado.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnConsultarGrado.setForeground(new java.awt.Color(0, 255, 204));
+        btnConsultarGrado.setText("Consultar");
+        btnConsultarGrado.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 204)));
+        btnConsultarGrado.setContentAreaFilled(false);
         btnConsultarGrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarGradoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnConsultarGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 100, 40));
 
+        btnAsignarSeccion.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnAsignarSeccion.setForeground(new java.awt.Color(0, 255, 204));
         btnAsignarSeccion.setText("Asignar");
+        btnAsignarSeccion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 204)));
+        btnAsignarSeccion.setContentAreaFilled(false);
         btnAsignarSeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAsignarSeccionActionPerformed(evt);
             }
         });
+        jPanel1.add(btnAsignarSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 510, 100, 40));
 
+        btnEliminar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(0, 255, 204));
         btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 204)));
+        btnEliminar.setContentAreaFilled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 670, 100, 40));
 
+        txtFechaContratacion.setBackground(new java.awt.Color(255, 255, 255));
+        txtFechaContratacion.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtFechaContratacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1061, 211, 290, 35));
+
+        txtFechaTerminacion.setBackground(new java.awt.Color(255, 255, 255));
+        txtFechaTerminacion.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtFechaTerminacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1061, 286, 290, 35));
+
+        txtFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
+        txtFechaNacimiento.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 290, 35));
+
+        txtGenero.setBackground(new java.awt.Color(255, 255, 255));
+        txtGenero.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtGenero.setForeground(new java.awt.Color(255, 255, 255));
         txtGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        txtGenero.setBorder(null);
+        jPanel1.add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 290, 35));
 
+        txtTipoIdentificacion.setBackground(new java.awt.Color(255, 255, 255));
+        txtTipoIdentificacion.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtTipoIdentificacion.setForeground(new java.awt.Color(0, 0, 0));
         txtTipoIdentificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DPI", "Pasaporte" }));
+        txtTipoIdentificacion.setBorder(null);
+        jPanel1.add(txtTipoIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 364, 290, 35));
 
+        txtEstadoCivil.setBackground(new java.awt.Color(255, 255, 255));
+        txtEstadoCivil.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtEstadoCivil.setForeground(new java.awt.Color(0, 0, 0));
         txtEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero/a", "Casado/a", "Viudo/a" }));
+        txtEstadoCivil.setBorder(null);
+        jPanel1.add(txtEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 290, 35));
 
+        txtEstadoContrato.setBackground(new java.awt.Color(255, 255, 255));
+        txtEstadoContrato.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtEstadoContrato.setForeground(new java.awt.Color(0, 0, 0));
         txtEstadoContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        jPanel1.add(txtEstadoContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(1061, 355, 290, 35));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(369, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtApeliido, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 235, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtEspecialidad, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                                    .addComponent(txtTipoIdentificacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtFechaTerminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel18)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtTipoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtEstadoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel15)
-                                            .addComponent(jLabel14))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                                            .addComponent(txtFechaContratacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(192, 192, 192))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1)
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addComponent(btnConsultarGrado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEliminar)
-                                .addGap(104, 104, 104))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(527, Short.MAX_VALUE)
-                                .addComponent(btnGuardar)
-                                .addGap(113, 113, 113)
-                                .addComponent(btnCancelar)
-                                .addGap(216, 216, 216)
-                                .addComponent(btnAsignarSeccion)))
-                        .addGap(45, 45, 45)))
-                .addGap(16, 16, 16))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(380, 380, 380))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApeliido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5))
-                    .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtTipoIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel15))
-                    .addComponent(txtFechaContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel16)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtFechaTerminacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel17)
-                        .addComponent(txtEstadoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtTipoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnConsultarGrado)
-                                        .addGap(115, 115, 115))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(btnEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAsignarSeccion)
-                        .addGap(103, 103, 103)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnCancelar))
-                .addGap(29, 29, 29))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 850));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 860));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
+    
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int[] filasSeleccionadas = tablaGradoSeccion.getSelectedRows();
+
+        if (filasSeleccionadas.length == 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos un registro para eliminar.");
+            return;
+        }
+
+        for (int i = filasSeleccionadas.length - 1; i >= 0; i--) {
+            modeloGradoSeccion.removeRow(filasSeleccionadas[i]);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnAsignarSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarSeccionActionPerformed
+        if (idGrado == 0) {
+            JOptionPane.showMessageDialog(null, "Primero seleccione un grado y haga clic en 'Consultar'.");
+            return;
+        }
+
+        List<Integer> seccionesSeleccionadas = obtenerIdsSeleccionadosSecciones();
+        List<String> nombresSeccionesSeleccionadas = obtenerNombresSeleccionadosSecciones();
+
+        if (seccionesSeleccionadas.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos una sección.");
+            return;
+        }
+
+        for (int i = 0; i < seccionesSeleccionadas.size(); i++) {
+            Object[] fila = new Object[4];
+            fila[0] = idGrado;
+            fila[1] = nombreGrado;
+            fila[2] = seccionesSeleccionadas.get(i);
+            fila[3] = nombresSeccionesSeleccionadas.get(i);
+            modeloGradoSeccion.addRow(fila);
+        }
+    }//GEN-LAST:event_btnAsignarSeccionActionPerformed
+
+    private void btnConsultarGradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarGradoActionPerformed
+        idGrado = obtenerIdsSeleccionadoGrado();
+        if (idGrado != 0) {
+            ListaSecciones(idGrado);
+        }
+    }//GEN-LAST:event_btnConsultarGradoActionPerformed
+
+    private void txtTipoContratoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoContratoFocusLost
+        // TODO add your handling code here:
+        if (txtTipoContrato.getText().trim().isEmpty()) {
+            txtTipoContrato.setText(" Tipo de Contrato"); // Vuelve a poner el placeholder
+            txtTipoContrato.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+        }
+    }//GEN-LAST:event_txtTipoContratoFocusLost
+
+    private void txtTipoContratoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoContratoFocusGained
+        // TODO add your handling code here:
+        if (txtTipoContrato.getText().equals(" Tipo de Contrato")) {
+            txtTipoContrato.setText(""); // Limpia el campo
+            txtTipoContrato.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+        }
+    }//GEN-LAST:event_txtTipoContratoFocusGained
+
+    private void txtSalarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalarioFocusLost
+        // TODO add your handling code here:
+        if (txtSalario.getText().trim().isEmpty()) {
+            txtSalario.setText(" Salario"); // Vuelve a poner el placeholder
+            txtSalario.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+        }
+    }//GEN-LAST:event_txtSalarioFocusLost
+
+    private void txtSalarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalarioFocusGained
+        // TODO add your handling code here:
+        if (txtSalario.getText().equals(" Salario")) {
+            txtSalario.setText(""); // Limpia el campo
+            txtSalario.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+        }
+
+    }//GEN-LAST:event_txtSalarioFocusGained
+
+    private void txtoDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtoDireccionFocusLost
+        // TODO add your handling code here:
+
+        if (txtoDireccion.getText().trim().isEmpty()) {
+            txtoDireccion.setText(" Direccion"); // Vuelve a poner el placeholder
+            txtoDireccion.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+        }
+    }//GEN-LAST:event_txtoDireccionFocusLost
+
+    private void txtoDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtoDireccionFocusGained
+        // TODO add your handling code here:
+        if (txtoDireccion.getText().equals(" Direccion")) {
+            txtoDireccion.setText(""); // Limpia el campo
+            txtoDireccion.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+        }
+    }//GEN-LAST:event_txtoDireccionFocusGained
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if (txtEmail.getText().trim().isEmpty()) {
+            txtEmail.setText(" Email"); // Vuelve a poner el placeholder
+            txtEmail.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        // TODO add your handling code here:
+        if (txtEmail.getText().equals(" Email")) {
+            txtEmail.setText(""); // Limpia el campo
+            txtEmail.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+        }
+    }//GEN-LAST:event_txtEmailFocusGained
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
+        // TODO add your handling code here:
+        if (txtTelefono.getText().trim().isEmpty()) {
+            txtTelefono.setText(" Telefono"); // Vuelve a poner el placeholder
+            txtTelefono.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+        }
+    }//GEN-LAST:event_txtTelefonoFocusLost
+
+    private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
+        // TODO add your handling code here:
+        if (txtTelefono.getText().equals(" Telefono")) {
+            txtTelefono.setText(""); // Limpia el campo
+            txtTelefono.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+        }
+    }//GEN-LAST:event_txtTelefonoFocusGained
+
+    private void txtEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEspecialidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEspecialidadActionPerformed
+
+    private void txtEspecialidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEspecialidadFocusLost
+        // TODO add your handling code here:
+        if (txtEspecialidad.getText().trim().isEmpty()) {
+            txtEspecialidad.setText(" Especialidad"); // Vuelve a poner el placeholder
+            txtEspecialidad.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+        }
+    }//GEN-LAST:event_txtEspecialidadFocusLost
+
+    private void txtEspecialidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEspecialidadFocusGained
+        // TODO add your handling code here:
+        if (txtEspecialidad.getText().equals(" Especialidad")) {
+            txtEspecialidad.setText(""); // Limpia el campo
+            txtEspecialidad.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+        }
+    }//GEN-LAST:event_txtEspecialidadFocusGained
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+        ListaProfesores vistaLista = new ListaProfesores();
+        vistaLista.setVisible(true);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         if (!"".equals(txtNombre.getText()) && !"".equals(txtApeliido.getText()) && !"".equals(txtEdad.getText())
-                && !"".equals(txtEmail.getText()) && !"".equals(txtEspecialidad.getText()) && !"".equals(txtEstadoCivil.getSelectedItem())
-                && !"".equals(txtEstadoContrato.getSelectedItem()) && !"".equals(txtFechaContratacion.getDate())
-                && !"".equals(txtFechaNacimiento.getDate()) && !"".equals(txtFechaTerminacion.getDate())
-                && !"".equals(txtGenero.getSelectedItem()) && !"".equals(txtIdentificacion.getText())
-                && !"".equals(txtSalario.getText()) && !"".equals(txtTelefono.getText())
-                && !"".equals(txtTipoContrato.getText()) && !"".equals(txtTipoIdentificacion.getSelectedItem())
-                && !"".equals(txtoDireccion.getText())) {
+            && !"".equals(txtEmail.getText()) && !"".equals(txtEspecialidad.getText()) && !"".equals(txtEstadoCivil.getSelectedItem())
+            && !"".equals(txtEstadoContrato.getSelectedItem()) && !"".equals(txtFechaContratacion.getDate())
+            && !"".equals(txtFechaNacimiento.getDate()) && !"".equals(txtFechaTerminacion.getDate())
+            && !"".equals(txtGenero.getSelectedItem()) && !"".equals(txtIdentificacion.getText())
+            && !"".equals(txtSalario.getText()) && !"".equals(txtTelefono.getText())
+            && !"".equals(txtTipoContrato.getText()) && !"".equals(txtTipoIdentificacion.getSelectedItem())
+            && !"".equals(txtoDireccion.getText())) {
             try {
                 profesor.setFecha_nacimiento((Date) txtFechaNacimiento.getDate());
                 profesor.setFecha_contratacion((Date) txtFechaContratacion.getDate());
@@ -598,56 +781,160 @@ public class CrearProfesores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        dispose();
-        ListaProfesores vistaLista = new ListaProfesores();
-        vistaLista.setVisible(true);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnConsultarGradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarGradoActionPerformed
-        idGrado = obtenerIdsSeleccionadoGrado();
-        if (idGrado != 0) {
-            ListaSecciones(idGrado);
+    private void txtIdentificacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdentificacionFocusLost
+        // TODO add your handling code here:
+        if (txtIdentificacion.getText().trim().isEmpty()) {
+            txtIdentificacion.setText(" Identificacion"); // Vuelve a poner el placeholder
+            txtIdentificacion.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
         }
-    }//GEN-LAST:event_btnConsultarGradoActionPerformed
+    }//GEN-LAST:event_txtIdentificacionFocusLost
 
-    private void btnAsignarSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarSeccionActionPerformed
-        if (idGrado == 0) {
-            JOptionPane.showMessageDialog(null, "Primero seleccione un grado y haga clic en 'Consultar'.");
-            return;
+    private void txtIdentificacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdentificacionFocusGained
+        // TODO add your handling code here:
+        if (txtIdentificacion.getText().equals(" Identificacion")) {
+            txtIdentificacion.setText(""); // Limpia el campo
+            txtIdentificacion.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
         }
+    }//GEN-LAST:event_txtIdentificacionFocusGained
 
-        List<Integer> seccionesSeleccionadas = obtenerIdsSeleccionadosSecciones();
-        List<String> nombresSeccionesSeleccionadas = obtenerNombresSeleccionadosSecciones();
-
-        if (seccionesSeleccionadas.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos una sección.");
-            return;
+    private void txtEdadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEdadFocusLost
+        // TODO add your handling code here:
+        if (txtEdad.getText().trim().isEmpty()) {
+            txtEdad.setText(" Edad"); // Vuelve a poner el placeholder
+            txtEdad.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
         }
+    }//GEN-LAST:event_txtEdadFocusLost
 
-        for (int i = 0; i < seccionesSeleccionadas.size(); i++) {
-            Object[] fila = new Object[4];
-            fila[0] = idGrado;
-            fila[1] = nombreGrado;
-            fila[2] = seccionesSeleccionadas.get(i);
-            fila[3] = nombresSeccionesSeleccionadas.get(i);
-            modeloGradoSeccion.addRow(fila);
+    private void txtEdadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEdadFocusGained
+        // TODO add your handling code here:
+        if (txtEdad.getText().equals(" Edad")) {
+            txtEdad.setText(""); // Limpia el campo
+            txtEdad.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
         }
-    }//GEN-LAST:event_btnAsignarSeccionActionPerformed
+    }//GEN-LAST:event_txtEdadFocusGained
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int[] filasSeleccionadas = tablaGradoSeccion.getSelectedRows();
-
-        if (filasSeleccionadas.length == 0) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos un registro para eliminar.");
-            return;
+    private void txtApeliidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApeliidoFocusLost
+        // TODO add your handling code here:
+        if (txtApeliido.getText().trim().isEmpty()) {
+            txtApeliido.setText(" Apellido"); // Vuelve a poner el placeholder
+            txtApeliido.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
         }
+    }//GEN-LAST:event_txtApeliidoFocusLost
 
-        for (int i = filasSeleccionadas.length - 1; i >= 0; i--) {
-            modeloGradoSeccion.removeRow(filasSeleccionadas[i]);
+    private void txtApeliidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApeliidoFocusGained
+        // TODO add your handling code here:
+        if (txtApeliido.getText().equals(" Apellido")) {
+            txtApeliido.setText(""); // Limpia el campo
+            txtApeliido.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
         }
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_txtApeliidoFocusGained
 
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        // TODO add your handling code here:
+        if (txtNombre.getText().trim().isEmpty()) {
+            txtNombre.setText(" Nombre"); // Vuelve a poner el placeholder
+            txtNombre.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+        }
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+        // TODO add your handling code here:
+        if (txtNombre.getText().equals(" Nombre")) {
+            txtNombre.setText(""); // Limpia el campo
+            txtNombre.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+        }
+    }//GEN-LAST:event_txtNombreFocusGained
+
+    private void txtNombreHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtNombreHierarchyChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreHierarchyChanged
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+           if (txtNombre.getText().isEmpty()) {
+        txtNombre.setText(" Nombre");
+        txtNombre.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }  
+       
+       if (txtApeliido.getText().isEmpty()) {
+        txtApeliido.setText(" Apellido");
+        txtApeliido.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }
+        
+        
+     if (txtEdad.getText().isEmpty()) {
+        txtEdad.setText(" Edad");
+        txtEdad.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }
+     
+      if (txtIdentificacion.getText().isEmpty()) {
+        txtIdentificacion.setText(" Identificacion");
+        txtIdentificacion.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }
+      
+       if (txtEspecialidad.getText().isEmpty()) {
+        txtEspecialidad.setText(" Especialidad");
+        txtEspecialidad.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }  
+      
+        
+    if (txtTelefono.getText().isEmpty()) {
+        txtTelefono.setText(" Telefono");
+        txtTelefono.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }  
+    
+     if (txtEmail.getText().isEmpty()) {
+        txtEmail.setText(" Email");
+        txtEmail.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }  
+     
+      if (txtoDireccion.getText().isEmpty()) {
+        txtoDireccion.setText(" Direccion");
+        txtoDireccion.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    } 
+      if (txtSalario.getText().isEmpty()) {
+        txtSalario.setText(" Salario");
+        txtSalario.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    } 
+      
+        if (txtTipoContrato.getText().isEmpty()) {
+        txtTipoContrato.setText(" Tipo de Contrato");
+        txtTipoContrato.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    } 
+        
+        
+    this.requestFocus();
+    }//GEN-LAST:event_formWindowOpened
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -686,23 +973,13 @@ public class CrearProfesores extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

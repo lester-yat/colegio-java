@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Color;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,9 +36,6 @@ public class CrearSeccion extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtHoraInicio = new javax.swing.JTextField();
@@ -45,102 +43,120 @@ public class CrearSeccion extends javax.swing.JFrame {
         selectGrado = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Creacion de Seccion");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 41, -1, -1));
 
-        jLabel2.setText("Nombre");
-
-        jLabel3.setText("Horario de Inicio");
-
-        jLabel4.setText("Horario de Fin");
-
+        jLabel6.setFont(new java.awt.Font("Montserrat", 1, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Grado");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 413, -1, -1));
 
+        txtNombre.setBackground(new java.awt.Color(0, 0, 0));
+        txtNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombre.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 149, 290, 35));
+
+        txtHoraInicio.setBackground(new java.awt.Color(0, 0, 0));
+        txtHoraInicio.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtHoraInicio.setForeground(new java.awt.Color(255, 255, 255));
+        txtHoraInicio.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
+        );
+        txtHoraInicio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtHoraInicioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoraInicioFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 243, 290, 35));
+
+        txtHoraFinal.setBackground(new java.awt.Color(0, 0, 0));
+        txtHoraFinal.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtHoraFinal.setForeground(new java.awt.Color(255, 255, 255));
+        txtHoraFinal.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
+        txtHoraFinal.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtHoraFinalFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoraFinalFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 334, 290, 35));
+
+        selectGrado.setBackground(new java.awt.Color(255, 255, 255));
+        selectGrado.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        selectGrado.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(selectGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 433, 290, 35));
+
+        btnGuardar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 255, 204));
         btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 204)));
+        btnGuardar.setContentAreaFilled(false);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 100, 40));
 
+        btnCancelar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 255, 204));
         btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 204)));
+        btnCancelar.setContentAreaFilled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, 100, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(399, 399, 399)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(btnGuardar))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtHoraFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                                        .addComponent(selectGrado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING))))))
-                .addContainerGap(303, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(131, 131, 131)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(selectGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(102, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\samuel\\Desktop\\COLEGIO-JAVA\\colegio-java\\Recursos\\MONSTER.png")); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 149, 406, 258));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+        ListaSecciones vistaLista = new ListaSecciones();
+        vistaLista.setVisible(true);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         if (!"".equals(txtNombre.getText()) && !"".equals(txtHoraInicio.getText())
-                && !"".equals(txtHoraFinal.getText()) && !"".equals(selectGrado.getSelectedItem())) {
+            && !"".equals(txtHoraFinal.getText()) && !"".equals(selectGrado.getSelectedItem())) {
 
             // Validación para que el nombre tenga al menos 3 caracteres
             if (txtNombre.getText().length() < 3) {
@@ -202,15 +218,89 @@ public class CrearSeccion extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Los campos están vacíos.");
         }
-
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        dispose();
-        ListaSecciones vistaLista = new ListaSecciones();
-        vistaLista.setVisible(true);
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+        // TODO add your handling code here:
+           if (txtNombre.getText().equals(" Nombre")) {
+        txtNombre.setText(""); // Limpia el campo
+        txtNombre.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+    }
+    }//GEN-LAST:event_txtNombreFocusGained
 
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        // TODO add your handling code here:
+         if (txtNombre.getText().trim().isEmpty()) {
+        txtNombre.setText(" Nombre"); // Vuelve a poner el placeholder
+        txtNombre.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+    }
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtHoraInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraInicioFocusGained
+        // TODO add your handling code here:
+         if (txtHoraInicio.getText().equals(" Hora de inicio")) {
+        txtHoraInicio.setText(""); // Limpia el campo
+        txtHoraInicio.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+    }
+    }//GEN-LAST:event_txtHoraInicioFocusGained
+
+    private void txtHoraInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraInicioFocusLost
+        // TODO add your handling code here:
+         if (txtHoraInicio.getText().trim().isEmpty()) {
+        txtHoraInicio.setText(" Hora de inicio"); // Vuelve a poner el placeholder
+        txtHoraInicio.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+    }
+    }//GEN-LAST:event_txtHoraInicioFocusLost
+
+    private void txtHoraFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraFinalFocusGained
+        // TODO add your handling code here:
+              if (txtHoraFinal.getText().equals(" Horario final")) {
+        txtHoraFinal.setText(""); // Limpia el campo
+        txtHoraFinal.setForeground(Color.decode("#FFFFFF")); // Color de texto normal
+    }
+    }//GEN-LAST:event_txtHoraFinalFocusGained
+
+    private void txtHoraFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraFinalFocusLost
+        // TODO add your handling code here:
+                if (txtHoraFinal.getText().trim().isEmpty()) {
+        txtHoraFinal.setText(" Horario final"); // Vuelve a poner el placeholder
+        txtHoraFinal.setForeground(Color.decode("#ECECEC")); // Color de placeholder (gris)
+    }
+    }//GEN-LAST:event_txtHoraFinalFocusLost
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+          if (txtNombre.getText().isEmpty()) {
+        txtNombre.setText(" Nombre");
+        txtNombre.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }  
+        
+      if (txtHoraInicio.getText().isEmpty()) {
+        txtHoraInicio.setText(" Hora de inicio");
+        txtHoraInicio.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }  
+      if (txtHoraFinal.getText().isEmpty()) {
+        txtHoraFinal.setText(" Horario final");
+        txtHoraFinal.setForeground(Color.decode("#B0B0B0")); // Color gris para el placeholder
+    }  
+      
+    this.requestFocus();
+    }//GEN-LAST:event_formWindowOpened
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -251,8 +341,6 @@ public class CrearSeccion extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> selectGrado;

@@ -50,8 +50,8 @@ CREATE TABLE seccion (
     nombre NVARCHAR(50),
     horario_inicio TIME,
     horario_final TIME,
-    gradoid INT,
-    FOREIGN KEY (gradoid) REFERENCES grado(id) ON DELETE SET NULL
+    grado_id INT,
+    FOREIGN KEY (grado_id) REFERENCES grado(id) ON DELETE SET NULL
 );
 
 -- Crear la tabla alumno
@@ -60,21 +60,19 @@ CREATE TABLE alumno (
     nombre NVARCHAR(50),
     apellido NVARCHAR(50),
     edad INT,
-    padreid INT,
-    gradoid INT,
+    grado_id INT,
     fecha_registro DATE,
-    FOREIGN KEY (gradoid) REFERENCES grado(id) ON DELETE SET NULL,
-    FOREIGN KEY (padreid) REFERENCES padre(id) ON DELETE SET NULL
+    FOREIGN KEY (grado_id) REFERENCES grado(id) ON DELETE SET NULL
 );
 
 -- Crear la tabla inscripcion
 CREATE TABLE inscripcion (
     id INT IDENTITY(1,1) PRIMARY KEY,
-    alumnoid INT NOT NULL,
-    gradoid INT NOT NULL,
+    alumno_id INT NOT NULL,
+    grado_id INT NOT NULL,
     fecha_inscripcion DATE,
-    FOREIGN KEY (alumnoid) REFERENCES alumno(id) ON DELETE CASCADE,
-    FOREIGN KEY (gradoid) REFERENCES grado(id)
+    FOREIGN KEY (alumno_id) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (grado_id) REFERENCES grado(id)
 );
 
 -- Crear la tabla curso
@@ -83,12 +81,12 @@ CREATE TABLE curso (
     nombre NVARCHAR(100) NOT NULL,
     descripcion NVARCHAR(255),
     nivel NVARCHAR(50),
-    profesorid INT,
-    gradoid INT,
-    seccionid INT,
-    FOREIGN KEY (profesorid) REFERENCES profesor(id) ON DELETE SET NULL,
-    FOREIGN KEY (gradoid) REFERENCES grado(id) ON DELETE SET NULL,
-    FOREIGN KEY (seccionid) REFERENCES seccion(id) ON DELETE SET NULL
+    profesor_id INT,
+    grado_id INT,
+    seccion_id INT,
+    FOREIGN KEY (profesor_id) REFERENCES profesor(id) ON DELETE SET NULL,
+    FOREIGN KEY (grado_id) REFERENCES grado(id) ON DELETE SET NULL,
+    FOREIGN KEY (seccion_id) REFERENCES seccion(id) ON DELETE SET NULL
 );
 
 -- Crear la tabla nota
@@ -97,47 +95,47 @@ CREATE TABLE nota (
     nombre NVARCHAR(50),
     calificacion FLOAT,
     fecha_registro DATE,
-    alumnoid INT,
-    cursoid INT,
-    FOREIGN KEY (alumnoid) REFERENCES alumno(id) ON DELETE CASCADE,
-    FOREIGN KEY (cursoid) REFERENCES curso(id) ON DELETE SET NULL
+    alumno_id INT,
+    curso_id INT,
+    FOREIGN KEY (alumno_id) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (curso_id) REFERENCES curso(id) ON DELETE SET NULL
 );
 
 -- Crear la tabla profesor_grado
 CREATE TABLE profesor_grado (
-    profesorid INT NULL,
-    gradoid INT NULL,
-    seccionid INT NULL,
-    FOREIGN KEY (profesorid) REFERENCES profesor(id) ON DELETE SET NULL,
-    FOREIGN KEY (gradoid) REFERENCES grado(id) ON DELETE SET NULL,
-    FOREIGN KEY (seccionid) REFERENCES seccion(id) ON DELETE SET NULL
+    profesor_id INT NULL,
+    grado_id INT NULL,
+    seccion_id INT NULL,
+    FOREIGN KEY (profesor_id) REFERENCES profesor(id) ON DELETE SET NULL,
+    FOREIGN KEY (grado_id) REFERENCES grado(id) ON DELETE SET NULL,
+    FOREIGN KEY (seccion_id) REFERENCES seccion(id) ON DELETE SET NULL
 );
 
 -- Crear la tabla alumno_seccion
 CREATE TABLE alumno_seccion (
-    alumnoid INT NOT NULL,
-    seccionid INT NULL,
-    PRIMARY KEY (alumnoid),
-    FOREIGN KEY (alumnoid) REFERENCES alumno(id) ON DELETE CASCADE,
-    FOREIGN KEY (seccionid) REFERENCES seccion(id) ON DELETE SET NULL
+    alumno_id INT NOT NULL,
+    seccion_id INT NULL,
+    PRIMARY KEY (alumno_id),
+    FOREIGN KEY (alumno_id) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (seccion_id) REFERENCES seccion(id) ON DELETE SET NULL
 );
 
 -- Crear la tabla alumno_padre
 CREATE TABLE alumno_padre (
-    alumnoid INT NOT NULL,
-    padreid INT NOT NULL,
-    PRIMARY KEY (alumnoid, padreid),
-    FOREIGN KEY (alumnoid) REFERENCES alumno(id) ON DELETE CASCADE,
-    FOREIGN KEY (padreid) REFERENCES padre(id) ON DELETE CASCADE
+    alumno_id INT NOT NULL,
+    padre_id INT NOT NULL,
+    PRIMARY KEY (alumno_id, padre_id),
+    FOREIGN KEY (alumno_id) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (padre_id) REFERENCES padre(id) ON DELETE CASCADE
 );
 
 -- Crear la tabla de inicio de sesión
 CREATE TABLE inicio (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     nombre_usuario NVARCHAR(50) NOT NULL UNIQUE,
-    contraseña NVARCHAR(256) NOT NULL
+    contrasenia NVARCHAR(256) NOT NULL
 );
 
 -- Insertar un usuario admin con contraseña encriptada
-INSERT INTO inicio (nombre_usuario, contraseña)
+INSERT INTO inicio (nombre_usuario, contrasenia)
 VALUES ('admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'); -- Hash SHA-256 de 'admin123'
