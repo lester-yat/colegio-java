@@ -283,6 +283,7 @@ public class CrearAlumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+       
         if (!"".equals(txtNombre.getText()) && !"".equals(txtApellido.getText()) && 
             !"".equals(txtEdad.getText()) && !"".equals(selectGrado.getSelectedItem()) && !"".equals(txtFechaRegistro.getDate())) {
             try {

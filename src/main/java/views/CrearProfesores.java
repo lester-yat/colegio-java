@@ -128,6 +128,7 @@ public class CrearProfesores extends javax.swing.JFrame {
         return listaRelaciones;
     }
 
+  
     public boolean esNumeroValido(String texto) {
         try {
             Integer.parseInt(texto);
@@ -141,6 +142,40 @@ public class CrearProfesores extends javax.swing.JFrame {
         return telefono.matches("\\d{8}");
     }
 
+    // validaciones hechas por angel 
+    
+    
+      public boolean esEdadValida(String edad) {
+    // Verifica que sea un número y esté entre 0 y 100
+    if (edad.matches("\\d+")) {
+        int edadNumerica = Integer.parseInt(edad);
+        return edadNumerica >= 0 && edadNumerica <= 100;
+    }
+    return false;
+}
+
+    
+    // Método para validar un correo electrónico de Gmail
+public boolean esEmailValido(String email) {
+    // Expresión regular para validar el formato de un correo electrónico de Gmail
+    return email.matches("^[a-zA-Z0-9._%+-]+@gmail\\.com$");
+}
+
+// Método para validar identificación
+public boolean esIdentificacionValida(String identificacion) {
+    return identificacion.matches("\\d+"); // Comprueba si solo contiene dígitos
+}
+
+
+
+// Validación para campos de texto que no deben estar vacíos
+public boolean esTextoValido(String texto) {
+    return texto != null && !texto.trim().isEmpty();
+}
+
+
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -529,73 +564,121 @@ public class CrearProfesores extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
-        if (!"".equals(txtNombre.getText()) && !"".equals(txtApeliido.getText()) && !"".equals(txtEdad.getText())
-                && !"".equals(txtEmail.getText()) && !"".equals(txtEspecialidad.getText()) && !"".equals(txtEstadoCivil.getSelectedItem())
-                && !"".equals(txtEstadoContrato.getSelectedItem()) && !"".equals(txtFechaContratacion.getDate())
-                && !"".equals(txtFechaNacimiento.getDate()) && !"".equals(txtFechaTerminacion.getDate())
-                && !"".equals(txtGenero.getSelectedItem()) && !"".equals(txtIdentificacion.getText())
-                && !"".equals(txtSalario.getText()) && !"".equals(txtTelefono.getText())
-                && !"".equals(txtTipoContrato.getText()) && !"".equals(txtTipoIdentificacion.getSelectedItem())
-                && !"".equals(txtoDireccion.getText())) {
-            try {
-                profesor.setFecha_nacimiento((Date) txtFechaNacimiento.getDate());
-                profesor.setFecha_contratacion((Date) txtFechaContratacion.getDate());
-                profesor.setFecha_terminacion_contrato((Date) txtFechaTerminacion.getDate());
+              // Validaciones por campo clave
+if (txtNombre.getText() == null || !esTextoValido(txtNombre.getText())) {
+    JOptionPane.showMessageDialog(null, "El nombre no puede estar vacío.");
+    return;
+}
+if (txtApeliido.getText() == null || !esTextoValido(txtApeliido.getText())) {
+    JOptionPane.showMessageDialog(null, "El apellido no puede estar vacío.");
+    return;
+}
+if (txtoDireccion.getText() == null || !esTextoValido(txtoDireccion.getText())) {
+    JOptionPane.showMessageDialog(null, "La dirección no puede estar vacía.");
+    return;
+}
+if (txtTipoContrato.getText() == null || !esTextoValido(txtTipoContrato.getText())) {
+    JOptionPane.showMessageDialog(null, "El tipo de contrato no puede estar vacío.");
+    return;
+}
 
-                profesor.setNombre(txtNombre.getText());
-                profesor.setApellido(txtApeliido.getText());
-                profesor.setEdad(Integer.parseInt(txtEdad.getText()));
-                profesor.setIdentificacion(txtIdentificacion.getText());
-                profesor.setTipo_identificacion(txtTipoIdentificacion.getSelectedItem().toString());
-                profesor.setTelefono(txtTelefono.getText());
-                profesor.setEmail(txtEmail.getText());
-                profesor.setGenero(txtGenero.getSelectedItem().toString());
-                profesor.setDireccion(txtoDireccion.getText());
-                profesor.setEstado_civil(txtEstadoCivil.getSelectedItem().toString());
-                profesor.setEspecialidad(txtEspecialidad.getText());
-                profesor.setSalario(Integer.parseInt(txtSalario.getText()));
-                profesor.setEstado_contrato(txtEstadoContrato.getSelectedItem().toString());
-                profesor.setTipo_contrato(txtTipoContrato.getText());
+// Validación de otros campos
+if (txtEdad.getText() == null || !esEdadValida(txtEdad.getText())) {
+    JOptionPane.showMessageDialog(null, "La edad debe ser un número entero válido.");
+    return;
+}
+if (txtEmail.getText() == null || !esEmailValido(txtEmail.getText())) {
+    JOptionPane.showMessageDialog(null, "El correo electrónico es inválido.");
+    return;
+}
+if (txtIdentificacion.getText() == null || !esIdentificacionValida(txtIdentificacion.getText())) {
+    JOptionPane.showMessageDialog(null, "La identificación debe ser un número válido.");
+    return;
+}
+if (!esTelefonoValido(txtTelefono.getText())) {
+    JOptionPane.showMessageDialog(null, "El teléfono debe ser un número de 8 dígitos.");
+    return;
+}
+if (txtSalario.getText() == null || !esNumeroValido(txtSalario.getText())) {
+    JOptionPane.showMessageDialog(null, "El salario debe ser un número válido.");
+    return;
+}
 
-                int idProfesor = profesorDAO.guardarProfesor(profesor);
-                if (idProfesor == -1) {
-                    JOptionPane.showMessageDialog(null, "Error al guardar el profesor.");
-                    return;
-                }
+// Validación de campos de selección y fechas
+if (txtEstadoCivil.getSelectedItem() == null) {
+    JOptionPane.showMessageDialog(null, "Debe seleccionar un estado civil.");
+    return;
+}
+if (txtEstadoContrato.getSelectedItem() == null) {
+    JOptionPane.showMessageDialog(null, "Debe seleccionar un estado de contrato.");
+    return;
+}
+if (txtGenero.getSelectedItem() == null) {
+    JOptionPane.showMessageDialog(null, "Debe seleccionar un género.");
+    return;
+}
+if (txtFechaContratacion.getDate() == null) {
+    JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha de contratación.");
+    return;
+}
+if (txtFechaNacimiento.getDate() == null) {
+    JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha de nacimiento.");
+    return;
+}
+if (txtFechaTerminacion.getDate() == null) {
+    JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha de terminación del contrato.");
+    return;
+}
 
-                List<int[]> listaRelaciones = obtenerRelacionesGradoSeccion();
+// Validación de relaciones de grado y sección
+List<int[]> listaRelaciones = obtenerRelacionesGradoSeccion();
+if (listaRelaciones == null || listaRelaciones.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Debe asignar al menos una relación de grado y sección.");
+    return;
+}
 
-                if (!profesorDAO.guardarProfGradSecc(idProfesor, listaRelaciones)) {
-                    JOptionPane.showMessageDialog(null, "Error al guardar las relaciones.");
-                    return;
-                }
+// Si todas las validaciones pasan, procedemos a guardar el profesor
+try {
+    profesor.setFecha_nacimiento((Date) txtFechaNacimiento.getDate());
+    profesor.setFecha_contratacion((Date) txtFechaContratacion.getDate());
+    profesor.setFecha_terminacion_contrato((Date) txtFechaTerminacion.getDate());
 
-                JOptionPane.showMessageDialog(null, "Profesor guardado exitosamente.");
-                ListaProfesores vistaLista = new ListaProfesores();
-                vistaLista.setVisible(true);
-                dispose();
-            } catch (NumberFormatException e) {
-                System.out.println("Error en el formato de los datos numéricos: " + e.getMessage());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el profesor: " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Los campos están vacíos");
-        }
+    profesor.setNombre(txtNombre.getText());
+    profesor.setApellido(txtApeliido.getText());
+    profesor.setEdad(Integer.parseInt(txtEdad.getText()));  // Validado que es numérico
+    profesor.setIdentificacion(txtIdentificacion.getText());
+    profesor.setTipo_identificacion(txtTipoIdentificacion.getSelectedItem().toString());
+    profesor.setTelefono(txtTelefono.getText());
+    profesor.setEmail(txtEmail.getText());
+    profesor.setGenero(txtGenero.getSelectedItem().toString());
+    profesor.setDireccion(txtoDireccion.getText());
+    profesor.setEstado_civil(txtEstadoCivil.getSelectedItem().toString());
+    profesor.setEspecialidad(txtEspecialidad.getText());
+    profesor.setSalario(Integer.parseInt(txtSalario.getText()));  // Validado que es numérico
+    profesor.setEstado_contrato(txtEstadoContrato.getSelectedItem().toString());
+    profesor.setTipo_contrato(txtTipoContrato.getText());
 
-        if (!esTelefonoValido(txtTelefono.getText())) {
-            JOptionPane.showMessageDialog(null, "El teléfono debe ser un número de 8 dígitos.");
-        } else if (!esNumeroValido(txtEdad.getText())) {
-            JOptionPane.showMessageDialog(null, "La edad debe ser un número entero.");
-        } else if (!esNumeroValido(txtIdentificacion.getText())) {
-            JOptionPane.showMessageDialog(null, "El número de identificación debe ser un número entero.");
-        } else if (!esNumeroValido(txtSalario.getText())) {
-            JOptionPane.showMessageDialog(null, "El salario debe ser un número entero.");
-        } else if (!esNumeroValido(txtTipoContrato.getText())) {
-            JOptionPane.showMessageDialog(null, "El tipo de contrato debe ser un número entero.");
-        } else {
-            System.out.println("Datos correctos.");
-        }
+    int idProfesor = profesorDAO.guardarProfesor(profesor);
+    if (idProfesor == -1) {
+        JOptionPane.showMessageDialog(null, "Error al guardar el profesor.");
+        return;
+    }
+
+    if (!profesorDAO.guardarProfGradSecc(idProfesor, listaRelaciones)) {
+        JOptionPane.showMessageDialog(null, "Error al guardar las relaciones.");
+        return;
+    }
+
+    JOptionPane.showMessageDialog(null, "Profesor guardado exitosamente.");
+    ListaProfesores vistaLista = new ListaProfesores();
+    vistaLista.setVisible(true);
+    dispose();
+} catch (NumberFormatException e) {
+    System.out.println("Error en el formato de los datos numéricos: " + e.getMessage());
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el profesor: " + e.getMessage());
+}
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

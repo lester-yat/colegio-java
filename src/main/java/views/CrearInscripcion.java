@@ -42,8 +42,11 @@ public class CrearInscripcion extends javax.swing.JFrame {
             String item = grado.getId() + " - " + grado.getNombre();
             selectGrado.addItem(item); // Añadir el string con el ID y el nombre
         }
+        
     }
 
+    
+    
 // En tu diseño puedes agregar el JDateChooser donde lo necesites
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

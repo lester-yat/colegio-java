@@ -143,7 +143,7 @@ public class CrearSeccion extends javax.swing.JFrame {
                 && !"".equals(txtHoraFinal.getText()) && !"".equals(selectGrado.getSelectedItem())) {
 
             // Validación para que el nombre tenga al menos 3 caracteres
-            if (txtNombre.getText().length() < 3) {
+            if (txtNombre.getText().length() < 1) {
                 JOptionPane.showMessageDialog(null, "El nombre debe tener al menos 3 caracteres.");
                 return;
             }

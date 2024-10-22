@@ -16,6 +16,26 @@ public class CrearGrado extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    
+    
+    
+// Validación para campos de texto que no deben estar vacíos
+public boolean esTextoValido(String texto) {
+    return texto != null && !texto.trim().isEmpty();
+}
+
+
+// Método para validar si el texto es un número válido entre 10 y 70
+public boolean esNumeroValido(String texto) {
+    try {
+        int numero = Integer.parseInt(texto);
+        return numero >= 10 && numero <= 50; // Verifica que el número esté dentro del rango
+    } catch (NumberFormatException e) {
+        return false; // No es un número válido
+    }
+}
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -157,41 +177,53 @@ public class CrearGrado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (!"".equals(txtNombre.getText()) && !"".equals(txtSalon.getText()) && !"".equals(txtNivel.getText()) && 
-            !"".equals(txtAnio.getDate()) && !"".equals(txtJornada.getText()) && !"".equals(txtCantMaxEstu.getText())) {
-            try {
-                grado.setNombre(txtNombre.getText());
-                grado.setSalon(txtSalon.getText());
-                grado.setNivel(txtNivel.getText());
-                grado.setJornada(txtJornada.getText());
-                grado.setCantidadMaxEstudiantes(Integer.parseInt(txtCantMaxEstu.getText()));
-                grado.setAnio( (Date) txtAnio.getDate());
-                
-                gradoDAO.guardarGrado(grado);
-                JOptionPane.showMessageDialog(null, "Grado guardado exitosamente.");
-                ListaGrados vistaLista = new ListaGrados();
-                vistaLista.setVisible(true);
-                dispose();
-            } catch (NumberFormatException e) {
-                System.out.println("Error en el formato de los datos numéricos: " + e.getMessage());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el grado: " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Los campos están vacíos");
-        }
         
-        try {
-            int edad = Integer.parseInt(txtSalon.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "El salon debe ser un número entero.");
-        }
+      // Validar que los campos de texto no estén vacíos
+if (esTextoValido(txtNombre.getText()) && esTextoValido(txtSalon.getText()) 
+    && esTextoValido(txtNivel.getText()) && txtAnio.getDate() != null 
+    && esTextoValido(txtJornada.getText())) {
 
-        try {
-            int inscripcion = Integer.parseInt(txtCantMaxEstu.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "La cantidad maxima de estudiantes debe ser un número entero.");
-        } 
+    // Validar los campos numéricos individualmente
+    if (!esNumeroValido(txtCantMaxEstu.getText())) {
+        JOptionPane.showMessageDialog(null, "La cantidad máxima de estudiantes debe ser un número entero válido y ser mayora 10 y menor que 50.");
+        return; // Detener la ejecución si el campo es inválido
+    }
+
+    try {
+        // Convertir cantidad máxima de estudiantes a número entero
+        int cantMaxEstudiantes = Integer.parseInt(txtCantMaxEstu.getText());
+        
+        // Asignación de valores al objeto grado
+        grado.setNombre(txtNombre.getText());
+        grado.setSalon(txtSalon.getText());
+        grado.setNivel(txtNivel.getText());
+        grado.setJornada(txtJornada.getText());
+        grado.setCantidadMaxEstudiantes(cantMaxEstudiantes);
+        grado.setAnio((Date) txtAnio.getDate());
+
+        // Guardar el grado en la base de datos
+        gradoDAO.guardarGrado(grado);
+        
+        // Mensaje de éxito
+        JOptionPane.showMessageDialog(null, "Grado guardado exitosamente.");
+        ListaGrados vistaLista = new ListaGrados();
+        vistaLista.setVisible(true);
+        dispose();
+        
+    } catch (NumberFormatException e) {
+        // Este catch solo se activará si ocurre un error con los datos numéricos
+        JOptionPane.showMessageDialog(null, "Error en el formato numérico.");
+        
+    } catch (Exception e) {
+        // Control de errores generales
+        JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el grado: " + e.getMessage());
+    }
+
+} else {
+    // Mostrar mensaje si faltan campos obligatorios
+    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos obligatorios.");
+}
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
