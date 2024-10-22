@@ -8,7 +8,36 @@ public class Inscripcion {
     private String nombreAlumno; // Nuevo campo
     private int gradoId;
     private Date fechaInscripcion;
+    private String numeroCuenta; // Nuevo campo
+    private double monto; // Nuevo campo
+    private String estado; // Nuevo campo
 
+       // Getters y Setters para los campos adicionales
+
+    public String getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
     // Getters y Setters
     public int getId() {
         return id;

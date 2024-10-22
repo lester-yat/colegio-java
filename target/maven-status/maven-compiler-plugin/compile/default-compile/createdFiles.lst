@@ -27,6 +27,7 @@ views\EditarPadre.class
 views\ListaGrados$6.class
 views\ListaSecciones$2.class
 views\EditarAlumno$2.class
+views\ListaInscripciones$8.class
 views\CrearSeccion$2.class
 views\ListaNotas$2.class
 models\GradoDAO.class

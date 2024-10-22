@@ -30,7 +30,7 @@ public class CrearInscripcion extends javax.swing.JFrame {
         List<Alumno> alumnos = inscripcionDAO.listarAlumnos();
         for (Alumno alumno : alumnos) {
             // Crear un objeto de tipo ComboBoxItem que almacene el ID y el nombre
-            String item = alumno.getId()+ " - " + alumno.getNombre() + " " + alumno.getApellido();
+            String item = alumno.getId() + " - " + alumno.getNombre() + " " + alumno.getApellido();
             selectAlumno.addItem(item); // Añadir el string con el ID y el nombre
         }
     }
@@ -42,11 +42,9 @@ public class CrearInscripcion extends javax.swing.JFrame {
             String item = grado.getId() + " - " + grado.getNombre();
             selectGrado.addItem(item); // Añadir el string con el ID y el nombre
         }
-        
+
     }
 
-    
-    
 // En tu diseño puedes agregar el JDateChooser donde lo necesites
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -62,6 +60,12 @@ public class CrearInscripcion extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         selectAlumno = new javax.swing.JComboBox<>();
         ChooserInscripcion = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtCuenta = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JTextField();
+        txtMonto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,6 +92,12 @@ public class CrearInscripcion extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("No. Cuenta");
+
+        jLabel6.setText("Monto");
+
+        jLabel7.setText("Estado");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,22 +105,28 @@ public class CrearInscripcion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(183, 183, 183)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(btnGuardar))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addComponent(btnCancelar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
                             .addComponent(selectGrado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ChooserInscripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .addComponent(selectAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                            .addComponent(selectAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCuenta)
+                            .addComponent(txtEstado)
+                            .addComponent(txtMonto))))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,21 +145,43 @@ public class CrearInscripcion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(ChooserInscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(164, 164, 164)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(txtCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar))
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 660));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if (selectAlumno.getSelectedItem() != null && selectGrado.getSelectedItem() != null && ChooserInscripcion.getDate() != null) {
+            // Validaciones de los nuevos campos
+            if (txtCuenta.getText().isEmpty() || txtMonto.getText().isEmpty() || txtEstado.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.");
+                return;
+            }
+
             try {
+                // Validar que el monto sea un número válido
+                double monto = Double.parseDouble(txtMonto.getText());
+
+                // Crear una nueva inscripción
                 Inscripcion inscripcion = new Inscripcion();
 
                 // Obtener el ID del Alumno a partir de la selección
@@ -160,6 +198,11 @@ public class CrearInscripcion extends javax.swing.JFrame {
                 Date fechaInscripcion = ChooserInscripcion.getDate();
                 inscripcion.setFechaInscripcion(fechaInscripcion);
 
+                // Asignar los nuevos campos
+                inscripcion.setNumeroCuenta(txtCuenta.getText());
+                inscripcion.setMonto(monto); // Aquí el monto es tipo double
+                inscripcion.setEstado(txtEstado.getText());
+
                 // Guardar la inscripción en la base de datos
                 int idInscripcion = inscripcionDAO.guardarInscripcion(inscripcion);
                 if (idInscripcion == -1) {
@@ -173,6 +216,8 @@ public class CrearInscripcion extends javax.swing.JFrame {
                 vistaLista.setVisible(true);
                 dispose();
 
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El monto debe ser un número válido.");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar la inscripción: " + e.getMessage());
             }
@@ -233,8 +278,14 @@ public class CrearInscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> selectAlumno;
     private javax.swing.JComboBox<String> selectGrado;
+    private javax.swing.JTextField txtCuenta;
+    private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables
 }
