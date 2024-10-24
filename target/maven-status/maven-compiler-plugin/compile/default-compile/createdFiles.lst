@@ -17,6 +17,7 @@ views\ListaInscripciones.class
 views\CrearAlumno$3.class
 views\ListaInscripciones$3.class
 views\ListaGrados$1.class
+views\ListaGrados$7.class
 views\ListaProfesores$3.class
 views\ListadoPadre$3.class
 views\ListaSecciones.class
@@ -122,6 +123,7 @@ views\CrearProfesores$6.class
 views\ListaInscripciones$2.class
 views\EditarAlumno$4.class
 views\EditarCurso.class
+views\ListaGrados$8.class
 views\EditarNota.class
 views\ListaInscripciones$5.class
 views\EditarProfesor$1.class
@@ -142,6 +144,7 @@ views\CrearGrado$1.class
 views\ListaInscripciones$4.class
 views\Login$2.class
 models\Seccion.class
+views\CrearProfesores$7.class
 views\ListaSecciones$5.class
 views\ListaNotas.class
 views\CrearGrado.class
