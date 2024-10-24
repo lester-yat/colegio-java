@@ -75,6 +75,12 @@ CREATE TABLE inscripcion (
     FOREIGN KEY (grado_id) REFERENCES grado(id)
 );
 
+ALTER TABLE inscripcion
+ADD numero_cuenta NVARCHAR(50),
+    monto DECIMAL(10, 2),
+    estado NVARCHAR(50);
+
+
 -- Crear la tabla curso
 CREATE TABLE curso (
     id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,

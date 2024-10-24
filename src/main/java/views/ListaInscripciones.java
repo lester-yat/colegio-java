@@ -10,44 +10,42 @@ import models.Inscripcion;
 import models.InscripcionDAO;
 
 public class ListaInscripciones extends javax.swing.JFrame {
-    
+
     public ListaInscripciones() {
         this.setUndecorated(true);
         initComponents();
         cargarInscripciones(); // Cargar inscripciones al abrir el formulario
         this.setLocationRelativeTo(null);
     }
-    
+
     private void cargarInscripciones() {
-       InscripcionDAO inscripcionDAO = new InscripcionDAO();
-       List<Inscripcion> listaInscripciones = inscripcionDAO.listarInscripciones();
+        InscripcionDAO inscripcionDAO = new InscripcionDAO();
+        List<Inscripcion> listaInscripciones = inscripcionDAO.listarInscripciones();
 
-       // Obtener el modelo actual de la tabla
-       DefaultTableModel modelo = (DefaultTableModel) tablaInscripcion.getModel();
-       modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
+        // Obtener el modelo actual de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) tablaInscripcion.getModel();
+        modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
 
-       // Agregar cada inscripción al modelo de la tabla
-       for (Inscripcion inscripcion : listaInscripciones) {
-           Object[] fila = {
-               inscripcion.getId(),
-               inscripcion.getAlumnoId(),
-               inscripcion.getNombreAlumno(),  // Nombre del alumno
-               inscripcion.getGradoId(),
-               inscripcion.getFechaInscripcion()
-           };
+        // Agregar cada inscripción al modelo de la tabla
+        for (Inscripcion inscripcion : listaInscripciones) {
+            Object[] fila = {
+                inscripcion.getId(),
+                inscripcion.getAlumnoId(),
+                inscripcion.getNombreAlumno(), // Nombre del alumno
+                inscripcion.getGradoId(),
+                inscripcion.getFechaInscripcion(),
+                inscripcion.getNumeroCuenta(), // Mostrar nuevo campo
+                inscripcion.getMonto(), // Mostrar nuevo campo
+                inscripcion.getEstado() // Mostrar nuevo campo    
+            };
 
-           // Imprimir los datos en consola para confirmar que están bien
-           System.out.println("Datos a agregar en la tabla: " + inscripcion.getNombreAlumno());
+            // Imprimir los datos en consola para confirmar que están bien
+            System.out.println("Datos a agregar en la tabla: " + inscripcion.getNombreAlumno());
 
-           modelo.addRow(fila); // Agregar la fila al modelo de la tabla
-       }
-}
+            modelo.addRow(fila); // Agregar la fila al modelo de la tabla
+        }
+    }
 
-
-
-    
-  
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -102,7 +100,7 @@ public class ListaInscripciones extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "ID alumno", "Nombre Alumno", "ID Grado", "Fecha"
+                "ID", "ID alumno", "Nombre Alumno", "ID Grado", "Fecha", "No.Cuenta", "Monto", "Estado"
             }
         ));
         tablaInscripcion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,27 +166,66 @@ public class ListaInscripciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void tablaInscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaInscripcionMouseClicked
-        
+
     }//GEN-LAST:event_tablaInscripcionMouseClicked
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-       int filaSeleccionada = tablaInscripcion.getSelectedRow();
-    if (filaSeleccionada >= 0) {
-        int idInscripcionSeleccionado = (int) tablaInscripcion.getValueAt(filaSeleccionada, 0); // Asegúrate de que el ID esté en la primera columna
-        // Abrir el formulario de edición con el ID seleccionado
-        dispose();
-        EditarInscripcion editar = new EditarInscripcion(idInscripcionSeleccionado);
-        editar.setVisible(true);
-        
-        // Refrescar la tabla después de cerrar el formulario EditarInscripcion
-        cargarInscripciones();
-    } else {
-        JOptionPane.showMessageDialog(this, "Por favor, selecciona una inscripción para editar.");
-    }
+        int filaSeleccionada = tablaInscripcion.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            // Obtener el ID de la inscripción seleccionada desde la tabla
+            int idInscripcionSeleccionado = (int) tablaInscripcion.getValueAt(filaSeleccionada, 0); // Asegúrate de que el ID esté en la primera columna
+
+            // Abrir el formulario de edición con el ID de la inscripción seleccionada
+            EditarInscripcion editar = new EditarInscripcion(idInscripcionSeleccionado);
+            editar.setVisible(true);
+
+            // Agregar un listener para detectar cuando se cierre el formulario de edición
+            editar.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    // Refrescar la tabla después de cerrar el formulario EditarInscripcion
+                    cargarInscripciones(); // Este método debería recargar los datos de la tabla desde la base de datos
+                }
+            });
+
+            // Cerrar la ventana actual de listar inscripciones
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona una inscripción para editar.");
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-     
+         // Verificar que haya una fila seleccionada
+    int filaSeleccionada = tablaInscripcion.getSelectedRow();
+    
+    if (filaSeleccionada != -1) { // Si se seleccionó una fila
+        // Obtener el ID de la inscripción desde la columna correspondiente (suponiendo que está en la primera columna)
+        int idInscripcion = Integer.parseInt(tablaInscripcion.getValueAt(filaSeleccionada, 0).toString());
+
+        // Confirmar si el usuario realmente quiere eliminar la inscripción
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas eliminar esta inscripción?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            // Llamar al método eliminarInscripcion
+            InscripcionDAO inscripcionDAO = new InscripcionDAO();
+            boolean eliminado = inscripcionDAO.eliminarInscripcion(idInscripcion);
+
+            if (eliminado) {
+                // Mostrar un mensaje de éxito
+                JOptionPane.showMessageDialog(null, "Inscripción eliminada exitosamente.");
+                
+                // Actualizar la tabla para reflejar los cambios
+                cargarInscripciones();
+            } else {
+                // Mostrar un mensaje de error
+                JOptionPane.showMessageDialog(null, "Error al eliminar la inscripción.");
+            }
+        }
+    } else {
+        // Mostrar un mensaje si no se seleccionó ninguna inscripción
+        JOptionPane.showMessageDialog(null, "Selecciona una inscripción para eliminar.");
+    }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
