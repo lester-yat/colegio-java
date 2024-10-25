@@ -64,7 +64,7 @@ public class ListaAlumnos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        tablaAlumnos.setBackground(new java.awt.Color(0, 0, 0));
+        tablaAlumnos.setBackground(new java.awt.Color(255, 255, 255));
         tablaAlumnos.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         tablaAlumnos.setForeground(new java.awt.Color(0, 0, 0));
         tablaAlumnos.setModel(new javax.swing.table.DefaultTableModel(

@@ -433,6 +433,8 @@ public boolean esTextoValido(String texto) {
         jLabel20.setText("Estado Civil");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, 21));
 
+        tablaGrados.setBackground(new java.awt.Color(255, 255, 255));
+        tablaGrados.setForeground(new java.awt.Color(0, 0, 0));
         tablaGrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -449,6 +451,9 @@ public boolean esTextoValido(String texto) {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 527, 539, 111));
 
+        tablaSecciones.setBackground(new java.awt.Color(255, 255, 255));
+        tablaSecciones.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        tablaSecciones.setForeground(new java.awt.Color(0, 0, 0));
         tablaSecciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -465,6 +470,8 @@ public boolean esTextoValido(String texto) {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 527, 539, 111));
 
+        tablaGradoSeccion.setBackground(new java.awt.Color(255, 255, 255));
+        tablaGradoSeccion.setForeground(new java.awt.Color(0, 0, 0));
         tablaGradoSeccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
