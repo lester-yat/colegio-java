@@ -5,11 +5,10 @@ import javax.swing.JFrame;
 public class Inicio extends javax.swing.JFrame {
     
     public Inicio() {
-        
-        this.setUndecorated(true);
+       
         initComponents();
             this.setLocationRelativeTo(null);
-            setResizable(false); 
+             
 
            
 
@@ -20,7 +19,6 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        salir = new javax.swing.JButton();
         btnGrados = new javax.swing.JButton();
         btnAlumnos = new javax.swing.JButton();
         btnProfesores = new javax.swing.JButton();
@@ -45,20 +43,8 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        salir.setBackground(new java.awt.Color(0, 0, 0));
-        salir.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
-        salir.setForeground(new java.awt.Color(255, 255, 255));
-        salir.setText("X");
-        salir.setBorder(null);
-        salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 70, 40));
-
         btnGrados.setBackground(new java.awt.Color(0, 0, 0));
-        btnGrados.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnGrados.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnGrados.setForeground(new java.awt.Color(255, 255, 255));
         btnGrados.setText("Grados");
         btnGrados.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +55,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(btnGrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 200, 50));
 
         btnAlumnos.setBackground(new java.awt.Color(0, 0, 0));
-        btnAlumnos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAlumnos.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnAlumnos.setForeground(new java.awt.Color(255, 255, 255));
         btnAlumnos.setText("Alumnos");
         btnAlumnos.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +66,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(btnAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 200, 50));
 
         btnProfesores.setBackground(new java.awt.Color(0, 0, 0));
-        btnProfesores.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnProfesores.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnProfesores.setForeground(new java.awt.Color(255, 255, 255));
         btnProfesores.setText("Profesores");
         btnProfesores.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +77,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(btnProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 120, 200, 50));
 
         btnSecciones.setBackground(new java.awt.Color(0, 0, 0));
-        btnSecciones.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnSecciones.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnSecciones.setForeground(new java.awt.Color(255, 255, 255));
         btnSecciones.setText("Secciones");
         btnSecciones.addActionListener(new java.awt.event.ActionListener() {
@@ -102,13 +88,13 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(btnSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 200, 50));
 
         jLabel3.setBackground(new java.awt.Color(153, 0, 153));
-        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("INICIO");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 140, 60));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cerrar Sesion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +105,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 200, 50));
 
         btnPadres.setBackground(new java.awt.Color(0, 0, 0));
-        btnPadres.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnPadres.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnPadres.setForeground(new java.awt.Color(255, 255, 255));
         btnPadres.setText("Padres");
         btnPadres.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +116,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(btnPadres, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 200, 50));
 
         btnInscripcion.setBackground(new java.awt.Color(0, 0, 0));
-        btnInscripcion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnInscripcion.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnInscripcion.setForeground(new java.awt.Color(255, 255, 255));
         btnInscripcion.setText("Inscripciones");
         btnInscripcion.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +127,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(btnInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 200, 50));
 
         btnNotas.setBackground(new java.awt.Color(0, 0, 0));
-        btnNotas.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnNotas.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnNotas.setForeground(new java.awt.Color(255, 255, 255));
         btnNotas.setText("Notas");
         btnNotas.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +138,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 200, 50));
 
         btnCursos.setBackground(new java.awt.Color(0, 0, 0));
-        btnCursos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCursos.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnCursos.setForeground(new java.awt.Color(255, 255, 255));
         btnCursos.setText("Cursos");
         btnCursos.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +163,9 @@ public class Inicio extends javax.swing.JFrame {
         jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 420, 20));
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Usuarios");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,11 +207,6 @@ public class Inicio extends javax.swing.JFrame {
         listaAlumnos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAlumnosActionPerformed
-
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_salirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -323,6 +307,5 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

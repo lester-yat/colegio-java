@@ -3,7 +3,11 @@ package views;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import models.Alumno;
 import models.AlumnoDAO;
 
@@ -14,13 +18,49 @@ public class ListaAlumnos extends javax.swing.JFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     private int idSeleccionado;
     
+    
+    private TableRowSorter<DefaultTableModel> sorter;
+    private boolean isFilterActive = false;
+    
     public ListaAlumnos() {
-        this.setUndecorated(true);
+        
         initComponents();
         this.setLocationRelativeTo(null);
         ListarAlumnos();
+        
+             sorter = new TableRowSorter<>(modelo);
+        tablaAlumnos.setRowSorter(sorter);
+        
+        
+               // Agregar listener al campoBuscar para filtrar mientras se escribe
+        campoBuscar.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+        });
+        
+        
     }
 
+    
+    
     public void LimpiarTabla() {
 //    modelo.setRowCount(0);
     for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -122,6 +162,11 @@ public class ListaAlumnos extends javax.swing.JFrame {
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.setContentAreaFilled(false);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         campoBuscar.setBackground(new java.awt.Color(0, 0, 0));
         campoBuscar.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -142,7 +187,7 @@ public class ListaAlumnos extends javax.swing.JFrame {
                 .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(159, 159, 159)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(127, 127, 127))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -266,6 +311,23 @@ public class ListaAlumnos extends javax.swing.JFrame {
         int fila = tablaAlumnos.rowAtPoint(evt.getPoint());
         idSeleccionado = (int) tablaAlumnos.getValueAt(fila, 0);
     }//GEN-LAST:event_tablaAlumnosMouseClicked
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+                 isFilterActive = true; // Activar el filtro tras hacer clic en el botón Buscar
+        filtrarTabla();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+    
+    
+    
+       private void filtrarTabla() {
+        String query = campoBuscar.getText();
+        if (query.trim().length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + query));
+        }
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

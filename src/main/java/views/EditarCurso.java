@@ -132,51 +132,51 @@ public class EditarCurso extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Edicion de Curso");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 202, 36));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
         txtNombre.setBackground(new java.awt.Color(0, 0, 0));
-        txtNombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.setBorder(null);
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 240, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripcion");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
 
         txtDescripcion.setBackground(new java.awt.Color(0, 0, 0));
-        txtDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtDescripcion.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         txtDescripcion.setBorder(null);
         jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 240, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nivel");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
 
         txtNivel.setBackground(new java.awt.Color(0, 0, 0));
-        txtNivel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtNivel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         txtNivel.setForeground(new java.awt.Color(255, 255, 255));
         txtNivel.setBorder(null);
         jPanel1.add(txtNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 240, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Profesor");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
 
         selectProfesor.setBackground(new java.awt.Color(0, 0, 0));
-        selectProfesor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        selectProfesor.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         selectProfesor.setForeground(new java.awt.Color(255, 255, 255));
         selectProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +186,7 @@ public class EditarCurso extends javax.swing.JFrame {
         jPanel1.add(selectProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 240, -1));
 
         selectGrado.setBackground(new java.awt.Color(0, 0, 0));
-        selectGrado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        selectGrado.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         selectGrado.setForeground(new java.awt.Color(255, 255, 255));
         selectGrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,13 +195,13 @@ public class EditarCurso extends javax.swing.JFrame {
         });
         jPanel1.add(selectGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 240, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Grado");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 0));
-        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnActualizar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +212,7 @@ public class EditarCurso extends javax.swing.JFrame {
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
 
         btnCancelar.setBackground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -223,11 +223,11 @@ public class EditarCurso extends javax.swing.JFrame {
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
 
         selectSeccion.setBackground(new java.awt.Color(0, 0, 0));
-        selectSeccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        selectSeccion.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         selectSeccion.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(selectSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 240, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Seccion");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
@@ -244,7 +244,7 @@ public class EditarCurso extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 250, 10));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 630, 510));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 640, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -256,62 +256,86 @@ public class EditarCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if (!"".equals(txtNombre.getText()) && !"".equals(txtDescripcion.getText()) && 
-            !"".equals(txtNivel.getText()) && selectProfesor.getSelectedItem() != null && 
-            selectGrado.getSelectedItem() != null && selectSeccion.getSelectedItem() != null) {
-            try {
-                curso.setNombre(txtNombre.getText());
-                curso.setDescripcion(txtDescripcion.getText());
-                curso.setNivel(txtNivel.getText());
-                curso.setId(cursoId);
-                
-                String selectedProfesorNombre = (String) selectProfesor.getSelectedItem();
-                Integer profesorId = null;
-                for (Map.Entry<Integer, String> entry : profesorMap.entrySet()) {
-                    if (entry.getValue().equals(selectedProfesorNombre)) {
-                        profesorId = entry.getKey();
-                        break;
-                    }
-                }
-                
-                String selectedGradoNombre = (String) selectGrado.getSelectedItem();
-                Integer gradoId = null;
-                for (Map.Entry<Integer, String> entry : gradoMap.entrySet()) {
-                    if (entry.getValue().equals(selectedGradoNombre)) {
-                        gradoId = entry.getKey();
-                        break;
-                    }
-                }
-                
-                String selectedSeccionNombre = (String) selectSeccion.getSelectedItem();
-                Integer seccionId = null;
-                for (Map.Entry<Integer, String> entry : seccionMap.entrySet()) {
-                    if (entry.getValue().equals(selectedSeccionNombre)) {
-                        seccionId = entry.getKey();
-                        break;
-                    }
-                }
+       
+        
+        if (!"".equals(txtNombre.getText().trim()) && !"".equals(txtDescripcion.getText().trim()) &&
+    !"".equals(txtNivel.getText().trim()) && selectProfesor.getSelectedItem() != null &&
+    selectGrado.getSelectedItem() != null && selectSeccion.getSelectedItem() != null) {
 
-                if (profesorId != null && gradoId != null && seccionId != null) {
-                    curso.setProfesorId(profesorId);
-                    curso.setGradoId(gradoId);
-                    curso.setSeccionId(seccionId);
-                    cursoDAO.editarCurso(curso);
-                    JOptionPane.showMessageDialog(null, "Curso actualizada exitosamente.");
-                    ListaCursos vistaLista = new ListaCursos();
-                    vistaLista.setVisible(true);
-                    dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Grado seleccionado no encontrado.");
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Error en el formato de los datos numéricos: " + e.getMessage());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el curso: " + e.getMessage());
+    try {
+        // Setear valores para el objeto curso
+        curso.setNombre(txtNombre.getText().trim());
+        curso.setDescripcion(txtDescripcion.getText().trim());
+        curso.setNivel(txtNivel.getText().trim());
+        curso.setId(cursoId);
+        
+        // Validación de profesor
+        String selectedProfesorNombre = (String) selectProfesor.getSelectedItem();
+        Integer profesorId = null;
+        for (Map.Entry<Integer, String> entry : profesorMap.entrySet()) {
+            if (entry.getValue().equals(selectedProfesorNombre)) {
+                profesorId = entry.getKey();
+                break;
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Los campos están vacíos.");
         }
+        if (profesorId == null) {
+            JOptionPane.showMessageDialog(null, "Profesor seleccionado no encontrado.");
+            return;
+        }
+
+        // Validación de grado
+        String selectedGradoNombre = (String) selectGrado.getSelectedItem();
+        Integer gradoId = null;
+        for (Map.Entry<Integer, String> entry : gradoMap.entrySet()) {
+            if (entry.getValue().equals(selectedGradoNombre)) {
+                gradoId = entry.getKey();
+                break;
+            }
+        }
+        if (gradoId == null) {
+            JOptionPane.showMessageDialog(null, "Grado seleccionado no encontrado.");
+            return;
+        }
+
+        // Validación de sección
+        String selectedSeccionNombre = (String) selectSeccion.getSelectedItem();
+        Integer seccionId = null;
+        for (Map.Entry<Integer, String> entry : seccionMap.entrySet()) {
+            if (entry.getValue().equals(selectedSeccionNombre)) {
+                seccionId = entry.getKey();
+                break;
+            }
+        }
+        if (seccionId == null) {
+            JOptionPane.showMessageDialog(null, "Sección seleccionada no encontrada.");
+            return;
+        }
+
+        // Asignación de ID de profesor, grado y sección
+        curso.setProfesorId(profesorId);
+        curso.setGradoId(gradoId);
+        curso.setSeccionId(seccionId);
+
+        // Actualización del curso en la base de datos
+        cursoDAO.editarCurso(curso);
+        JOptionPane.showMessageDialog(null, "Curso actualizado exitosamente.");
+        
+        // Mostrar la lista de cursos
+        ListaCursos vistaLista = new ListaCursos();
+        vistaLista.setVisible(true);
+        dispose();
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error en el formato de los datos numéricos: " + e.getMessage());
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el curso: " + e.getMessage());
+    }
+} else {
+    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos requeridos.");
+}
+
+        
+        
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void selectProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectProfesorActionPerformed

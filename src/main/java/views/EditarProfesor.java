@@ -22,22 +22,22 @@ public class EditarProfesor extends javax.swing.JFrame {
     DefaultTableModel modeloGradoSeccion = new DefaultTableModel();
     int idGrado = 0;
     String nombreGrado = "";
-    
+
     public int profesorId;
     private Map<Integer, String> gradoMap = new HashMap<>();
-    
+
     public EditarProfesor() {
-        this.setUndecorated(true);
+
         initComponents();
         this.setLocationRelativeTo(null);
         setResizable(false);
     }
-    
+
     public void initTablaGradoSeccion() {
         modeloGradoSeccion = (DefaultTableModel) tablaGradoSeccion.getModel();
         modeloGradoSeccion.setColumnIdentifiers(new String[]{"ID Grado", "Nombre Grado", "ID Seccion", "Nombre Seccion"});
     }
-    
+
     public void LimpiarTabla(DefaultTableModel modelo) {
         modelo.setRowCount(0);
 //        for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -45,8 +45,8 @@ public class EditarProfesor extends javax.swing.JFrame {
 //            i = i-1;
 //        }
     }
-    
-    public void ListaGrados(){
+
+    public void ListaGrados() {
         List<Grado> ListarGrad = profesorDAO.listarGrados();
         modelo = (DefaultTableModel) tablaGrados.getModel();
         Object[] ob = new Object[4];
@@ -59,7 +59,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         }
         tablaGrados.setModel(modelo);
     }
-    
+
     public void ListaSecciones(int id) {
         modeloSecciones = (DefaultTableModel) tablaSecciones.getModel();
         LimpiarTabla(modeloSecciones);
@@ -80,7 +80,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         }
         tablaSecciones.setModel(modeloSecciones);
     }
-    
+
     public Integer obtenerIdsSeleccionadoGrado() {
         int filaSeleccionada = tablaGrados.getSelectedRow();
         if (filaSeleccionada == -1) {
@@ -103,7 +103,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         System.out.println("IDs seleccionados en Secciones: " + idsSeleccionados);
         return idsSeleccionados;
     }
-    
+
     public List<String> obtenerNombresSeleccionadosSecciones() {
         int[] filasSeleccionadas = tablaSecciones.getSelectedRows();
         List<String> nombresSeleccionados = new ArrayList<>();
@@ -114,7 +114,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         System.out.println("Nombres seleccionados en Secciones: " + nombresSeleccionados);
         return nombresSeleccionados;
     }
-    
+
     public List<int[]> obtenerRelacionesGradoSeccion() {
         List<int[]> listaRelaciones = new ArrayList<>();
         for (int i = 0; i < modeloGradoSeccion.getRowCount(); i++) {
@@ -130,7 +130,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         }
         return listaRelaciones;
     }
-    
+
     private void cargarRelacionesGradoSeccion(int profesorId) {
         List<int[]> relaciones = profesorDAO.obtenerRelacionesGradoSeccion(profesorId);
 
@@ -153,7 +153,7 @@ public class EditarProfesor extends javax.swing.JFrame {
     private String obtenerNombreSeccion(int seccionId) {
         return profesorDAO.obtenerNombreSeccion(seccionId);
     }
-    
+
     public EditarProfesor(int profesorId) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -188,7 +188,7 @@ public class EditarProfesor extends javax.swing.JFrame {
 
         cargarRelacionesGradoSeccion(profesorId);
     }
-    
+
     public boolean esNumeroValido(String texto) {
         try {
             Integer.parseInt(texto);
@@ -197,11 +197,22 @@ public class EditarProfesor extends javax.swing.JFrame {
             return false;
         }
     }
-    
+
     public boolean esTelefonoValido(String telefono) {
         return telefono.matches("\\d{8}");
     }
-    
+
+    // Método para validar un correo electrónico de Gmail
+    public boolean esEmailValido(String email) {
+        // Expresión regular para validar el formato de un correo electrónico de Gmail
+        return email.matches("^[a-zA-Z0-9._%+-]+@gmail\\.com$");
+    }
+
+// Método para validar identificación
+    public boolean esIdentificacionValida(String identificacion) {
+        return identificacion.matches("\\d+"); // Comprueba si solo contiene dígitos
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -235,7 +246,6 @@ public class EditarProfesor extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtoDireccion = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -253,6 +263,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         txtEstadoCivil = new javax.swing.JComboBox<>();
         txtEstadoContrato = new javax.swing.JComboBox<>();
         txtTipoIdentificacion = new javax.swing.JComboBox<>();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -261,7 +272,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 0));
-        btnActualizar.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        btnActualizar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +283,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 700, 180, 50));
 
         btnCancelar.setBackground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +294,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 700, 180, 50));
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
-        btnEliminar.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -294,7 +305,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 700, 180, 50));
 
         tablaGradoSeccion.setBackground(new java.awt.Color(204, 204, 204));
-        tablaGradoSeccion.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        tablaGradoSeccion.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         tablaGradoSeccion.setForeground(new java.awt.Color(0, 0, 0));
         tablaGradoSeccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -310,7 +321,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 550, 620, 140));
 
         btnAsignarSeccion.setBackground(new java.awt.Color(0, 0, 0));
-        btnAsignarSeccion.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        btnAsignarSeccion.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnAsignarSeccion.setForeground(new java.awt.Color(255, 255, 255));
         btnAsignarSeccion.setText("Asignar");
         btnAsignarSeccion.addActionListener(new java.awt.event.ActionListener() {
@@ -321,7 +332,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(btnAsignarSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 180, 50));
 
         tablaSecciones.setBackground(new java.awt.Color(204, 204, 204));
-        tablaSecciones.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        tablaSecciones.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         tablaSecciones.setForeground(new java.awt.Color(0, 0, 0));
         tablaSecciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -337,7 +348,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 350, 620, 111));
 
         tablaGrados.setBackground(new java.awt.Color(204, 204, 204));
-        tablaGrados.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        tablaGrados.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tablaGrados.setForeground(new java.awt.Color(0, 0, 0));
         tablaGrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -354,7 +365,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 80, 620, 180));
 
         btnConsultarGrado.setBackground(new java.awt.Color(0, 0, 0));
-        btnConsultarGrado.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        btnConsultarGrado.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnConsultarGrado.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultarGrado.setText("Consultar");
         btnConsultarGrado.addActionListener(new java.awt.event.ActionListener() {
@@ -364,13 +375,13 @@ public class EditarProfesor extends javax.swing.JFrame {
         });
         jPanel1.add(btnConsultarGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, 180, 50));
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Edicion de Profesor");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 450, 60));
 
-        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
@@ -385,7 +396,7 @@ public class EditarProfesor extends javax.swing.JFrame {
         });
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 290, -1));
 
-        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellido");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
@@ -410,12 +421,12 @@ public class EditarProfesor extends javax.swing.JFrame {
         });
         jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 290, -1));
 
-        jLabel4.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Edad");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("No. Identificacion");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
@@ -425,12 +436,12 @@ public class EditarProfesor extends javax.swing.JFrame {
         txtIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 290, -1));
 
-        jLabel13.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Tipo Identificacion");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Especialidad");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, 21));
@@ -440,18 +451,18 @@ public class EditarProfesor extends javax.swing.JFrame {
         txtEspecialidad.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 290, 30));
 
-        jLabel19.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Genero");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, 20));
 
-        jLabel20.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Estado Civil");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, -1, 21));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Telefono");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
@@ -462,18 +473,12 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 370, -1));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("E-mail");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
 
-        txtEmail.setEditable(false);
-        txtEmail.setBackground(new java.awt.Color(0, 0, 0));
-        txtEmail.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 370, -1));
-
-        jLabel11.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Direccion");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, -1));
@@ -484,12 +489,12 @@ public class EditarProfesor extends javax.swing.JFrame {
         txtoDireccion.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.add(txtoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 370, -1));
 
-        jLabel12.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Fecha de Nacimiento");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Salario");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, -1, -1));
@@ -504,23 +509,23 @@ public class EditarProfesor extends javax.swing.JFrame {
         });
         jPanel1.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 370, -1));
 
-        jLabel15.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Fecha Contratacion");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Fecha Terminacion Contrato");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, -1));
 
-        jLabel17.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Estado Contrato");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Tipo Contrato");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 690, -1, -1));
@@ -548,24 +553,33 @@ public class EditarProfesor extends javax.swing.JFrame {
         jPanel1.add(txtFechaTerminacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, 370, -1));
 
         txtGenero.setBackground(new java.awt.Color(0, 0, 0));
+        txtGenero.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtGenero.setForeground(new java.awt.Color(255, 255, 255));
         txtGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
         jPanel1.add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 290, -1));
 
         txtEstadoCivil.setBackground(new java.awt.Color(0, 0, 0));
+        txtEstadoCivil.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtEstadoCivil.setForeground(new java.awt.Color(255, 255, 255));
         txtEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero/a", "Casado/a", "Viudo/a" }));
         jPanel1.add(txtEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 650, 290, -1));
 
         txtEstadoContrato.setBackground(new java.awt.Color(0, 0, 0));
+        txtEstadoContrato.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtEstadoContrato.setForeground(new java.awt.Color(255, 255, 255));
         txtEstadoContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         jPanel1.add(txtEstadoContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 650, 370, -1));
 
         txtTipoIdentificacion.setBackground(new java.awt.Color(0, 0, 0));
+        txtTipoIdentificacion.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtTipoIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
         txtTipoIdentificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DPI", "Pasaporte" }));
         jPanel1.add(txtTipoIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 290, -1));
+
+        txtEmail.setBackground(new java.awt.Color(0, 0, 0));
+        txtEmail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 360, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 820));
 
@@ -573,71 +587,101 @@ public class EditarProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if (!"".equals(txtNombre.getText()) && !"".equals(txtApeliido.getText()) && 
-            !"".equals(txtEdad.getText()) && !"".equals(txtEmail.getText()) && 
-            !"".equals(txtEspecialidad.getText()) && !"".equals(txtEstadoCivil.getSelectedItem()) && 
-            !"".equals(txtEstadoContrato.getSelectedItem()) && !"".equals(txtFechaContratacion.getDate()) && 
-            !"".equals(txtFechaNacimiento.getDate()) && !"".equals(txtFechaTerminacion.getDate()) && 
-            !"".equals(txtGenero.getSelectedItem()) && !"".equals(txtIdentificacion.getText()) && 
-            !"".equals(txtSalario.getText()) && !"".equals(txtTelefono.getText()) && 
-            !"".equals(txtTipoContrato.getText()) && !"".equals(txtTipoIdentificacion.getSelectedItem()) && 
-            !"".equals(txtoDireccion.getText())) {
 
-            try {
-                profesor.setId(profesorId);
-                profesor.setNombre(txtNombre.getText());
-                profesor.setApellido(txtApeliido.getText());
-                profesor.setEdad(Integer.parseInt(txtEdad.getText()));
-                profesor.setIdentificacion(txtIdentificacion.getText());
-                profesor.setTipo_identificacion(txtTipoIdentificacion.getSelectedItem().toString());
-                profesor.setTelefono(txtTelefono.getText());
-                profesor.setEmail(txtEmail.getText());
-                profesor.setGenero(txtGenero.getSelectedItem().toString());
-                profesor.setDireccion(txtoDireccion.getText());
-                profesor.setEstado_civil(txtEstadoCivil.getSelectedItem().toString());
-                profesor.setEspecialidad(txtEspecialidad.getText());
-                profesor.setSalario(Integer.parseInt(txtSalario.getText()));
-                profesor.setEstado_contrato(txtEstadoContrato.getSelectedItem().toString());
-                profesor.setTipo_contrato(txtTipoContrato.getText());
-                profesor.setFecha_nacimiento(txtFechaNacimiento.getDate());
-                profesor.setFecha_contratacion(txtFechaContratacion.getDate());
-                profesor.setFecha_terminacion_contrato(txtFechaTerminacion.getDate());
-                
-                profesorDAO.editarProfesor(profesor);
+        if (txtNombre.getText().isEmpty() || txtApeliido.getText().isEmpty()
+                || txtEdad.getText().isEmpty() || txtEmail.getText().isEmpty()
+                || txtEspecialidad.getText().isEmpty() || txtEstadoCivil.getSelectedItem() == null
+                || txtEstadoContrato.getSelectedItem() == null || txtFechaContratacion.getDate() == null
+                || txtFechaNacimiento.getDate() == null || txtFechaTerminacion.getDate() == null
+                || txtGenero.getSelectedItem() == null || txtIdentificacion.getText().isEmpty()
+                || txtSalario.getText().isEmpty() || txtTelefono.getText().isEmpty()
+                || txtTipoContrato.getText().isEmpty() || txtTipoIdentificacion.getSelectedItem() == null
+                || txtoDireccion.getText().isEmpty()) {
 
-                List<int[]> listaRelaciones = obtenerRelacionesGradoSeccion();
-
-                if (!profesorDAO.editarProfGradSecc(profesorId, listaRelaciones)) {
-                    JOptionPane.showMessageDialog(null, "Error al actualizar las relaciones.");
-                    return;
-                }
-
-                JOptionPane.showMessageDialog(null, "Profesor actualizado exitosamente.");
-                ListaProfesores vistaLista = new ListaProfesores();
-                vistaLista.setVisible(true);
-                dispose();
-            } catch (NumberFormatException e) {
-                System.out.println("Error en el formato de los datos numéricos: " + e.getMessage());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el profesor: " + e.getMessage());
-            }
-        } else {
             JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados.");
+            return;
         }
-        
-        if (!esTelefonoValido(txtTelefono.getText())) {
-            JOptionPane.showMessageDialog(null, "El teléfono debe ser un número de 8 dígitos.");
-        } else if (!esNumeroValido(txtEdad.getText())) {
+
+        int edad;
+        try {
+            edad = Integer.parseInt(txtEdad.getText());
+            // Validar que la edad esté entre 1 y 100
+            if (edad <= 0 || edad > 100) {
+                JOptionPane.showMessageDialog(null, "La edad debe ser mayor a 0 y menor o igual a 100.");
+                return;
+            }
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "La edad debe ser un número entero.");
-        } else if (!esNumeroValido(txtIdentificacion.getText())) {
-            JOptionPane.showMessageDialog(null, "El número de identificación debe ser un número entero.");
-        } else if (!esNumeroValido(txtSalario.getText())) {
-            JOptionPane.showMessageDialog(null, "El salario debe ser un número entero.");
-        } else if (!esNumeroValido(txtTipoContrato.getText())) {
-            JOptionPane.showMessageDialog(null, "El tipo de contrato debe ser un número entero.");
-        } else {
-            System.out.println("Datos correctos.");
+            return;
         }
+
+        String identificacion = txtIdentificacion.getText();
+        if (identificacion.length() > 50) {
+            JOptionPane.showMessageDialog(null, "La identificación no puede exceder los 50 caracteres.");
+            return;
+        }
+        if (!esIdentificacionValida(identificacion)) {
+            JOptionPane.showMessageDialog(null, "El número de identificación debe ser un número entero.");
+            return;
+        }
+
+        String telefono = txtTelefono.getText();
+        if (!esTelefonoValido(telefono)) {
+            JOptionPane.showMessageDialog(null, "El teléfono debe ser un número de 8 dígitos.");
+            return;
+        }
+
+        String email = txtEmail.getText();
+        if (!esEmailValido(email)) {
+            JOptionPane.showMessageDialog(null, "El correo debe ser de tipo gmail.com.");
+            return;
+        }
+
+        int salario;
+        try {
+            salario = Integer.parseInt(txtSalario.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El salario debe ser un número entero.");
+            return;
+        }
+
+// Al final del bloque, si todo es correcto, procede a guardar el profesor.
+        profesor.setId(profesorId);
+        profesor.setNombre(txtNombre.getText());
+        profesor.setApellido(txtApeliido.getText());
+        profesor.setEdad(edad);
+        profesor.setIdentificacion(identificacion);
+        profesor.setTipo_identificacion(txtTipoIdentificacion.getSelectedItem().toString());
+        profesor.setTelefono(telefono);
+        profesor.setEmail(email);
+        profesor.setGenero(txtGenero.getSelectedItem().toString());
+        profesor.setDireccion(txtoDireccion.getText());
+        profesor.setEstado_civil(txtEstadoCivil.getSelectedItem().toString());
+        profesor.setEspecialidad(txtEspecialidad.getText());
+        profesor.setSalario(salario);
+        profesor.setEstado_contrato(txtEstadoContrato.getSelectedItem().toString());
+        profesor.setTipo_contrato(txtTipoContrato.getText());
+        profesor.setFecha_nacimiento(txtFechaNacimiento.getDate());
+        profesor.setFecha_contratacion(txtFechaContratacion.getDate());
+        profesor.setFecha_terminacion_contrato(txtFechaTerminacion.getDate());
+
+        try {
+            profesorDAO.editarProfesor(profesor);
+
+            List<int[]> listaRelaciones = obtenerRelacionesGradoSeccion();
+            if (!profesorDAO.editarProfGradSecc(profesorId, listaRelaciones)) {
+                JOptionPane.showMessageDialog(null, "Error al actualizar las relaciones.");
+                return;
+            }
+
+            JOptionPane.showMessageDialog(null, "Profesor actualizado exitosamente.");
+            ListaProfesores vistaLista = new ListaProfesores();
+            vistaLista.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el profesor: " + e.getMessage());
+        }
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

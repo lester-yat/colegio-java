@@ -3,7 +3,11 @@ package views;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import models.Conexion;
 import models.Padre;
 import models.PadreDAO;
@@ -11,11 +15,15 @@ import models.PadreDAO;
 public class ListadoPadre extends javax.swing.JFrame {
     
     Conexion con = new Conexion();
+    
+
   
     
     public ListadoPadre() {
         initComponents();
         cargarTablaPadres();  // Cargar los padres al iniciar el formulario
+        
+         
     }
 
 public void cargarTablaPadres() {
@@ -49,13 +57,10 @@ public void cargarTablaPadres() {
         btnCrear = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
-        campoBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPadre = new javax.swing.JTable();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,7 +69,7 @@ public void cargarTablaPadres() {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCrear.setBackground(new java.awt.Color(0, 0, 0));
-        btnCrear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCrear.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(255, 255, 255));
         btnCrear.setText("Nuevo Padre");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -72,10 +77,10 @@ public void cargarTablaPadres() {
                 btnCrearActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 200, 40));
+        jPanel2.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 200, 40));
 
         btnEditar.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEditar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,10 +88,10 @@ public void cargarTablaPadres() {
                 btnEditarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 200, 40));
+        jPanel2.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 200, 40));
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
-        btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,18 +99,7 @@ public void cargarTablaPadres() {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 200, 40));
-
-        btnBuscar.setBackground(new java.awt.Color(0, 0, 0));
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setText("Buscar");
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 200, 40));
-
-        campoBuscar.setBackground(new java.awt.Color(0, 0, 0));
-        campoBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        campoBuscar.setBorder(null);
-        jPanel2.add(campoBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 670, 30));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, 200, 40));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,6 +118,7 @@ public void cargarTablaPadres() {
         });
         jPanel2.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 40));
 
+        tablaPadre.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tablaPadre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -140,9 +135,6 @@ public void cargarTablaPadres() {
         jScrollPane1.setViewportView(tablaPadre);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 892, 190));
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 670, 10));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 980, 520));
 
@@ -188,7 +180,7 @@ public void cargarTablaPadres() {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         int filaSeleccionada = tablaPadre.getSelectedRow();
 
-        if (filaSeleccionada == -1) {
+        if (filaSeleccionada == -1) {   
             JOptionPane.showMessageDialog(this, "Seleccione un padre de la lista para editar.");
         } else {
             int idPadreSeleccionado = (int) tablaPadre.getValueAt(filaSeleccionada, 0);  // Tomar el ID de la primera columna
@@ -211,6 +203,10 @@ public void cargarTablaPadres() {
         dispose();
     }//GEN-LAST:event_btnCrearActionPerformed
 
+    
+ 
+      
+      
     /**
      * @param args the command line arguments
      */
@@ -250,16 +246,13 @@ public void cargarTablaPadres() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JTextField campoBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tablaPadre;
     // End of variables declaration//GEN-END:variables
 }

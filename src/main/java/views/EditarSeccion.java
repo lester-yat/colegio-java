@@ -203,55 +203,72 @@ public class EditarSeccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if (!"".equals(txtNombre.getText()) && !"".equals(txtHoraInicio.getText()) && 
-            !"".equals(txtHoraFinal.getText()) && selectGrado.getSelectedItem() != null) {
-            try {
-                SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
-                formatoHora.setLenient(false);
 
-                Date horaInicio = formatoHora.parse(txtHoraInicio.getText());
-                Date horaFinal = formatoHora.parse(txtHoraFinal.getText());
 
-                if (horaInicio.after(horaFinal)) {
-                    JOptionPane.showMessageDialog(null, "La hora de inicio debe ser menor que la hora final.");
-                    return;
-                }
+        if (!"".equals(txtNombre.getText()) && !"".equals(txtHoraInicio.getText()) &&
+        !"".equals(txtHoraFinal.getText()) && selectGrado.getSelectedItem() != null) {
 
-                java.sql.Time horarioInicio = new java.sql.Time(horaInicio.getTime());
-                java.sql.Time horarioFinal = new java.sql.Time(horaFinal.getTime());
+    // Validación para que el nombre tenga al menos 3 caracteres
+    if (txtNombre.getText().length() < 1) {
+        JOptionPane.showMessageDialog(null, "El nombre debe tener al menos 1 caracteres.");
+        return;
+    }
 
-                seccion.setHorarioInicio(horarioInicio);
-                seccion.setHorarioFinal(horarioFinal);
-                seccion.setNombre(txtNombre.getText());
-                seccion.setId(seccionId);
+    try {
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+        formatoHora.setLenient(false);
 
-                String selectedGradoNombre = (String) selectGrado.getSelectedItem();
-                Integer gradoId = null;
-                for (Map.Entry<Integer, String> entry : gradoMap.entrySet()) {
-                    if (entry.getValue().equals(selectedGradoNombre)) {
-                        gradoId = entry.getKey();
-                        break;
-                    }
-                }
+        // Validación para verificar el formato de las horas
+        Date horaInicio = formatoHora.parse(txtHoraInicio.getText());
+        Date horaFinal = formatoHora.parse(txtHoraFinal.getText());
 
-                if (gradoId != null) {
-                    seccion.setGrado(gradoId);
-                    seccionDAO.editarSeccion(seccion);
-                    JOptionPane.showMessageDialog(null, "Sección actualizada exitosamente.");
-                    ListaSecciones vistaLista = new ListaSecciones();
-                    vistaLista.setVisible(true);
-                    dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Grado seleccionado no encontrado.");
-                }
-            } catch (ParseException e) {
-                JOptionPane.showMessageDialog(null, "Error en el formato de la hora: " + e.getMessage());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar la sección: " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Los campos están vacíos.");
+        // Validación para que la hora de inicio no sea igual a la hora final
+        if (horaInicio.equals(horaFinal)) {
+            JOptionPane.showMessageDialog(null, "La hora de inicio y la hora final no pueden ser iguales.");
+            return;
         }
+
+        // Validación para que la hora de inicio sea menor que la hora final
+        if (horaInicio.after(horaFinal)) {
+            JOptionPane.showMessageDialog(null, "La hora de inicio debe ser menor que la hora final.");
+            return;
+        }
+
+        seccion.setHorarioInicio(new java.sql.Time(horaInicio.getTime()));
+        seccion.setHorarioFinal(new java.sql.Time(horaFinal.getTime()));
+        seccion.setNombre(txtNombre.getText());
+        seccion.setId(seccionId);
+
+        String selectedGradoNombre = (String) selectGrado.getSelectedItem();
+        Integer gradoId = null;
+        for (Map.Entry<Integer, String> entry : gradoMap.entrySet()) {
+            if (entry.getValue().equals(selectedGradoNombre)) {
+                gradoId = entry.getKey();
+                break;
+            }
+        }
+
+        // Validación para asegurar que el grado existe
+        if (gradoId != null) {
+            seccion.setGrado(gradoId);
+            seccionDAO.editarSeccion(seccion);
+            JOptionPane.showMessageDialog(null, "Sección actualizada exitosamente.");
+            ListaSecciones vistaLista = new ListaSecciones();
+            vistaLista.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Grado seleccionado no encontrado.");
+        }
+    } catch (ParseException e) {
+        JOptionPane.showMessageDialog(null, "Error en el formato de la hora: " + e.getMessage());
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar la sección: " + e.getMessage());
+    }
+} else {
+    JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados.");
+}
+
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

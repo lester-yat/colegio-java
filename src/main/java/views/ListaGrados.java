@@ -3,7 +3,11 @@ package views;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import models.Grado;
 import models.GradoDAO;
 
@@ -13,12 +17,47 @@ public class ListaGrados extends javax.swing.JFrame {
     GradoDAO grado = new GradoDAO();
     DefaultTableModel modelo = new DefaultTableModel();
     private int idSeleccionado;
+    
+    
+      private TableRowSorter<DefaultTableModel> sorter;
+    private boolean isFilterActive = false;
+    
 
     public ListaGrados() {
-        this.setUndecorated(true);
+        
         initComponents();
         ListarGrados();
         this.setLocationRelativeTo(null);
+        
+        
+        sorter = new TableRowSorter<>(modelo);
+        tablaGrados.setRowSorter(sorter);
+        
+        
+               // Agregar listener al campoBuscar para filtrar mientras se escribe
+        campoBuscar.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+        });
+        
     }
 
     public void LimpiarTabla() {
@@ -269,8 +308,26 @@ public class ListaGrados extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+          isFilterActive = true; // Activar el filtro tras hacer clic en el botón Buscar
+        filtrarTabla();
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    
+           private void filtrarTabla() {
+        String query = campoBuscar.getText();
+        if (query.trim().length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + query));
+        }
+    }
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

@@ -3,7 +3,11 @@ package views;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import models.Curso;
 import models.CursoDAO;
 
@@ -14,10 +18,43 @@ public class ListaCursos extends javax.swing.JFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     private int idSeleccionado;
     
+       
+    private TableRowSorter<DefaultTableModel> sorter;
+    private boolean isFilterActive = false;
+    
     public ListaCursos() {
         initComponents();
         this.setLocationRelativeTo(null);
         ListarCursos();
+        
+        
+        sorter = new TableRowSorter<>(modelo);
+        tablaCursos.setRowSorter(sorter);
+        
+        
+               // Agregar listener al campoBuscar para filtrar mientras se escribe
+        campoBuscar2.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if (isFilterActive) {
+                    filtrarTabla();
+                }
+            }
+        });
     }
     
     public void LimpiarTabla() {
@@ -209,8 +246,20 @@ public class ListaCursos extends javax.swing.JFrame {
 
     private void btnBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar2ActionPerformed
         // TODO add your handling code here:
+        
+         isFilterActive = true; // Activar el filtro tras hacer clic en el botón Buscar
+        filtrarTabla();
     }//GEN-LAST:event_btnBuscar2ActionPerformed
     
+    
+          private void filtrarTabla() {
+        String query = campoBuscar2.getText();
+        if (query.trim().length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + query));
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

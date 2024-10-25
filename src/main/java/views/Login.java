@@ -10,7 +10,7 @@ import models.UsuarioDAO;
 public class Login extends javax.swing.JFrame {
 
     public Login() {    
-        this.setUndecorated(true);
+        
         initComponents();
         this.setLocationRelativeTo(null);        
     }
@@ -24,7 +24,6 @@ public class Login extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
         inicio = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -60,18 +59,6 @@ public class Login extends javax.swing.JFrame {
         pass.setForeground(new java.awt.Color(255, 255, 255));
         pass.setBorder(null);
         jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 290, 40));
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("X");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 50, 30));
 
         inicio.setBackground(new java.awt.Color(0, 0, 0));
         inicio.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -144,12 +131,6 @@ public class Login extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_inicioActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -185,7 +166,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton inicio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
