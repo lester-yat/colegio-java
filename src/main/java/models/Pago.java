@@ -3,18 +3,20 @@ package models;
 import java.util.Date;
 
 public class Pago {
+    private int id;
     private int codigoTransaccion;
-    private int tipoTransaccion;
-    private int noCuentaCliente;
-    private int noCuentaDestino;
+    private String tipoTransaccion;
+    private String noCuentaCliente;
+    private String noCuentaDestino;
     private Date fechaHora;
     private double monto;
-    private String estado;
+    private int estado;
 
     public Pago() {
     }
 
-    public Pago(int codigoTransaccion, int tipoTransaccion, int noCuentaCliente, int noCuentaDestino, Date fechaHora, double monto, String estado) {
+    public Pago(int id, int codigoTransaccion, String tipoTransaccion, String noCuentaCliente, String noCuentaDestino, Date fechaHora, double monto, int estado) {
+        this.id = id;
         this.codigoTransaccion = codigoTransaccion;
         this.tipoTransaccion = tipoTransaccion;
         this.noCuentaCliente = noCuentaCliente;
@@ -22,6 +24,14 @@ public class Pago {
         this.fechaHora = fechaHora;
         this.monto = monto;
         this.estado = estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCodigoTransaccion() {
@@ -32,27 +42,27 @@ public class Pago {
         this.codigoTransaccion = codigoTransaccion;
     }
 
-    public int getTipoTransaccion() {
+    public String getTipoTransaccion() {
         return tipoTransaccion;
     }
 
-    public void setTipoTransaccion(int tipoTransaccion) {
+    public void setTipoTransaccion(String tipoTransaccion) {
         this.tipoTransaccion = tipoTransaccion;
     }
 
-    public int getNoCuentaCliente() {
+    public String getNoCuentaCliente() {
         return noCuentaCliente;
     }
 
-    public void setNoCuentaCliente(int noCuentaCliente) {
+    public void setNoCuentaCliente(String noCuentaCliente) {
         this.noCuentaCliente = noCuentaCliente;
     }
 
-    public int getNoCuentaDestino() {
+    public String getNoCuentaDestino() {
         return noCuentaDestino;
     }
 
-    public void setNoCuentaDestino(int noCuentaDestino) {
+    public void setNoCuentaDestino(String noCuentaDestino) {
         this.noCuentaDestino = noCuentaDestino;
     }
 
@@ -72,11 +82,13 @@ public class Pago {
         this.monto = monto;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    
 }
