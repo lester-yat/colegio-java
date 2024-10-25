@@ -64,7 +64,9 @@ public class ListaAlumnos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
+        tablaAlumnos.setBackground(new java.awt.Color(0, 0, 0));
         tablaAlumnos.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        tablaAlumnos.setForeground(new java.awt.Color(0, 0, 0));
         tablaAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -175,7 +177,9 @@ public class ListaAlumnos extends javax.swing.JFrame {
                     .addContainerGap(302, Short.MAX_VALUE)))
         );
 
-        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Users\\samuel\\Desktop\\FRONT-CREATE\\colegio-java\\RECURSOS1\\angulo-izquierdo (1).png")); // NOI18N
+        btnRegresar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setText("Regresar");
         btnRegresar.setBorder(null);
         btnRegresar.setContentAreaFilled(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {

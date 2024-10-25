@@ -35,7 +35,6 @@ public class CrearPadre extends javax.swing.JFrame {
 
         jCheckBox1 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -43,6 +42,7 @@ public class CrearPadre extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         cbParentesco = new javax.swing.JComboBox<>();
@@ -51,7 +51,6 @@ public class CrearPadre extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -60,11 +59,6 @@ public class CrearPadre extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 28)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Creación de Padre");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -99,27 +93,36 @@ public class CrearPadre extends javax.swing.JFrame {
         txtEdad.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
         );
 
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Creación de Padre");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(194, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                    .addComponent(txtApellido)
-                    .addComponent(txtEdad))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                            .addComponent(txtApellido)
+                            .addComponent(txtEdad))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(76, 76, 76)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -134,7 +137,7 @@ public class CrearPadre extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 74, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
         btnCancelar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 255, 204));
@@ -146,7 +149,7 @@ public class CrearPadre extends javax.swing.JFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 540, 100, 40));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 650, 100, 40));
 
         btnGuardar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(0, 255, 204));
@@ -158,7 +161,7 @@ public class CrearPadre extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 100, 40));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 650, 100, 40));
 
         cbParentesco.setBackground(new java.awt.Color(255, 255, 255));
         cbParentesco.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -169,41 +172,38 @@ public class CrearPadre extends javax.swing.JFrame {
                 cbParentescoActionPerformed(evt);
             }
         });
-        jPanel1.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 545, 274, 35));
+        jPanel1.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 530, 274, 35));
 
         txtTelefono.setBackground(new java.awt.Color(0, 0, 0));
         txtTelefono.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
         txtTelefono.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
         );
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 469, 274, 33));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, 274, 33));
 
         txtIdentificacion.setBackground(new java.awt.Color(0, 0, 0));
         txtIdentificacion.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         txtIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
         txtIdentificacion.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
         );
-        jPanel1.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 390, 274, 35));
+        jPanel1.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 274, 35));
 
         jLabel7.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Parentesco");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 555, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Teléfono");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 478, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Identificación");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 404, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\samuel\\Desktop\\FRONT-CREATE\\colegio-java\\RECURSOS1\\MONSTER-GRADUATION.png")); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(651, 175, 470, 310));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 760));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -339,7 +339,6 @@ public class CrearPadre extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtApellido;

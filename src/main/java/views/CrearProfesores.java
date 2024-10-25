@@ -227,7 +227,6 @@ public boolean esTextoValido(String texto) {
         txtTipoIdentificacion = new javax.swing.JComboBox<>();
         txtEstadoCivil = new javax.swing.JComboBox<>();
         txtEstadoContrato = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -238,7 +237,7 @@ public boolean esTextoValido(String texto) {
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Creacion de Profesor");
+        jLabel1.setText("Creación de Profesor");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 330, 60));
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -282,7 +281,7 @@ public boolean esTextoValido(String texto) {
         jLabel5.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("No. Identificacion");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 245, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         txtIdentificacion.setBackground(new java.awt.Color(0, 0, 0));
         txtIdentificacion.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -307,7 +306,7 @@ public boolean esTextoValido(String texto) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 700, 85, 35));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 690, 85, 35));
 
         btnCancelar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 255, 204));
@@ -319,7 +318,7 @@ public boolean esTextoValido(String texto) {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 750, 85, 35));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 600, 85, 35));
 
         jLabel8.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -344,7 +343,7 @@ public boolean esTextoValido(String texto) {
 
         jLabel9.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Telefono");
+        jLabel9.setText("Teléfono");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 110, -1, -1));
 
         txtEmail.setBackground(new java.awt.Color(0, 0, 0));
@@ -370,7 +369,7 @@ public boolean esTextoValido(String texto) {
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Direccion");
+        jLabel11.setText("Dirección");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 194, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -381,7 +380,7 @@ public boolean esTextoValido(String texto) {
         jLabel13.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Tipo Identificacion");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 291, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -398,7 +397,7 @@ public boolean esTextoValido(String texto) {
 
         jLabel15.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Fecha Contratacion");
+        jLabel15.setText("Fecha Contratación");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -426,13 +425,13 @@ public boolean esTextoValido(String texto) {
 
         jLabel19.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Genero");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 386, -1, 21));
+        jLabel19.setText("Género");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, -1, 21));
 
         jLabel20.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Estado Civil");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 430, -1, 21));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, 21));
 
         tablaGrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -482,7 +481,7 @@ public boolean esTextoValido(String texto) {
         btnConsultarGrado.setBackground(new java.awt.Color(0, 255, 204));
         btnConsultarGrado.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         btnConsultarGrado.setForeground(new java.awt.Color(0, 255, 204));
-        btnConsultarGrado.setText("Conultar");
+        btnConsultarGrado.setText("Consultar");
         btnConsultarGrado.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 204)));
         btnConsultarGrado.setContentAreaFilled(false);
         btnConsultarGrado.addActionListener(new java.awt.event.ActionListener() {
@@ -502,7 +501,7 @@ public boolean esTextoValido(String texto) {
                 btnAsignarSeccionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAsignarSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 550, 85, 35));
+        jPanel1.add(btnAsignarSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 540, 85, 35));
 
         btnEliminar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(0, 255, 204));
@@ -514,7 +513,7 @@ public boolean esTextoValido(String texto) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 600, 85, 35));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 750, 85, 35));
 
         txtFechaContratacion.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaContratacion.setForeground(new java.awt.Color(0, 0, 0));
@@ -551,9 +550,6 @@ public boolean esTextoValido(String texto) {
         txtEstadoContrato.setForeground(new java.awt.Color(0, 0, 0));
         txtEstadoContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         jPanel1.add(txtEstadoContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 415, 197, 30));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\samuel\\Desktop\\FRONT-CREATE\\colegio-java\\RECURSOS1\\MONSTER-GRADUATION.png")); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 520, 280, 310));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 850));
 
@@ -786,7 +782,6 @@ try {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

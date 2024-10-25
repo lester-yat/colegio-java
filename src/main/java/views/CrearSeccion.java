@@ -45,7 +45,6 @@ public class CrearSeccion extends javax.swing.JFrame {
         selectGrado = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -55,51 +54,51 @@ public class CrearSeccion extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Creacion de Seccion");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 38, -1, -1));
+        jLabel1.setText("Creación de Sección");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 153, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Horario de Inicio");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 222, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Horario de finalización");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 295, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Grado");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 369, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, -1, -1));
 
         txtNombre.setBackground(new java.awt.Color(0, 0, 0));
         txtNombre.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
         );
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 145, 234, 32));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 234, 32));
 
         txtHoraInicio.setBackground(new java.awt.Color(0, 0, 0));
         txtHoraInicio.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         txtHoraInicio.setForeground(new java.awt.Color(255, 255, 255));
         txtHoraInicio.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
         );
-        jPanel1.add(txtHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 213, 234, 33));
+        jPanel1.add(txtHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 234, 33));
 
         txtHoraFinal.setBackground(new java.awt.Color(0, 0, 0));
         txtHoraFinal.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         txtHoraFinal.setForeground(new java.awt.Color(255, 255, 255));
         txtHoraFinal.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE)
         );
-        jPanel1.add(txtHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 285, 234, 36));
+        jPanel1.add(txtHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 234, 36));
 
-        jPanel1.add(selectGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 359, 234, 35));
+        jPanel1.add(selectGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 234, 35));
 
         btnGuardar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(0, 255, 204));
@@ -111,7 +110,7 @@ public class CrearSeccion extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 550, 100, 40));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 100, 40));
 
         btnCancelar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 255, 204));
@@ -123,10 +122,7 @@ public class CrearSeccion extends javax.swing.JFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 550, 100, 40));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\samuel\\Desktop\\FRONT-CREATE\\colegio-java\\RECURSOS1\\MONSTER-GRADUATION.png")); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(793, 131, 250, 333));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 520, 100, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 660));
 
@@ -249,7 +245,6 @@ public class CrearSeccion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> selectGrado;

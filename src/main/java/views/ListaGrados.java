@@ -102,7 +102,9 @@ public class ListaGrados extends javax.swing.JFrame {
             }
         });
 
+        tablaGrados.setBackground(new java.awt.Color(255, 255, 255));
         tablaGrados.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        tablaGrados.setForeground(new java.awt.Color(0, 0, 0));
         tablaGrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -144,7 +146,9 @@ public class ListaGrados extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Listado de Grados");
 
-        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Users\\samuel\\Desktop\\FRONT-CREATE\\colegio-java\\RECURSOS1\\angulo-izquierdo (1).png")); // NOI18N
+        btnRegresar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setText("Regresar");
         btnRegresar.setBorder(null);
         btnRegresar.setContentAreaFilled(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +200,7 @@ public class ListaGrados extends javax.swing.JFrame {
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85))
                     .addGroup(jPanel1Layout.createSequentialGroup()
