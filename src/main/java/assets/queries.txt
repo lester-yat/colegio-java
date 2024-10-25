@@ -145,3 +145,24 @@ CREATE TABLE inicio (
 -- Insertar un usuario admin con contraseña encriptada
 INSERT INTO inicio (nombre_usuario, contrasenia)
 VALUES ('admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'); -- Hash SHA-256 de 'admin123'
+
+//echo por angel
+
+-- Eliminar la tabla inicio
+DROP TABLE inicio;
+
+CREATE TABLE usuario (
+    id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    nombre_usuario NVARCHAR(50) NOT NULL UNIQUE,
+    contrasenia NVARCHAR(256) NOT NULL,
+    rol NVARCHAR(50) NOT NULL,
+    profesor_id INT NULL, -- Permite NULL
+    alumno_id INT NULL,   -- Permite NULL
+    FOREIGN KEY (profesor_id) REFERENCES profesor(id) ON DELETE SET NULL, -- Cambiado a SET NULL
+    FOREIGN KEY (alumno_id) REFERENCES alumno(id) ON DELETE SET NULL      -- Cambiado a SET NULL
+);
+
+
+-- Insertar un usuario admin con contraseña encriptada
+INSERT INTO usuario (nombre_usuario, contrasenia, rol, profesor_id, alumno_id)
+VALUES ('admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'admin', NULL, NULL);
