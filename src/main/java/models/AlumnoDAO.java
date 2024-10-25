@@ -403,4 +403,26 @@ public class AlumnoDAO {
             System.out.println("Error al insertar la sección del alumno: " + e.toString());
         }
     }
+    
+    
+     public boolean tieneUsuario(int padreId) {
+    boolean tieneUsuario = false;
+    String sql = "SELECT COUNT(*) FROM usuario WHERE alumno_id = ?"; // Ajusta la consulta según tu estructura de base de datos
+
+    try (Connection con = conexion.establecerConexion();
+         PreparedStatement pst = con.prepareStatement(sql)) {
+        
+        pst.setInt(1, padreId);
+        ResultSet rs = pst.executeQuery();
+        
+        if (rs.next()) {
+            tieneUsuario = rs.getInt(1) > 0; // Si el conteo es mayor que 0, el padre tiene un usuario asignado
+        }
+    } catch (SQLException e) {
+        e.printStackTrace(); // Manejo de errores
+    }
+    return tieneUsuario;
+}
+    
+    
 }

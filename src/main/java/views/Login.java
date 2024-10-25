@@ -1,6 +1,10 @@
 package views;
 
+import java.util.List;
 import javax.swing.JOptionPane;
+import models.Nota;
+import models.NotaDAO;
+import models.Usuario;
 import models.UsuarioDAO;
 
 public class Login extends javax.swing.JFrame {
@@ -100,19 +104,45 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
-        String usuario = txtusuario.getText();
-        String contraseña = new String(pass.getPassword());
+        
+         String usuario = txtusuario.getText();
+    String contraseña = new String(pass.getPassword());
 
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-        if (usuarioDAO.validarUsuario(usuario, contraseña)) {
-            Inicio inicio = new Inicio();
-            inicio.setVisible(true);
+    // Validar si el usuario y la contraseña son correctos
+    if (usuarioDAO.validarUsuario(usuario, contraseña)) {
+        // Obtener el objeto Usuario después de la validación exitosa
+        Usuario usuarioLogeado = usuarioDAO.obtenerUsuarioPorNombre(usuario);
+        
+        if (usuarioLogeado != null) {
+            String rol = usuarioLogeado.getRol();
             
-            this.dispose();
-        } else {    
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+            // Abrir la vista correspondiente según el rol del usuario
+            if ("admin".equals(rol)) {
+                Inicio inicioAdmin = new Inicio();
+                inicioAdmin.setVisible(true); // Mostrar la vista de admin
+            } else if ("alumno".equals(rol)) {
+                
+               ViewStudents viewStudents = new ViewStudents(usuarioLogeado.getAlumnoId()); // Pasar el alumnoId
+    viewStudents.setVisible(true); // Mostrar la ventana con las notas del alumno
+    this.dispose(); // Cerrar la ventana de login
+                
+            } else if ("profesor".equals(rol)) {
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Rol desconocido");
+            }
+            
+            this.dispose(); // Cerrar el login
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al obtener los datos del usuario");
         }
+    } else {    
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+    }
+        
+        
     }//GEN-LAST:event_inicioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

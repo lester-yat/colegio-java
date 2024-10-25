@@ -69,4 +69,6 @@ public class Nota {
     public void setCursoID(int cursoID) {
         this.cursoID = cursoID;
     }   
+    
+    
 }

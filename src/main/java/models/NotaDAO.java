@@ -208,4 +208,42 @@ Conexion conexion = new Conexion();
             return false;
         }
     }
+    
+    
+    // echo por angel
+    
+        public List<Nota> obtenerNotasPorAlumnoId(int alumnoId) {
+        List<Nota> notas = new ArrayList<>();
+        Conexion conexion = new Conexion();
+        Connection con = conexion.establecerConexion();
+        
+        String sql = "SELECT * FROM nota WHERE alumno_id = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, alumnoId);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Nota nota = new Nota();
+                nota.setId(rs.getInt("id"));
+                nota.setNombre(rs.getString("nombre"));
+                nota.setCalificacion(rs.getFloat("calificacion"));
+                nota.setFechaRegistro(rs.getDate("fecha_registro"));
+                nota.setAlumnoID(rs.getInt("alumno_id"));
+                nota.setCursoID(rs.getInt("curso_id"));
+                notas.add(nota);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return notas;
+    }
 }
