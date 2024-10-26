@@ -15,10 +15,7 @@ import models.InscripcionDAO;
 
 public class ListaInscripciones extends javax.swing.JFrame {
     
-    
-      private TableRowSorter<DefaultTableModel> sorter;
-    private boolean isFilterActive = false;
-    DefaultTableModel modelo = new DefaultTableModel();
+
     
 
     public ListaInscripciones() {
@@ -28,33 +25,7 @@ public class ListaInscripciones extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         
-        sorter = new TableRowSorter<>(modelo);
-        tablaInscripcion.setRowSorter(sorter);
-        
-        
-               // Agregar listener al campoBuscar para filtrar mientras se escribe
-        campoBuscar.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                if (isFilterActive) {
-                    filtrarTabla();
-                }
-            }
 
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                if (isFilterActive) {
-                    filtrarTabla();
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                if (isFilterActive) {
-                    filtrarTabla();
-                }
-            }
-        });
     }
 
     private void cargarInscripciones() {
@@ -90,8 +61,6 @@ public class ListaInscripciones extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        campoBuscar = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaInscripcion = new javax.swing.JTable();
@@ -99,29 +68,12 @@ public class ListaInscripciones extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        campoBuscar.setBackground(new java.awt.Color(0, 0, 0));
-        campoBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        campoBuscar.setBorder(null);
-        jPanel1.add(campoBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 640, 40));
-
-        btnBuscar.setBackground(new java.awt.Color(0, 0, 0));
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, 50));
 
         btnCrear.setBackground(new java.awt.Color(0, 0, 0));
         btnCrear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -189,9 +141,6 @@ public class ListaInscripciones extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 40));
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 640, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 540));
 
@@ -274,25 +223,8 @@ public class ListaInscripciones extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-    isFilterActive = true; // Activar el filtro tras hacer clic en el botón Buscar
-        filtrarTabla();
-        
-        
-        
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     
-    
-           private void filtrarTabla() {
-        String query = campoBuscar.getText();
-        if (query.trim().length() == 0) {
-            sorter.setRowFilter(null);
-        } else {
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + query));
-        }
-    }
-    
+   
     
     
     /**
@@ -309,16 +241,13 @@ public class ListaInscripciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JTextField campoBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tablaInscripcion;
     // End of variables declaration//GEN-END:variables
 }

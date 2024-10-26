@@ -188,6 +188,18 @@ public class UsuarioDAO {
     return null;
 }
 
+    public int contarAdmins() throws SQLException {
+    String query = "SELECT COUNT(*) FROM usuario WHERE rol = 'admin'";
+    PreparedStatement statement = con.prepareStatement(query);
+    ResultSet rs = statement.executeQuery();
+
+    if (rs.next()) {
+        return rs.getInt(1); // Retorna el conteo de administradores
+    }
+    return 0; // En caso de error, devuelve 0
+}
+
+    
     
     
      

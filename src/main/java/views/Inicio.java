@@ -91,7 +91,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("INICIO");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 140, 60));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 140, 60));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -102,7 +102,7 @@ public class Inicio extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 200, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 50));
 
         btnPadres.setBackground(new java.awt.Color(0, 0, 0));
         btnPadres.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -135,7 +135,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnNotasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 200, 50));
+        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 200, 50));
 
         btnCursos.setBackground(new java.awt.Color(0, 0, 0));
         btnCursos.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -172,7 +172,7 @@ public class Inicio extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 190, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 190, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 540));
 
@@ -248,9 +248,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-                AsgUA listaCursos = new AsgUA();
-        listaCursos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        listaCursos.setVisible(true);
+        ListU Listu = new ListU();
+        Listu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Listu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
