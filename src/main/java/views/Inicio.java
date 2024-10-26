@@ -24,7 +24,7 @@ public class Inicio extends javax.swing.JFrame {
         btnProfesores = new javax.swing.JButton();
         btnSecciones = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnPagos = new javax.swing.JButton();
         btnPadres = new javax.swing.JButton();
         btnInscripcion = new javax.swing.JButton();
         btnNotas = new javax.swing.JButton();
@@ -35,6 +35,8 @@ public class Inicio extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,18 +93,18 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("INICIO");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 140, 60));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 140, 60));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cerrar Sesion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPagos.setBackground(new java.awt.Color(0, 0, 0));
+        btnPagos.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnPagos.setForeground(new java.awt.Color(255, 255, 255));
+        btnPagos.setText("Pagos");
+        btnPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPagosActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 50));
+        jPanel1.add(btnPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 200, 50));
 
         btnPadres.setBackground(new java.awt.Color(0, 0, 0));
         btnPadres.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -135,7 +137,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnNotasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 200, 50));
+        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 200, 50));
 
         btnCursos.setBackground(new java.awt.Color(0, 0, 0));
         btnCursos.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -172,7 +174,21 @@ public class Inicio extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 190, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 200, 50));
+
+        btnSalir.setBackground(new java.awt.Color(0, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("Cerrar Sesion");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 200, 50));
+
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, 420, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 540));
 
@@ -208,13 +224,12 @@ public class Inicio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnAlumnosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Login inicio = new Login();
-        inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        inicio.setVisible(true);
+    private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
+        ListarPagos listaPagos = new ListarPagos();
+        listaPagos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        listaPagos.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnPagosActionPerformed
 
     private void btnPadresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPadresActionPerformed
         // TODO add your handling code here:
@@ -247,12 +262,18 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCursosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        ListU Listu = new ListU();
+   ListU Listu = new ListU();
         Listu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Listu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        Login inicio = new Login();
+        inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,9 +317,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnInscripcion;
     private javax.swing.JButton btnNotas;
     private javax.swing.JButton btnPadres;
+    private javax.swing.JButton btnPagos;
     private javax.swing.JButton btnProfesores;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSecciones;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -307,5 +329,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     // End of variables declaration//GEN-END:variables
 }

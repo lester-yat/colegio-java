@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 views\Inicio$2.class
 views\CrearGrado$3.class
 views\CrearSeccion$1.class
@@ -232,3 +233,5 @@ views\CrearNota$2.class
 views\Login$1.class
 views\ListadoPadre.class
 views\Adminuser$3.class
+=======
+>>>>>>> bf9a80cbd2cebf7ca430545c294e594a1a9c66f5
