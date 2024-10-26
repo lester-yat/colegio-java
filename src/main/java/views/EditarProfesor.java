@@ -3,8 +3,10 @@ package views;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.Grado;
@@ -117,14 +119,24 @@ public class EditarProfesor extends javax.swing.JFrame {
 
     public List<int[]> obtenerRelacionesGradoSeccion() {
         List<int[]> listaRelaciones = new ArrayList<>();
+        Set<String> relacionesUnicas = new HashSet<>();  // Para evitar duplicados
+
         for (int i = 0; i < modeloGradoSeccion.getRowCount(); i++) {
             int idGrado = (int) modeloGradoSeccion.getValueAt(i, 0);
             Integer idSeccion = (Integer) modeloGradoSeccion.getValueAt(i, 2);
 
             if (idSeccion != null) {
+                String claveUnica = idGrado + "-" + idSeccion;  // Combina grado y sección
+
+                if (!relacionesUnicas.add(claveUnica)) {
+                    JOptionPane.showMessageDialog(null,
+                            "La sección ya ha sido agregada.");
+                    return Collections.emptyList();  // Evita continuar si hay duplicados
+                }
                 listaRelaciones.add(new int[]{idGrado, idSeccion});
             } else {
-                JOptionPane.showMessageDialog(null, "Todos los registros deben tener una sección asignada.");
+                JOptionPane.showMessageDialog(null,
+                        "Todos los registros deben tener una sección asignada.");
                 return Collections.emptyList();
             }
         }
@@ -208,9 +220,9 @@ public class EditarProfesor extends javax.swing.JFrame {
         return email.matches("^[a-zA-Z0-9._%+-]+@gmail\\.com$");
     }
 
-// Método para validar identificación
+    // Método para validar identificación
     public boolean esIdentificacionValida(String identificacion) {
-        return identificacion.matches("\\d+"); // Comprueba si solo contiene dígitos
+        return identificacion.matches("[\\d-]+"); // Permite dígitos y guiones
     }
 
     @SuppressWarnings("unchecked")
@@ -621,7 +633,7 @@ public class EditarProfesor extends javax.swing.JFrame {
             return;
         }
         if (!esIdentificacionValida(identificacion)) {
-            JOptionPane.showMessageDialog(null, "El número de identificación debe ser un número entero.");
+            JOptionPane.showMessageDialog(null, "El número de identificación debe ser un número entero con guiones en vez de espacios.");
             return;
         }
 
@@ -669,6 +681,13 @@ public class EditarProfesor extends javax.swing.JFrame {
             profesorDAO.editarProfesor(profesor);
 
             List<int[]> listaRelaciones = obtenerRelacionesGradoSeccion();
+
+            // Validación para detener si el arreglo está vacío
+            if (listaRelaciones == null || listaRelaciones.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe asignar al menos una relación de grado y sección.");
+                return;
+            }
+
             if (!profesorDAO.editarProfGradSecc(profesorId, listaRelaciones)) {
                 JOptionPane.showMessageDialog(null, "Error al actualizar las relaciones.");
                 return;
@@ -679,9 +698,9 @@ public class EditarProfesor extends javax.swing.JFrame {
             vistaLista.setVisible(true);
             dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el profesor: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,
+                    "Ocurrió un error al guardar el profesor: " + e.getMessage());
         }
-
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

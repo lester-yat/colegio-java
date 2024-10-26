@@ -248,17 +248,15 @@ public class CrearPadre extends javax.swing.JFrame {
             return;
         }
 
-// Validación de identificación (número entero)
-        try {
-            Integer.parseInt(txtIdentificacion.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "La identificación debe ser un número entero.");
-            return;
-        }
-
 // Validación de parentesco
         if (cbParentesco.getSelectedItem() == null || "".equals(cbParentesco.getSelectedItem().toString())) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un parentesco.");
+            return;
+        }
+        
+        String identificacion = txtIdentificacion.getText();
+        if (identificacion.length() > 50) {
+            JOptionPane.showMessageDialog(null, "La identificación no puede exceder los 50 caracteres.");
             return;
         }
 

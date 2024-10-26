@@ -3,7 +3,9 @@ package views;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.Grado;
@@ -114,14 +116,24 @@ public class CrearProfesores extends javax.swing.JFrame {
 
     public List<int[]> obtenerRelacionesGradoSeccion() {
         List<int[]> listaRelaciones = new ArrayList<>();
+        Set<String> relacionesUnicas = new HashSet<>();  // Para evitar duplicados
+
         for (int i = 0; i < modeloGradoSeccion.getRowCount(); i++) {
             int idGrado = (int) modeloGradoSeccion.getValueAt(i, 0);
             Integer idSeccion = (Integer) modeloGradoSeccion.getValueAt(i, 2);
 
             if (idSeccion != null) {
+                String claveUnica = idGrado + "-" + idSeccion;  // Combina grado y sección
+
+                if (!relacionesUnicas.add(claveUnica)) {
+                    JOptionPane.showMessageDialog(null,
+                            "La sección ya ha sido agregada.");
+                    return Collections.emptyList();
+                }
                 listaRelaciones.add(new int[]{idGrado, idSeccion});
             } else {
-                JOptionPane.showMessageDialog(null, "Todos los registros deben tener una sección asignada.");
+                JOptionPane.showMessageDialog(null,
+                        "Todos los registros deben tener una sección asignada.");
                 return Collections.emptyList();
             }
         }
@@ -163,7 +175,7 @@ public boolean esEmailValido(String email) {
 
 // Método para validar identificación
 public boolean esIdentificacionValida(String identificacion) {
-    return identificacion.matches("\\d+"); // Comprueba si solo contiene dígitos
+    return identificacion.matches("[\\d-]+"); // Permite dígitos y guiones
 }
 
 
@@ -593,7 +605,7 @@ if (txtEmail.getText() == null || !esEmailValido(txtEmail.getText())) {
     return;
 }
 if (txtIdentificacion.getText() == null || !esIdentificacionValida(txtIdentificacion.getText())) {
-    JOptionPane.showMessageDialog(null, "La identificación debe ser un número válido.");
+    JOptionPane.showMessageDialog(null, "El número de identificación debe ser un número entero con guiones en vez de espacios.");
     return;
 }
 if (!esTelefonoValido(txtTelefono.getText())) {
