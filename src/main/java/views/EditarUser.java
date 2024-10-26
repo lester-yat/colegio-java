@@ -89,7 +89,7 @@ private Usuario usuario;
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 351, -1, -1));
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, -1, -1));
 
         guardar.setBackground(new java.awt.Color(0, 0, 0));
         guardar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -100,7 +100,7 @@ private Usuario usuario;
                 guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 351, -1, -1));
+        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -134,39 +134,46 @@ private Usuario usuario;
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         
 
-               // Obtiene los datos de los campos de texto
-    String nombreUsuario = user.getText().trim();
-    String contrasenia = pass.getText().trim();
-    
-    // Verifica que los campos no estén vacíos
-    if (nombreUsuario.isEmpty() || contrasenia.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.");
-        return; // Salir del método si hay campos vacíos
+        // Obtiene los datos de los campos de texto
+String nombreUsuario = user.getText().trim();
+String contrasenia = pass.getText().trim();
+
+// Verifica que los campos no estén vacíos
+if (nombreUsuario.isEmpty() || contrasenia.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.");
+    return; // Salir del método si hay campos vacíos
+}
+
+UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+try {
+    // Verifica si el nombre de usuario ya existe y no es el mismo que el usuario actual
+    if (!usuario.getNombreUsuario().equals(nombreUsuario) && usuarioDAO.existeUsuario(nombreUsuario)) {
+        JOptionPane.showMessageDialog(this, "El nombre de usuario ya está en uso. Por favor, elige otro.");
+        return;
     }
 
     // Asigna los datos al objeto Usuario
     usuario.setNombreUsuario(nombreUsuario);
-    usuario.setContrasenia(Seguridad.encriptarSHA256(contrasenia)); // Encriptar la contraseña antes de guardarla
+    usuario.setContrasenia(Seguridad.encriptarSHA256(contrasenia)); // Encripta la contraseña
 
-    // Crea una instancia de UsuarioDAO para actualizar el usuario
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    // Actualiza el usuario en la base de datos
+    boolean actualizado = usuarioDAO.actualizarUsuario(usuario);
+    if (actualizado) {
+        JOptionPane.showMessageDialog(this, "Usuario actualizado con éxito.");
 
-    try {
-        // Actualiza el usuario en la base de datos
-        boolean actualizado = usuarioDAO.actualizarUsuario(usuario);
-        if (actualizado) {
-            JOptionPane.showMessageDialog(this, "Usuario actualizado con éxito.");
-
-            // Aquí debes abrir la vista ListU y cerrar la ventana actual
-            ListU listUFrame = new ListU(); // Asegúrate de que ListU tenga un constructor sin parámetros
-            listUFrame.setVisible(true);
-            this.dispose(); // Cierra la ventana de edición
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al actualizar el usuario. Por favor, inténtelo de nuevo.");
-        }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Error al actualizar los datos del usuario: " + e.getMessage());
+        // Regresa a la vista ListU y cierra la ventana actual
+        ListU listUFrame = new ListU(); 
+        listUFrame.setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Error al actualizar el usuario. Por favor, inténtelo de nuevo.");
     }
+} catch (SQLException e) {
+    JOptionPane.showMessageDialog(this, "Error al actualizar los datos del usuario: " + e.getMessage());
+}
+       
+        
     }//GEN-LAST:event_guardarActionPerformed
 
     /**

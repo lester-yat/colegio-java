@@ -92,43 +92,49 @@ public class Login extends javax.swing.JFrame {
 
     private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
         
-         String usuario = txtusuario.getText();
-    String contraseña = new String(pass.getPassword());
-
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
-
-    // Validar si el usuario y la contraseña son correctos
-    if (usuarioDAO.validarUsuario(usuario, contraseña)) {
-        // Obtener el objeto Usuario después de la validación exitosa
-        Usuario usuarioLogeado = usuarioDAO.obtenerUsuarioPorNombre(usuario);
         
-        if (usuarioLogeado != null) {
-            String rol = usuarioLogeado.getRol();
-            
-            // Abrir la vista correspondiente según el rol del usuario
-            if ("admin".equals(rol)) {
-                Inicio inicioAdmin = new Inicio();
-                inicioAdmin.setVisible(true); // Mostrar la vista de admin
-            } else if ("alumno".equals(rol)) {
-                
-               ViewStudents viewStudents = new ViewStudents(usuarioLogeado.getAlumnoId()); // Pasar el alumnoId
-    viewStudents.setVisible(true); // Mostrar la ventana con las notas del alumno
-    this.dispose(); // Cerrar la ventana de login
-                
-            } else if ("profesor".equals(rol)) {
-                
+        String usuario = txtusuario.getText();
+String contraseña = new String(pass.getPassword());
+
+UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+// Validar si el usuario y la contraseña son correctos
+if (usuarioDAO.validarUsuario(usuario, contraseña)) {
+    // Obtener el objeto Usuario después de la validación exitosa
+    Usuario usuarioLogeado = usuarioDAO.obtenerUsuarioPorNombre(usuario);
+    
+    if (usuarioLogeado != null) {
+        String rol = usuarioLogeado.getRol();
+        
+        // Abrir la vista correspondiente según el rol del usuario
+        if ("admin".equals(rol)) {
+            Inicio inicioAdmin = new Inicio();
+            inicioAdmin.setVisible(true); // Mostrar la vista de admin
+            this.dispose(); // Cerrar la ventana de login
+        } else if ("alumno".equals(rol)) {
+            Integer alumnoId = usuarioLogeado.getAlumnoId();
+            if (alumnoId != null) {
+                ViewStudents viewStudents = new ViewStudents(alumnoId); // Pasar el alumnoId
+                viewStudents.setVisible(true); // Mostrar la ventana con las notas del alumno
+                this.dispose(); // Cerrar la ventana de login
             } else {
-                JOptionPane.showMessageDialog(this, "Rol desconocido");
+                JOptionPane.showMessageDialog(this, "Este alumno fue eliminado y ya no tiene acceso.");
             }
-            
-            this.dispose(); // Cerrar el login
+        } else if ("profesor".equals(rol)) {
+            // Implementación para el rol profesor
+            this.dispose(); // Cerrar la ventana de login
         } else {
-            JOptionPane.showMessageDialog(this, "Error al obtener los datos del usuario");
+            JOptionPane.showMessageDialog(this, "Rol desconocido");
+            this.dispose(); // Cerrar la ventana de login
         }
-    } else {    
-        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+    } else {
+        JOptionPane.showMessageDialog(this, "Error al obtener los datos del usuario");
     }
-        
+} else {    
+    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+}
+
+       
         
     }//GEN-LAST:event_inicioActionPerformed
     

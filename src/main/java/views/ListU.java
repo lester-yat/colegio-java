@@ -162,7 +162,7 @@ public class ListU extends javax.swing.JFrame {
         });
         jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 6, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 460));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -235,7 +235,9 @@ public class ListU extends javax.swing.JFrame {
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         // TODO add your handling code here:
-   int selectedRow = tablaU.getSelectedRow();
+  
+        
+        int selectedRow = tablaU.getSelectedRow();
     
     // Verifica que una fila esté seleccionada
     if (selectedRow != -1) {

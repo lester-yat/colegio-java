@@ -176,60 +176,62 @@ Conexion con = new Conexion();
     private void asigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asigActionPerformed
         // TODO add your handling code here:
         
-            String usuario = user.getText();
-    String contrasenia = pass.getText();
+            // Obtener los valores del nombre de usuario y contraseña
+String usuario = user.getText().trim();
+String contrasenia = pass.getText().trim();
 
-    // Validar que los campos no estén vacíos
-    if (usuario.isEmpty() || contrasenia.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "El usuario y la contraseña no deben estar vacíos");
-        return;
+// Validar que los campos no estén vacíos
+if (usuario.isEmpty() || contrasenia.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "El usuario y la contraseña no deben estar vacíos");
+    return;
+}
+
+// Obtener el ID del alumno seleccionado en la tabla de alumnos
+int filaSeleccionada = Alumnos.getSelectedRow();
+if (filaSeleccionada < 0) {
+    JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno en la tabla de alumnos");
+    return;
+}
+
+int alumnoId = (int) Alumnos.getValueAt(filaSeleccionada, 0);
+String contraseniaEncriptada = Seguridad.encriptarSHA256(contrasenia);
+String rol = "alumno";
+
+// Crear el objeto Usuario con los datos obtenidos
+Usuario nuevoUsuario = new Usuario();
+nuevoUsuario.setNombreUsuario(usuario);
+nuevoUsuario.setContrasenia(contraseniaEncriptada);
+nuevoUsuario.setRol(rol);
+nuevoUsuario.setAlumnoId(alumnoId);
+
+// Crear instancia de UsuarioDAO
+UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+try {
+    // Verificar si el nombre de usuario ya existe
+    if (usuarioDAO.existeUsuario(usuario)) {
+        JOptionPane.showMessageDialog(this, "El nombre de usuario ya está en uso, elige otro.");
+        return; // Detener el proceso si el usuario existe
     }
-
-    // Obtener el ID del alumno seleccionado en la tabla de alumnos
-    int filaSeleccionada = Alumnos.getSelectedRow();
-    if (filaSeleccionada < 0) {
-        JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno en la tabla de alumnos");
-        return;
-    }
-
-    // Obtener el ID del alumno seleccionado
-    int alumnoId = (int) Alumnos.getValueAt(filaSeleccionada, 0);
-
-    // Encriptar la contraseña usando el método de la clase Seguridad
-    String contraseniaEncriptada = Seguridad.encriptarSHA256(contrasenia);
-
-    // Asignar rol por defecto "alumno"
-    String rol = "alumno";
-
-    // Crear el objeto Usuario con los datos obtenidos
-    Usuario nuevoUsuario = new Usuario();
-    nuevoUsuario.setNombreUsuario(usuario);
-    nuevoUsuario.setContrasenia(contraseniaEncriptada);
-    nuevoUsuario.setRol(rol);
-    nuevoUsuario.setAlumnoId(alumnoId);
-
+    
     // Insertar el nuevo usuario en la base de datos
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
-    try {
-        usuarioDAO.insertarUsuario(nuevoUsuario);
+    usuarioDAO.insertarUsuario(nuevoUsuario);
+    JOptionPane.showMessageDialog(this, 
+        "Usuario asignado correctamente.\nUsuario: " + usuario + "\nContraseña: " + contrasenia,
+        "Asignación exitosa", 
+        JOptionPane.INFORMATION_MESSAGE);
+    
+    // Limpiar campos de texto
+    user.setText("");
+    pass.setText("");
 
-        // Confirmación de la asignación
-        JOptionPane.showMessageDialog(this, 
-            "Usuario asignado correctamente.\nUsuario: " + usuario + "\nContraseña: " + contrasenia,
-            "Asignación exitosa", 
-            JOptionPane.INFORMATION_MESSAGE);
-        
-        // Limpiar campos de texto
-        user.setText("");
-        pass.setText("");
+    // Recargar la tabla para reflejar los cambios (si aplicable)
+    cargarTablaAlumnos();
 
-        // Recargar la tabla para reflejar los cambios (si aplicable)
-        cargarTablaAlumnos();
+} catch (SQLException e) {
+    JOptionPane.showMessageDialog(this, "Error al asignar usuario: " + e.getMessage());
+}
 
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Error al asignar usuario: " + e.getMessage());
-    }
-        
     }//GEN-LAST:event_asigActionPerformed
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed

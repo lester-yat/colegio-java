@@ -39,10 +39,10 @@ private int alumnoId;
     Object[] fila = new Object[6]; // El tamaño de la fila debe coincidir con el número de columnas
     for (Nota nota : listaNotas) {
         fila[0] = nota.getNombre(); // Asegúrate de tener este campo en el objeto Nota
-        fila[2] = nota.getCursoID();  // Si tienes un método para obtener el nombre del curso, puedes usarlo aquí
-        fila[3] = nota.getNombre();  // O un campo para la tarea o actividad
-        fila[4] = nota.getCalificacion();
-        fila[5] = nota.getFechaRegistro();
+        fila[1] = nota.getCursoID();  // Si tienes un método para obtener el nombre del curso, puedes usarlo aquí
+        fila[2] = nota.getNombre();  // O un campo para la tarea o actividad
+        fila[3] = nota.getCalificacion();
+        fila[4] = nota.getFechaRegistro();
         modelo.addRow(fila);
     }
     
@@ -80,7 +80,7 @@ private int alumnoId;
 
             },
             new String [] {
-                "Nombre", "Apellido", "Curso", "Tarea", "Nota ", "Fecha"
+                "Nombre", "Id_Curso", "Tarea", "Nota ", "Fecha"
             }
         ));
         jScrollPane1.setViewportView(notas);

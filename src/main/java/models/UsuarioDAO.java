@@ -200,7 +200,18 @@ public class UsuarioDAO {
 }
 
     
-    
+        // Método para verificar si el nombre de usuario ya existe
+    public boolean existeUsuario(String nombreUsuario) throws SQLException {
+        String query = "SELECT COUNT(*) FROM usuario WHERE nombre_usuario = ?";
+        try (PreparedStatement statement = con.prepareStatement(query)) {
+            statement.setString(1, nombreUsuario);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0; // Retorna true si el usuario existe
+            }
+        }
+        return false;
+    }
     
      
 }

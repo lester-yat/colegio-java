@@ -125,41 +125,48 @@ public class Adminuser extends javax.swing.JFrame {
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
 
         // Obtener los valores de los campos de texto
-    String nombreUsuario = user.getText().trim();
-    String contrasenia = pass.getText().trim();
-    
-    // Verificar que los campos no estén vacíos
-    if (nombreUsuario.isEmpty() || contrasenia.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.");
-        return; // Salir del método si hay campos vacíos
+String nombreUsuario = user.getText().trim();
+String contrasenia = pass.getText().trim();
+
+// Verificar que los campos no estén vacíos
+if (nombreUsuario.isEmpty() || contrasenia.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.");
+    return; // Salir del método si hay campos vacíos
+}
+
+// Crear una instancia de UsuarioDAO para realizar las verificaciones e inserción
+UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+try {
+    // Verificar si el usuario ya existe
+    if (usuarioDAO.existeUsuario(nombreUsuario)) {
+        JOptionPane.showMessageDialog(this, "El nombre de usuario ya está en uso. Por favor, elige otro.");
+        return; // Salir del método si el usuario ya existe
     }
 
-    // Crear un nuevo objeto Usuario
+    // Crear un nuevo objeto Usuario y encriptar la contraseña
     Usuario nuevoUsuario = new Usuario();
     nuevoUsuario.setNombreUsuario(nombreUsuario);
-    nuevoUsuario.setContrasenia(Seguridad.encriptarSHA256(contrasenia)); // Encriptar la contraseña
-    nuevoUsuario.setRol("admin"); // Establecer rol como admin
+    nuevoUsuario.setContrasenia(Seguridad.encriptarSHA256(contrasenia));
+    nuevoUsuario.setRol("admin");
 
-    // Crear una instancia de UsuarioDAO para insertar el nuevo usuario
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    // Insertar el nuevo usuario en la base de datos
+    boolean insertado = usuarioDAO.insertarUsuario(nuevoUsuario);
+    if (insertado) {
+        JOptionPane.showMessageDialog(this, "Usuario admin agregado con éxito.");
 
-    try {
-        // Insertar el nuevo usuario en la base de datos
-        boolean insertado = usuarioDAO.insertarUsuario(nuevoUsuario);
-        if (insertado) {
-            JOptionPane.showMessageDialog(this, "Usuario admin agregado con éxito.");
-
-            // Regresar a la vista ListU
-            ListU listUFrame = new ListU(); // Asegúrate de que ListU sea la clase de la vista que quieres mostrar
-            listUFrame.setVisible(true);
-            this.dispose(); // Cerrar la ventana actual
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al agregar el usuario. Por favor, inténtelo de nuevo.");
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Ocurrió un error al agregar el usuario: " + e.getMessage());
+        // Regresar a la vista ListU
+        ListU listUFrame = new ListU();
+        listUFrame.setVisible(true);
+        this.dispose(); // Cerrar la ventana actual
+    } else {
+        JOptionPane.showMessageDialog(this, "Error al agregar el usuario. Por favor, inténtelo de nuevo.");
     }
+} catch (SQLException e) {
+    e.printStackTrace();
+    JOptionPane.showMessageDialog(this, "Ocurrió un error al agregar el usuario: " + e.getMessage());
+}
+
     }//GEN-LAST:event_agregarActionPerformed
 
     /**
