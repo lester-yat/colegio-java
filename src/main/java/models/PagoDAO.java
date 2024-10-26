@@ -104,7 +104,7 @@ public class PagoDAO {
     }
     
     public int guardarPago(Pago pago) {
-        String sql = "INSERT INTO pago (codigo_transaccion, tipo_transaccion, no_cuenta_cliente, no_cuenta_destino, fecha_hora, monto, estado_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pago (codigo_transaccion, tipo_transaccion, no_cuenta_cliente, no_cuenta_destino, fecha_hora, monto, estado_id, id_inscripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         int idGenerado = -1;
 
         try (PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -116,6 +116,7 @@ public class PagoDAO {
             ps.setDate(5, new java.sql.Date(pago.getFechaHora().getTime()));
             ps.setDouble(6, pago.getMonto());
             ps.setInt(7, pago.getEstado());
+            ps.setInt(8, 0);
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -159,11 +160,24 @@ public class PagoDAO {
     }
     
     public boolean editarPago(Pago pago) {
-        String sql = "UPDATE pago SET codigo_transaccion = ?, tipo_transaccion = ?, no_cuenta_cliente = ?, no_cuenta_destino = ?, fecha_hora = ?, monto = ?, estado_id = ? WHERE id = ?";
+        String sqlConsulta = "SELECT id_inscripcion FROM pago WHERE id = ?";
+        int idInscripcion = 0;
+        
+        try (PreparedStatement psConsulta = con.prepareStatement(sqlConsulta)) {
+            psConsulta.setInt(1, pago.getId());
+            try (ResultSet rs = psConsulta.executeQuery()) {
+                if (rs.next()) {
+                    idInscripcion = rs.getInt("id_inscripcion");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al consultar id_inscripcion: " + e.toString());
+            return false;
+        }
+        
+        String sql = "UPDATE pago SET codigo_transaccion = ?, tipo_transaccion = ?, no_cuenta_cliente = ?, no_cuenta_destino = ?, fecha_hora = ?, monto = ?, estado_id = ?, id_inscripcion = ? WHERE id = ?";
 
-        try (
-            PreparedStatement ps = con.prepareStatement(sql)) {
-
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, pago.getCodigoTransaccion());
             ps.setString(2, pago.getTipoTransaccion());
             ps.setString(3, pago.getNoCuentaCliente());
@@ -171,14 +185,30 @@ public class PagoDAO {
             ps.setDate(5, new java.sql.Date(pago.getFechaHora().getTime()));
             ps.setDouble(6, pago.getMonto());
             ps.setInt(7, pago.getEstado());
-            ps.setInt(8, pago.getId());
+            ps.setInt(8, idInscripcion != 0 ? idInscripcion : 0);
+            ps.setInt(9, pago.getId());
 
             int rows = ps.executeUpdate();
-            return rows > 0;
             
+            if(idInscripcion != 0){
+                actualizarInscripcion(pago, idInscripcion);
+            }
+            
+            return rows > 0;
         } catch (SQLException e) {
-            System.out.println("Error al actualizar el alumno: " + e.toString());
+            System.out.println("Error al actualizar el pago: " + e.toString());
             return false;
+        }
+    }
+    
+    public void actualizarInscripcion(Pago pago, int idInscripcion) {
+        String updateSql = "UPDATE inscripcion SET estado = ? WHERE id = ?";
+        try (PreparedStatement psUpdate = con.prepareStatement(updateSql)) {
+            psUpdate.setString(1, obtenerEstadoInicial(pago.getEstado()));
+            psUpdate.setInt(2, idInscripcion);
+            psUpdate.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar la inscripción: " + e.getMessage());
         }
     }
     

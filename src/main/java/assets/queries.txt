@@ -104,7 +104,7 @@ CREATE TABLE nota (
     alumno_id INT,
     curso_id INT,
     FOREIGN KEY (alumno_id) REFERENCES alumno(id) ON DELETE CASCADE,
-    FOREIGN KEY (curso_id) REFERENCES curso(id) ON DELETE SET NULL
+    FOREIGN KEY (curso_id) REFERENCES curso(id) ON DELETE CASCADE,
 );
 
 -- Crear la tabla profesor_grado
@@ -120,10 +120,10 @@ CREATE TABLE profesor_grado (
 -- Crear la tabla alumno_seccion
 CREATE TABLE alumno_seccion (
     alumno_id INT NOT NULL,
-    seccion_id INT NULL,
-    PRIMARY KEY (alumno_id),
+    seccion_id INT NOT NULL,  -- Cambiado a NOT NULL
+    PRIMARY KEY (alumno_id, seccion_id),  -- Clave primaria compuesta
     FOREIGN KEY (alumno_id) REFERENCES alumno(id) ON DELETE CASCADE,
-    FOREIGN KEY (seccion_id) REFERENCES seccion(id) ON DELETE SET NULL
+    FOREIGN KEY (seccion_id) REFERENCES seccion(id) ON DELETE CASCADE
 );
 
 -- Crear la tabla alumno_padre

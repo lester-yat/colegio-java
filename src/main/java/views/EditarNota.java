@@ -31,7 +31,6 @@ public class EditarNota extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         cargarAlumnos();
-        cargarCursos();
         this.notaId = notaId;
         
         Nota nota = notaDAO.consultarDatos(notaId);
@@ -70,8 +69,8 @@ public class EditarNota extends javax.swing.JFrame {
         }
     }
     
-    public void cargarCursos(){
-        List<Curso> cursos = notaDAO.listarCursos();
+    public void cargarCursos(int idAlumno){
+        List<Curso> cursos = notaDAO.cargarCursos(idAlumno);
         selectCurso.removeAllItems();
         for (Curso curso : cursos) {
             cursoMap.put(curso.getId(), curso.getNombre());
@@ -148,6 +147,11 @@ public class EditarNota extends javax.swing.JFrame {
         selectAlumno.setBackground(new java.awt.Color(0, 0, 0));
         selectAlumno.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         selectAlumno.setForeground(new java.awt.Color(255, 255, 255));
+        selectAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectAlumnoActionPerformed(evt);
+            }
+        });
         jPanel1.add(selectAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 250, -1));
 
         selectCurso.setBackground(new java.awt.Color(0, 0, 0));
@@ -263,6 +267,18 @@ public class EditarNota extends javax.swing.JFrame {
 }
 
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void selectAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAlumnoActionPerformed
+        int idAlumno = 0;
+        List<Alumno> alumnos = notaDAO.listarAlumnos();
+            for (Alumno alumno : alumnos) {
+                    if ((alumno.getNombre() + " " + alumno.getApellido()).equals(selectAlumno.getSelectedItem())) {
+                        idAlumno = alumno.getId();
+                        break;
+                    }
+                }
+        cargarCursos(idAlumno);
+    }//GEN-LAST:event_selectAlumnoActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

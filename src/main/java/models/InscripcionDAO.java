@@ -28,30 +28,93 @@ public class InscripcionDAO {
     }
 
     public int guardarInscripcion(Inscripcion inscripcion) {
-        String sql = "INSERT INTO inscripcion (alumno_id, grado_id, fecha_inscripcion, numero_cuenta, monto, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO inscripcion (alumno_id, grado_id, fecha_inscripcion, numero_cuenta, monto, estado) " +
+                     "VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection con = conexion.establecerConexion(); 
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        try {
-            Connection con = conexion.establecerConexion();
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, inscripcion.getAlumnoId());
             ps.setInt(2, inscripcion.getGradoId());
             ps.setDate(3, new java.sql.Date(inscripcion.getFechaInscripcion().getTime()));
-            ps.setString(4, inscripcion.getNumeroCuenta());  // Nuevo campo
-            ps.setDouble(5, inscripcion.getMonto());  // Nuevo campo
-            ps.setString(6, inscripcion.getEstado());  // Nuevo campo
-
+            ps.setString(4, inscripcion.getNumeroCuenta());
+            ps.setDouble(5, inscripcion.getMonto());
+            ps.setString(6, inscripcion.getEstado());
+            
             int rows = ps.executeUpdate();
             if (rows > 0) {
-                ResultSet generatedKeys = ps.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1);
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int idInscripcion = generatedKeys.getInt(1);
+                        guardarPago(inscripcion, idInscripcion);
+                        return idInscripcion;
+                    }
                 }
             }
         } catch (SQLException e) {
             System.out.println("Error al guardar la inscripción: " + e.getMessage());
         }
-
         return -1;
+    }
+
+    
+    private int getNextCodigoTransaccion() {
+        int nextValue = -1;
+        String sql = "SELECT NEXT VALUE FOR seq_codigo_transaccion";
+
+        try (PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                nextValue = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener el siguiente valor de la secuencia: " + e.getMessage());
+        }
+
+        return nextValue;
+    }
+    
+    public void guardarPago(Inscripcion inscripcion, int idInscripcion) {
+        String sql = "INSERT INTO pago (codigo_transaccion, tipo_transaccion, no_cuenta_cliente, no_cuenta_destino, fecha_hora, monto, estado_id, id_inscripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        int idGenerado = -1;
+
+        try (PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            int codigoTransaccion = getNextCodigoTransaccion();
+            ps.setInt(1, codigoTransaccion);
+            ps.setString(2, "Inscripcion");
+            ps.setString(3, " ");
+            ps.setString(4, inscripcion.getNumeroCuenta());
+            ps.setDate(5, new java.sql.Date(inscripcion.getFechaInscripcion().getTime()));
+            ps.setDouble(6, inscripcion.getMonto());
+            ps.setInt(7, obtenerIdPorDescripcion(inscripcion.getEstado()));
+            ps.setInt(8, idInscripcion);
+
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                idGenerado = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al guardar el pago: " + e.toString());
+        }
+    }
+    
+    public Integer obtenerIdPorDescripcion(String descripcion) {
+        String sql = "SELECT id FROM estado_pago WHERE descripcion = ?";
+        Integer id = null;
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, descripcion);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    id = rs.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener el ID del estado de pago: " + e.getMessage());
+        }
+
+        return id;
     }
 
     public boolean editarInscripcion(Inscripcion inscripcion) {
@@ -307,4 +370,21 @@ public Inscripcion consultarInscripcion(int id) {
         return null;
     }
     
+    public String obtenerEstadoInicial(int idEstado) {
+        String nombreEstado = "";
+        String sql = "SELECT descripcion FROM estado_pago WHERE id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idEstado);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                nombreEstado = rs.getString("descripcion");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al consultar el estado inicial del pago: " + e.getMessage());
+        }
+
+        return nombreEstado;
+    }
 }

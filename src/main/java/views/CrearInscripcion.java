@@ -24,6 +24,12 @@ public class CrearInscripcion extends javax.swing.JFrame {
         initComponents();
         cargarGrados();
         cargarAlumnos();
+        cargarEstado();
+    }
+    
+    public void cargarEstado(){
+        String nombreEstado = inscripcionDAO.obtenerEstadoInicial(1);
+        txtEstado.setText(nombreEstado);
     }
 
     public void cargarAlumnos() {
@@ -132,9 +138,7 @@ private boolean validarFecha(Date fecha) {
         jLabel4.setText("Fecha de Inscripción");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
 
-        selectGrado.setBackground(new java.awt.Color(255, 255, 255));
         selectGrado.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        selectGrado.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(selectGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 225, 290, 30));
 
         btnGuardar.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
@@ -162,14 +166,11 @@ private boolean validarFecha(Date fecha) {
         });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 560, 100, 40));
 
-        selectAlumno.setBackground(new java.awt.Color(255, 255, 255));
         selectAlumno.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        selectAlumno.setForeground(new java.awt.Color(0, 0, 0));
         selectAlumno.setBorder(null);
         jPanel1.add(selectAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 165, 290, 30));
 
         ChooserInscripcion.setBackground(new java.awt.Color(255, 255, 255));
-        ChooserInscripcion.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(ChooserInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 290, -1));
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -193,6 +194,7 @@ private boolean validarFecha(Date fecha) {
         txtCuenta.setBorder(new javax.swing.border.MatteBorder(0, 0, 1, 0, java.awt.Color.WHITE));
         jPanel1.add(txtCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 290, 30));
 
+        txtEstado.setEditable(false);
         txtEstado.setBackground(new java.awt.Color(0, 0, 0));
         txtEstado.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         txtEstado.setForeground(new java.awt.Color(255, 255, 255));

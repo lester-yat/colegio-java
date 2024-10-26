@@ -121,7 +121,7 @@ public class ListU extends javax.swing.JFrame {
                 eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, -1, -1));
+        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, -1, -1));
 
         editar.setBackground(new java.awt.Color(0, 0, 0));
         editar.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -137,7 +137,7 @@ public class ListU extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Lista Usuarios");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 180, -1));
 
         uadmin.setBackground(new java.awt.Color(0, 0, 0));
         uadmin.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N

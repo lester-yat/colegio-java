@@ -217,19 +217,19 @@ public class AlumnoDAO {
             for (Integer idSeccion : listaRelaciones) {
                 ps.setInt(1, idAlumno);
 
-                if (idSeccion != -1) {
+                if (idSeccion != null && idSeccion != -1) {
                     ps.setInt(2, idSeccion);
                 } else {
                     ps.setNull(2, java.sql.Types.INTEGER);
                 }
 
-                ps.addBatch();
+                ps.addBatch();  // Agregar la instrucción a un batch
             }
 
-            ps.executeBatch();
+            ps.executeBatch();  // Ejecutar todas las instrucciones juntas
             return true;
         } catch (SQLException e) {
-            System.out.println("Error al guardar las relaciones: " + e.toString());
+            System.out.println("Error al guardar las relaciones: " + e.getMessage());
             return false;
         }
     }

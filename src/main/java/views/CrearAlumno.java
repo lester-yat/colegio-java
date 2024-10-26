@@ -279,16 +279,17 @@ public class CrearAlumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       
-        if (!"".equals(txtNombre.getText()) && !"".equals(txtApellido.getText()) && 
-            !"".equals(txtEdad.getText()) && !"".equals(selectGrado.getSelectedItem()) && !"".equals(txtFechaRegistro.getDate())) {
+        if (!"".equals(txtNombre.getText()) && !"".equals(txtApellido.getText())
+                && !"".equals(txtEdad.getText()) && !"".equals(selectGrado.getSelectedItem())
+                && txtFechaRegistro.getDate() != null) {
             try {
                 alumno.setNombre(txtNombre.getText());
                 alumno.setApellido(txtApellido.getText());
                 alumno.setEdad(Integer.parseInt(txtEdad.getText()));
-                alumno.setFechaResgistro( (Date) txtFechaRegistro.getCalendar().getTime());
-                //alumno.setPadre(1);
-                
+                alumno.setFechaResgistro((Date) txtFechaRegistro.getCalendar().getTime());
+                alumno.setPadre(1);  // ID del padre por defecto
+
+                // Asignar el padre seleccionado
                 List<Padre> padres = alumnoDAO.listarPadres();
                 for (Padre padre : padres) {
                     if (padre.getNombre().equals(selectPadre.getSelectedItem())) {
@@ -297,6 +298,7 @@ public class CrearAlumno extends javax.swing.JFrame {
                     }
                 }
 
+                // Asignar el grado seleccionado
                 List<Grado> grados = alumnoDAO.listarGrados();
                 for (Grado grado : grados) {
                     if (grado.getNombre().equals(selectGrado.getSelectedItem())) {
@@ -304,20 +306,23 @@ public class CrearAlumno extends javax.swing.JFrame {
                         break;
                     }
                 }
-                
+
+                // Guardar el alumno
                 int idAlumno = alumnoDAO.guardarAlumno(alumno);
                 if (idAlumno == -1) {
                     JOptionPane.showMessageDialog(null, "Error al guardar al alumno.");
                     return;
                 }
-                
+
+                // Obtener las secciones seleccionadas
                 List<Integer> listaIDSecciones = obtenerIdsSeleccionadosSecciones();
 
+                // Guardar las relaciones alumno-sección
                 if (!alumnoDAO.guardarAlumSecc(idAlumno, listaIDSecciones)) {
                     JOptionPane.showMessageDialog(null, "Error al guardar las relaciones.");
                     return;
                 }
-                
+
                 JOptionPane.showMessageDialog(null, "Alumno guardado exitosamente.");
                 ListaAlumnos vistaLista = new ListaAlumnos();
                 vistaLista.setVisible(true);
@@ -328,9 +333,10 @@ public class CrearAlumno extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el alumno: " + e.getMessage());
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Los campos estan vacios");
+            JOptionPane.showMessageDialog(null, "Los campos están vacíos");
         }
-        
+
+        // Validar el campo edad para asegurarse de que sea un número
         try {
             int edad = Integer.parseInt(txtEdad.getText());
         } catch (NumberFormatException e) {

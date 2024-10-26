@@ -13,12 +13,12 @@ public class CrearNota extends javax.swing.JFrame {
     Nota nota = new Nota();
     NotaDAO notaDAO = new NotaDAO();
     DefaultTableModel modelo = new DefaultTableModel();
+    public int alumnoId;
     
     public CrearNota() {
         initComponents();
         this.setLocationRelativeTo(null);
         cargarAlumnos();
-        cargarCursos();
     }
     
     public void cargarAlumnos(){
@@ -29,8 +29,9 @@ public class CrearNota extends javax.swing.JFrame {
         }
     }
     
-    public void cargarCursos(){
-        List<Curso> cursos = notaDAO.listarCursos();
+    public void cargarCursos(int idAlumno){
+        List<Curso> cursos = notaDAO.cargarCursos(idAlumno);
+        selectCurso.removeAllItems();
         for (int i = 0; i < cursos.size(); i++) {
             String nombre = cursos.get(i).getNombre();
             selectCurso.addItem(nombre);
@@ -104,6 +105,11 @@ public class CrearNota extends javax.swing.JFrame {
         selectAlumno.setBackground(new java.awt.Color(255, 255, 255));
         selectAlumno.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         selectAlumno.setForeground(new java.awt.Color(0, 0, 0));
+        selectAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectAlumnoActionPerformed(evt);
+            }
+        });
         jPanel1.add(selectAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 280, 30));
 
         selectCurso.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,8 +171,6 @@ public class CrearNota extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       
-        
         if (!"".equals(txtNombre.getText()) && !"".equals(txtCalificacion.getText()) && 
             !"".equals(txtFechaRegistro.getDate()) && selectAlumno.getSelectedItem() != null && 
             selectCurso.getSelectedItem() != null) {
@@ -216,6 +220,17 @@ public class CrearNota extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La calificacion debe ser un número entero o con decimales.");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void selectAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAlumnoActionPerformed
+        List<Alumno> alumnos = notaDAO.listarAlumnos();
+        for (Alumno alumno : alumnos) {
+            if ((alumno.getNombre() + " " + alumno.getApellido()).equals(selectAlumno.getSelectedItem())) {
+                alumnoId = alumno.getId();
+                cargarCursos(alumnoId);
+                break;
+            }
+        }
+    }//GEN-LAST:event_selectAlumnoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

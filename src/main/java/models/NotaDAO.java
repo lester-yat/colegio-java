@@ -82,6 +82,47 @@ Conexion conexion = new Conexion();
         return listCurs;
     }
     
+    public List<Curso> cargarCursos(int idAlumno) {
+        List<Curso> listCurs = new ArrayList<>();
+        List<Integer> listaSecciones = new ArrayList<>();
+
+        String sqlSeccionIDs = "SELECT seccion_id FROM alumno_seccion WHERE alumno_id = ?";
+        try (PreparedStatement psSeccionIDs = con.prepareStatement(sqlSeccionIDs)) {
+            psSeccionIDs.setInt(1, idAlumno);
+            try (ResultSet rsSeccionIDs = psSeccionIDs.executeQuery()) {
+                while (rsSeccionIDs.next()) {
+                    int seccionId = rsSeccionIDs.getInt("seccion_id");
+                    listaSecciones.add(seccionId);
+
+                    String sqlCursos = "SELECT * FROM curso WHERE seccion_id = ?";
+                    try (PreparedStatement psCursos = con.prepareStatement(sqlCursos)) {
+                        psCursos.setInt(1, seccionId);
+                        try (ResultSet rsCursos = psCursos.executeQuery()) {
+                            while (rsCursos.next()) {
+                                Curso cs = new Curso();
+                                cs.setId(rsCursos.getInt("id"));
+                                cs.setNombre(rsCursos.getString("nombre"));
+                                cs.setDescripcion(rsCursos.getString("descripcion"));
+                                cs.setNivel(rsCursos.getString("nivel"));
+                                cs.setProfesorId(rsCursos.getInt("profesor_id"));
+                                cs.setGradoId(rsCursos.getInt("grado_id"));
+                                cs.setSeccionId(rsCursos.getInt("seccion_id"));
+                                
+                                listCurs.add(cs);
+                            }
+                        }
+                    } catch (SQLException e) {
+                        System.out.println("Error al listar los cursos para la sección " + seccionId + ": " + e.toString());
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar las secciones: " + e.toString());
+        }
+        
+        return listCurs;
+    }
+
     public String columnaAlumno(int notaID) {
         String nombreAlumno = null;
         String sql = "SELECT alm.nombre, alm.apellido " +

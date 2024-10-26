@@ -237,6 +237,7 @@ private boolean validarFecha(Date fecha) {
         txtMonto.setBorder(null);
         jPanel1.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 190, -1));
 
+        txtEstado.setEditable(false);
         txtEstado.setBackground(new java.awt.Color(0, 0, 0));
         txtEstado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtEstado.setForeground(new java.awt.Color(255, 255, 255));
