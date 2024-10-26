@@ -44,6 +44,45 @@ public class CrearInscripcion extends javax.swing.JFrame {
         }
 
     }
+    
+    
+    // Método para validar el número de cuenta
+private boolean validarNumeroCuenta(String numeroCuenta) {
+    String regex = "^(\\d{4}-?\\d{4}-?\\d{2}-?\\d{8})$|^(\\d{4}-?\\d{4}-?\\d{8})$|^(\\d{4}-?\\d{8})$";
+    if (!numeroCuenta.matches(regex)) {
+        JOptionPane.showMessageDialog(this, "Número de cuenta inválido. Formatos válidos:\n" +
+                "- ####-####-##-########\n" +
+                "- ####-####-########\n" +
+                "- ####-########", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
+
+// Método para validar el monto
+private boolean validarMonto(double monto) {
+    double limiteMaximo = 100000; // Define el límite máximo aquí
+    if (monto <= 0 || monto > limiteMaximo) {
+        JOptionPane.showMessageDialog(this, "Monto inválido. Debe ser un número positivo y no exceder " + limiteMaximo,
+                "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
+
+// Método para validar la fecha
+private boolean validarFecha(Date fecha) {
+    if (fecha == null) {
+        JOptionPane.showMessageDialog(this, "Fecha inválida. No puede estar vacía.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    Date fechaActual = new Date();
+    if (fecha.after(fechaActual)) {
+        JOptionPane.showMessageDialog(this, "Fecha inválida. No puede ser una fecha futura.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
 
 // En tu diseño puedes agregar el JDateChooser donde lo necesites
     @SuppressWarnings("unchecked")
@@ -177,60 +216,74 @@ public class CrearInscripcion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (selectAlumno.getSelectedItem() != null && selectGrado.getSelectedItem() != null && ChooserInscripcion.getDate() != null) {
-            // Validaciones de los nuevos campos
-            if (txtCuenta.getText().isEmpty() || txtMonto.getText().isEmpty() || txtEstado.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.");
+       if (selectAlumno.getSelectedItem() != null && selectGrado.getSelectedItem() != null && ChooserInscripcion.getDate() != null) {
+        // Validaciones de los nuevos campos
+        if (txtCuenta.getText().isEmpty() || txtMonto.getText().isEmpty() || txtEstado.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.");
+            return;
+        }
+
+        try {
+            // Validar el número de cuenta
+            String numeroCuenta = txtCuenta.getText();
+            if (!validarNumeroCuenta(numeroCuenta)) {
+                return; // Detener si la validación falla
+            }
+
+            // Validar que el monto sea un número válido y positivo
+            double monto = Double.parseDouble(txtMonto.getText());
+            if (!validarMonto(monto)) {
+                return; // Detener si la validación falla
+            }
+
+            // Validar que la fecha no sea futura
+            Date fechaInscripcion = ChooserInscripcion.getDate();
+            if (!validarFecha(fechaInscripcion)) {
+                return; // Detener si la validación falla
+            }
+
+            // Crear una nueva inscripción
+            Inscripcion inscripcion = new Inscripcion();
+
+            // Obtener el ID del Alumno a partir de la selección
+            String alumnoSeleccionado = (String) selectAlumno.getSelectedItem();
+            int idAlumno = Integer.parseInt(alumnoSeleccionado.split(" - ")[0]); // Extraer ID
+            inscripcion.setAlumnoId(idAlumno);
+
+            // Obtener el ID del Grado a partir de la selección
+            String gradoSeleccionado = (String) selectGrado.getSelectedItem();
+            int idGrado = Integer.parseInt(gradoSeleccionado.split(" - ")[0]); // Extraer ID
+            inscripcion.setGradoId(idGrado);
+
+            // Asignar la fecha de inscripción
+            inscripcion.setFechaInscripcion(fechaInscripcion);
+
+            // Asignar los nuevos campos
+            inscripcion.setNumeroCuenta(numeroCuenta);
+            inscripcion.setMonto(monto);
+            inscripcion.setEstado(txtEstado.getText());
+
+            // Guardar la inscripción en la base de datos
+            int idInscripcion = inscripcionDAO.guardarInscripcion(inscripcion);
+            if (idInscripcion == -1) {
+                JOptionPane.showMessageDialog(null, "Error al guardar la inscripción.");
                 return;
             }
 
-            try {
-                // Validar que el monto sea un número válido
-                double monto = Double.parseDouble(txtMonto.getText());
+            // Mostrar mensaje de éxito
+            JOptionPane.showMessageDialog(null, "Inscripción guardada exitosamente.");
+            ListaInscripciones vistaLista = new ListaInscripciones();
+            vistaLista.setVisible(true);
+            dispose();
 
-                // Crear una nueva inscripción
-                Inscripcion inscripcion = new Inscripcion();
-
-                // Obtener el ID del Alumno a partir de la selección
-                String alumnoSeleccionado = (String) selectAlumno.getSelectedItem();
-                int idAlumno = Integer.parseInt(alumnoSeleccionado.split(" - ")[0]); // Extraer ID
-                inscripcion.setAlumnoId(idAlumno);
-
-                // Obtener el ID del Grado a partir de la selección
-                String gradoSeleccionado = (String) selectGrado.getSelectedItem();
-                int idGrado = Integer.parseInt(gradoSeleccionado.split(" - ")[0]); // Extraer ID
-                inscripcion.setGradoId(idGrado);
-
-                // Obtener y asignar la fecha del JDateChooser
-                Date fechaInscripcion = ChooserInscripcion.getDate();
-                inscripcion.setFechaInscripcion(fechaInscripcion);
-
-                // Asignar los nuevos campos
-                inscripcion.setNumeroCuenta(txtCuenta.getText());
-                inscripcion.setMonto(monto); // Aquí el monto es tipo double
-                inscripcion.setEstado(txtEstado.getText());
-
-                // Guardar la inscripción en la base de datos
-                int idInscripcion = inscripcionDAO.guardarInscripcion(inscripcion);
-                if (idInscripcion == -1) {
-                    JOptionPane.showMessageDialog(null, "Error al guardar la inscripción.");
-                    return;
-                }
-
-                // Mostrar mensaje de éxito
-                JOptionPane.showMessageDialog(null, "Inscripción guardada exitosamente.");
-                ListaInscripciones vistaLista = new ListaInscripciones();
-                vistaLista.setVisible(true);
-                dispose();
-
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "El monto debe ser un número válido.");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar la inscripción: " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Los campos no pueden estar vacíos.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El monto debe ser un número válido.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar la inscripción: " + e.getMessage());
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Los campos no pueden estar vacíos.");
+    }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

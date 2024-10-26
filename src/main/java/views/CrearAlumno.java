@@ -287,7 +287,7 @@ public class CrearAlumno extends javax.swing.JFrame {
                 alumno.setApellido(txtApellido.getText());
                 alumno.setEdad(Integer.parseInt(txtEdad.getText()));
                 alumno.setFechaResgistro( (Date) txtFechaRegistro.getCalendar().getTime());
-                alumno.setPadre(1);
+                //alumno.setPadre(1);
                 
                 List<Padre> padres = alumnoDAO.listarPadres();
                 for (Padre padre : padres) {

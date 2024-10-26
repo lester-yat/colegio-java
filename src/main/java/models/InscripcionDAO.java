@@ -257,4 +257,54 @@ public Inscripcion consultarInscripcion(int id) {
 
         return nombreAlumno;
     }
+    
+    public boolean tieneInscripcionesAsociadas(int gradoId) {
+        String sql = "SELECT COUNT(*) FROM inscripcion WHERE grado_id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, gradoId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+     public boolean eliminarGrado(int gradoId) {
+        // Primero verificamos si hay inscripciones asociadas
+        if (tieneInscripcionesAsociadas(gradoId)) {
+            return false; // No se puede eliminar porque hay inscripciones asociadas
+        }
+
+        String sql = "DELETE FROM grado WHERE id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, gradoId);
+            int result = ps.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+     
+     // Método auxiliar para obtener el nombre del grado
+    public String obtenerNombreGrado(int gradoId) {
+        String sql = "SELECT nombre FROM grado WHERE id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, gradoId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString("nombre");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }

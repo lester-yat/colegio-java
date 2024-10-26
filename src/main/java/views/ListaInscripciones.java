@@ -14,17 +14,12 @@ import models.Inscripcion;
 import models.InscripcionDAO;
 
 public class ListaInscripciones extends javax.swing.JFrame {
-    
-
-    
 
     public ListaInscripciones() {
-        
+
         initComponents();
         cargarInscripciones(); // Cargar inscripciones al abrir el formulario
         this.setLocationRelativeTo(null);
-        
-        
 
     }
 
@@ -184,36 +179,50 @@ public class ListaInscripciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-         // Verificar que haya una fila seleccionada
-    int filaSeleccionada = tablaInscripcion.getSelectedRow();
-    
-    if (filaSeleccionada != -1) { // Si se seleccionó una fila
-        // Obtener el ID de la inscripción desde la columna correspondiente (suponiendo que está en la primera columna)
-        int idInscripcion = Integer.parseInt(tablaInscripcion.getValueAt(filaSeleccionada, 0).toString());
+        int filaSeleccionada = tablaInscripcion.getSelectedRow();
 
-        // Confirmar si el usuario realmente quiere eliminar la inscripción
-        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas eliminar esta inscripción?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (filaSeleccionada != -1) {
+            // Obtener el ID del grado desde la columna correspondiente
+            int idGrado = Integer.parseInt(tablaInscripcion.getValueAt(filaSeleccionada, 3).toString()); // Asumiendo que el ID del grado está en la columna 3
 
-        if (confirmacion == JOptionPane.YES_OPTION) {
-            // Llamar al método eliminarInscripcion
             InscripcionDAO inscripcionDAO = new InscripcionDAO();
-            boolean eliminado = inscripcionDAO.eliminarInscripcion(idInscripcion);
 
-            if (eliminado) {
-                // Mostrar un mensaje de éxito
-                JOptionPane.showMessageDialog(null, "Inscripción eliminada exitosamente.");
-                
-                // Actualizar la tabla para reflejar los cambios
-                cargarInscripciones();
-            } else {
-                // Mostrar un mensaje de error
-                JOptionPane.showMessageDialog(null, "Error al eliminar la inscripción.");
+            // Verificar si hay inscripciones asociadas
+            if (inscripcionDAO.tieneInscripcionesAsociadas(idGrado)) {
+                String nombreGrado = inscripcionDAO.obtenerNombreGrado(idGrado);
+                JOptionPane.showMessageDialog(null,
+                        "No se puede eliminar el grado '" + nombreGrado + "' porque tiene inscripciones asociadas.\n"
+                        + "Debe eliminar primero las inscripciones asociadas.",
+                        "Error de eliminación",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
             }
+
+            // Si no hay inscripciones asociadas, procedemos con la eliminación
+            int confirmacion = JOptionPane.showConfirmDialog(null,
+                    "¿Estás seguro de que deseas eliminar este grado?",
+                    "Confirmar eliminación",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                // Obtener el ID de la inscripción
+                int idInscripcion = Integer.parseInt(tablaInscripcion.getValueAt(filaSeleccionada, 0).toString());
+
+                boolean eliminado = inscripcionDAO.eliminarInscripcion(idInscripcion);
+
+                if (eliminado) {
+                    JOptionPane.showMessageDialog(null, "Grado eliminado exitosamente.");
+                    cargarInscripciones(); // Actualizar la tabla
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Error al eliminar el grado.",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un grado para eliminar.");
         }
-    } else {
-        // Mostrar un mensaje si no se seleccionó ninguna inscripción
-        JOptionPane.showMessageDialog(null, "Selecciona una inscripción para eliminar.");
-    }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -223,10 +232,6 @@ public class ListaInscripciones extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    
-   
-    
-    
     /**
      * @param args the command line arguments
      */

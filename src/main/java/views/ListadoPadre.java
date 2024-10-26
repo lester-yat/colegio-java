@@ -203,10 +203,7 @@ public void cargarTablaPadres() {
         dispose();
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    
- 
-      
-      
+     
     /**
      * @param args the command line arguments
      */
