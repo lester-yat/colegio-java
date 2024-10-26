@@ -58,21 +58,21 @@ public class EditarPago extends javax.swing.JFrame {
         }
     }
     
-    private boolean validarNumeroCuenta(String numeroCuenta) {
-        // Definir la expresión regular para validar el número de cuenta
-        String regex = "^(\\d{4}-?\\d{4}-?\\d{2}-?\\d{8})$|^(\\d{4}-?\\d{4}-?\\d{8})$|^(\\d{4}-?\\d{8})$";
-
-        // Verificar si el número de cuenta coincide con el patrón
-        if (!numeroCuenta.matches(regex)) {
-            // Mostrar mensaje de error con formatos válidos
-            JOptionPane.showMessageDialog(this, "Número de cuenta inválido. Formatos válidos:\n" +
-                    "- ####-####-##-########\n" +
-                    "- ####-####-########\n" +
-                    "- ####-########", "Error", JOptionPane.ERROR_MESSAGE);
-            return false; // Retornar falso si no coincide
-        }
-        return true; // Retornar verdadero si coincide
-    }
+//    private boolean validarNumeroCuenta(String numeroCuenta) {
+//        // Definir la expresión regular para validar el número de cuenta
+//        String regex = "^(\\d{4}-?\\d{4}-?\\d{2}-?\\d{8})$|^(\\d{4}-?\\d{4}-?\\d{8})$|^(\\d{4}-?\\d{8})$";
+//
+//        // Verificar si el número de cuenta coincide con el patrón
+//        if (!numeroCuenta.matches(regex)) {
+//            // Mostrar mensaje de error con formatos válidos
+//            JOptionPane.showMessageDialog(this, "Número de cuenta inválido. Formatos válidos:\n" +
+//                    "- ####-####-##-########\n" +
+//                    "- ####-####-########\n" +
+//                    "- ####-########", "Error", JOptionPane.ERROR_MESSAGE);
+//            return false; // Retornar falso si no coincide
+//        }
+//        return true; // Retornar verdadero si coincide
+//    }
     
     private boolean validarMonto(String monto) {
         return monto.matches("\\d+(\\.\\d+)?");
@@ -141,7 +141,9 @@ public class EditarPago extends javax.swing.JFrame {
 
         SelectTipoTransaccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inscripcion", "Mensualidad", "Nomina Maestros", "Utiles Escolares" }));
 
+        btnActualizar.setBackground(new java.awt.Color(51, 51, 51));
         btnActualizar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +151,9 @@ public class EditarPago extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
         btnCancelar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,9 +191,7 @@ public class EditarPago extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel7)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(41, 41, 41)))
+                                .addComponent(jLabel8))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -274,9 +276,9 @@ public class EditarPago extends javax.swing.JFrame {
         try {
             String noCuentaCliente = txtNoCuentaCliente.getText();
             String noCuentaDestino = txtNoCuentaDestino.getText();
-            if (!validarNumeroCuenta(noCuentaCliente) || !validarNumeroCuenta(noCuentaDestino)) {
-                return;
-            }
+//            if (!validarNumeroCuenta(noCuentaCliente) || !validarNumeroCuenta(noCuentaDestino)) {
+//                return;
+//            }
             
             String montoTexto = txtMonto.getText();
             if (!validarMonto(montoTexto)) {

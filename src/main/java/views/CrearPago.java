@@ -73,6 +73,7 @@ public class CrearPago extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registrar Pago");
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
@@ -103,6 +104,7 @@ public class CrearPago extends javax.swing.JFrame {
 
         SelectTipoTransaccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inscripcion", "Mensualidad", "Nomina Maestros", "Utiles Escolares" }));
 
+        btnGuardar.setBackground(new java.awt.Color(51, 51, 51));
         btnGuardar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
@@ -112,6 +114,7 @@ public class CrearPago extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
         btnCancelar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");

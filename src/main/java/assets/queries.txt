@@ -173,6 +173,9 @@ CREATE TABLE pago (
     CONSTRAINT FK_estado FOREIGN KEY (estado_id) REFERENCES estado_pago(id)
 );
 
+ALTER TABLE pago
+ADD id_inscripcion INT;
+
 
 //echo por angel
 -- Eliminar la tabla inicio

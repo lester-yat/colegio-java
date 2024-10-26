@@ -67,6 +67,7 @@ public class ListarPagos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setText("Historial de Pagos");
 
+        btnCrear.setBackground(new java.awt.Color(51, 51, 51));
         btnCrear.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(255, 255, 255));
         btnCrear.setText("Nuevo Pago");
@@ -76,6 +77,7 @@ public class ListarPagos extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
         btnEditar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
@@ -85,6 +87,7 @@ public class ListarPagos extends javax.swing.JFrame {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(51, 51, 51));
         btnEliminar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");

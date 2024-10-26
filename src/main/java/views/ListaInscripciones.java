@@ -188,15 +188,15 @@ public class ListaInscripciones extends javax.swing.JFrame {
             InscripcionDAO inscripcionDAO = new InscripcionDAO();
 
             // Verificar si hay inscripciones asociadas
-            if (inscripcionDAO.tieneInscripcionesAsociadas(idGrado)) {
-                String nombreGrado = inscripcionDAO.obtenerNombreGrado(idGrado);
-                JOptionPane.showMessageDialog(null,
-                        "No se puede eliminar el grado '" + nombreGrado + "' porque tiene inscripciones asociadas.\n"
-                        + "Debe eliminar primero las inscripciones asociadas.",
-                        "Error de eliminación",
-                        JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+//            if (inscripcionDAO.tieneInscripcionesAsociadas(idGrado)) {
+//                String nombreGrado = inscripcionDAO.obtenerNombreGrado(idGrado);
+//                JOptionPane.showMessageDialog(null,
+//                        "No se puede eliminar el grado '" + nombreGrado + "' porque tiene inscripciones asociadas.\n"
+//                        + "Debe eliminar primero las inscripciones asociadas.",
+//                        "Error de eliminación",
+//                        JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
 
             // Si no hay inscripciones asociadas, procedemos con la eliminación
             int confirmacion = JOptionPane.showConfirmDialog(null,
